@@ -1,0 +1,560 @@
+[
+  {
+    "system": "in_memory_simulator",
+    "dataset": "synthetic_multisession",
+    "attack": "cross_session_probe",
+    "condition": "baseline",
+    "metric": "leaked_edge_count",
+    "value": 2,
+    "notes": ""
+  },
+  {
+    "system": "in_memory_simulator",
+    "dataset": "synthetic_multisession",
+    "attack": "cross_session_probe",
+    "condition": "baseline",
+    "metric": "unique_leaked_edge_count",
+    "value": 2,
+    "notes": ""
+  },
+  {
+    "system": "in_memory_simulator",
+    "dataset": "synthetic_multisession",
+    "attack": "cross_session_probe",
+    "condition": "baseline",
+    "metric": "leakage_event_count",
+    "value": 6,
+    "notes": ""
+  },
+  {
+    "system": "in_memory_simulator",
+    "dataset": "synthetic_multisession",
+    "attack": "cross_session_probe",
+    "condition": "baseline",
+    "metric": "leakage_rate",
+    "value": 0.5,
+    "notes": ""
+  },
+  {
+    "system": "in_memory_simulator",
+    "dataset": "synthetic_multisession",
+    "attack": "cross_session_probe",
+    "condition": "baseline",
+    "metric": "event_leakage_rate",
+    "value": 0.5,
+    "notes": ""
+  },
+  {
+    "system": "in_memory_simulator",
+    "dataset": "synthetic_multisession",
+    "attack": "cross_session_probe",
+    "condition": "baseline",
+    "metric": "per_query_leak_rate",
+    "value": 1.0,
+    "notes": ""
+  },
+  {
+    "system": "in_memory_simulator",
+    "dataset": "synthetic_multisession",
+    "attack": "cross_session_probe",
+    "condition": "strict_guard",
+    "metric": "leaked_edge_count",
+    "value": 0,
+    "notes": ""
+  },
+  {
+    "system": "in_memory_simulator",
+    "dataset": "synthetic_multisession",
+    "attack": "cross_session_probe",
+    "condition": "strict_guard",
+    "metric": "leakage_event_count",
+    "value": 0,
+    "notes": ""
+  },
+  {
+    "system": "in_memory_simulator",
+    "dataset": "synthetic_multisession",
+    "attack": "cross_session_probe",
+    "condition": "strict_guard",
+    "metric": "leakage_reduction",
+    "value": 1.0,
+    "notes": ""
+  },
+  {
+    "system": "in_memory_simulator",
+    "dataset": "synthetic_multisession",
+    "attack": "session_graph_link",
+    "condition": "structure_only",
+    "metric": "top_1_hit",
+    "value": true,
+    "notes": ""
+  },
+  {
+    "system": "in_memory_simulator",
+    "dataset": "synthetic_multisession",
+    "attack": "session_graph_link",
+    "condition": "structure_only",
+    "metric": "top_candidate",
+    "value": "alice-session-2",
+    "notes": ""
+  },
+  {
+    "system": "in_memory_simulator",
+    "dataset": "synthetic_multisession",
+    "attack": "session_graph_link",
+    "condition": "structure_only",
+    "metric": "top_score",
+    "value": 1.0,
+    "notes": ""
+  },
+  {
+    "system": "in_memory_simulator",
+    "dataset": "synthetic_multisession",
+    "attack": "temporal_path_infer",
+    "condition": "baseline",
+    "metric": "prefix_ordering_accuracy",
+    "value": 1.0,
+    "notes": ""
+  },
+  {
+    "system": "in_memory_simulator",
+    "dataset": "synthetic_multisession",
+    "attack": "temporal_path_infer",
+    "condition": "baseline",
+    "metric": "inferred_edge_count",
+    "value": 4,
+    "notes": ""
+  },
+  {
+    "system": "in_memory_simulator",
+    "dataset": "synthetic_multisession",
+    "attack": "temporal_path_infer",
+    "condition": "strict_guard",
+    "metric": "inferred_edge_count",
+    "value": 0,
+    "notes": ""
+  },
+  {
+    "system": "in_memory_simulator",
+    "dataset": "synthetic_multisession",
+    "attack": "budget_curve",
+    "condition": "budget_0",
+    "metric": "bob_session_leaked_edges",
+    "value": 0,
+    "notes": "Medical edges remain blocked; normal cross-session edges follow budget."
+  },
+  {
+    "system": "in_memory_simulator",
+    "dataset": "synthetic_multisession",
+    "attack": "budget_curve",
+    "condition": "budget_1",
+    "metric": "bob_session_leaked_edges",
+    "value": 1,
+    "notes": "Medical edges remain blocked; normal cross-session edges follow budget."
+  },
+  {
+    "system": "in_memory_simulator",
+    "dataset": "synthetic_multisession",
+    "attack": "budget_curve",
+    "condition": "budget_2",
+    "metric": "bob_session_leaked_edges",
+    "value": 2,
+    "notes": "Medical edges remain blocked; normal cross-session edges follow budget."
+  },
+  {
+    "system": "in_memory_simulator",
+    "dataset": "synthetic_multisession",
+    "attack": "edge_admission",
+    "condition": "epsilon_0.1",
+    "metric": "sensitive_keep_probability",
+    "value": 0.525,
+    "notes": ""
+  },
+  {
+    "system": "in_memory_simulator",
+    "dataset": "synthetic_multisession",
+    "attack": "edge_admission",
+    "condition": "epsilon_0.1",
+    "metric": "admitted_sensitive_edges",
+    "value": 3,
+    "notes": "Seeded proxy; not a complete DP accounting result."
+  },
+  {
+    "system": "in_memory_simulator",
+    "dataset": "synthetic_multisession",
+    "attack": "edge_admission",
+    "condition": "epsilon_0.1",
+    "metric": "victim_leaked_edges",
+    "value": 1,
+    "notes": "Leakage after write-time edge admission."
+  },
+  {
+    "system": "in_memory_simulator",
+    "dataset": "synthetic_multisession",
+    "attack": "edge_admission",
+    "condition": "epsilon_1.0",
+    "metric": "sensitive_keep_probability",
+    "value": 0.7311,
+    "notes": ""
+  },
+  {
+    "system": "in_memory_simulator",
+    "dataset": "synthetic_multisession",
+    "attack": "edge_admission",
+    "condition": "epsilon_1.0",
+    "metric": "admitted_sensitive_edges",
+    "value": 3,
+    "notes": "Seeded proxy; not a complete DP accounting result."
+  },
+  {
+    "system": "in_memory_simulator",
+    "dataset": "synthetic_multisession",
+    "attack": "edge_admission",
+    "condition": "epsilon_1.0",
+    "metric": "victim_leaked_edges",
+    "value": 1,
+    "notes": "Leakage after write-time edge admission."
+  },
+  {
+    "system": "in_memory_simulator",
+    "dataset": "synthetic_multisession",
+    "attack": "edge_admission",
+    "condition": "epsilon_3.0",
+    "metric": "sensitive_keep_probability",
+    "value": 0.9526,
+    "notes": ""
+  },
+  {
+    "system": "in_memory_simulator",
+    "dataset": "synthetic_multisession",
+    "attack": "edge_admission",
+    "condition": "epsilon_3.0",
+    "metric": "admitted_sensitive_edges",
+    "value": 5,
+    "notes": "Seeded proxy; not a complete DP accounting result."
+  },
+  {
+    "system": "in_memory_simulator",
+    "dataset": "synthetic_multisession",
+    "attack": "edge_admission",
+    "condition": "epsilon_3.0",
+    "metric": "victim_leaked_edges",
+    "value": 2,
+    "notes": "Leakage after write-time edge admission."
+  },
+  {
+    "system": "privacyguard-docker",
+    "dataset": "seed_records",
+    "attack": "CrossSessionProbe",
+    "condition": "baseline",
+    "metric": "leaked_edge_count",
+    "value": 5,
+    "notes": ""
+  },
+  {
+    "system": "privacyguard-docker",
+    "dataset": "seed_records",
+    "attack": "CrossSessionProbe",
+    "condition": "baseline",
+    "metric": "leakage_event_count",
+    "value": 15,
+    "notes": ""
+  },
+  {
+    "system": "privacyguard-docker",
+    "dataset": "seed_records",
+    "attack": "CrossSessionProbe",
+    "condition": "strict_guard",
+    "metric": "leaked_edge_count",
+    "value": 0,
+    "notes": ""
+  },
+  {
+    "system": "privacyguard-docker",
+    "dataset": "seed_records",
+    "attack": "CrossSessionProbe",
+    "condition": "strict_guard",
+    "metric": "leakage_reduction",
+    "value": 1.0,
+    "notes": "Strict provenance/session isolation blocks cross-session retrieval."
+  },
+  {
+    "system": "privacyguard-docker",
+    "dataset": "sample_dialogues",
+    "attack": "CrossSessionProbe",
+    "condition": "baseline",
+    "metric": "total_leaked_edges",
+    "value": 48,
+    "notes": ""
+  },
+  {
+    "system": "privacyguard-docker",
+    "dataset": "sample_dialogues",
+    "attack": "CrossSessionProbe",
+    "condition": "strict_guard",
+    "metric": "total_leaked_edges",
+    "value": 0,
+    "notes": ""
+  },
+  {
+    "system": "privacyguard-docker",
+    "dataset": "sample_dialogues",
+    "attack": "CrossSessionProbe",
+    "condition": "strict_guard",
+    "metric": "leakage_reduction",
+    "value": 1.0,
+    "notes": ""
+  },
+  {
+    "system": "privacyguard-docker",
+    "dataset": "sample_dialogues",
+    "attack": "CrossSessionProbe",
+    "condition": "baseline",
+    "metric": "query_count",
+    "value": 48,
+    "notes": ""
+  },
+  {
+    "system": "privacyguard-docker",
+    "dataset": "sample_dialogues",
+    "attack": "CrossSessionProbe",
+    "condition": "strict_guard",
+    "metric": "defense_framing",
+    "value": "strict_provenance_session_isolation",
+    "notes": "Default GraphMemGuard blocks cross-session retrieval before graph expansion."
+  },
+  {
+    "system": "privacyguard-docker",
+    "dataset": "sample_dialogues",
+    "attack": "CrossSessionProbe",
+    "condition": "query_budget_1",
+    "metric": "total_leaked_edges",
+    "value": 48,
+    "notes": ""
+  },
+  {
+    "system": "privacyguard-docker",
+    "dataset": "sample_dialogues",
+    "attack": "CrossSessionProbe",
+    "condition": "query_budget_1",
+    "metric": "query_count",
+    "value": 12,
+    "notes": ""
+  },
+  {
+    "system": "privacyguard-docker",
+    "dataset": "sample_dialogues",
+    "attack": "CrossSessionProbe",
+    "condition": "query_budget_1",
+    "metric": "leakage_event_count",
+    "value": 48,
+    "notes": ""
+  },
+  {
+    "system": "privacyguard-docker",
+    "dataset": "sample_dialogues",
+    "attack": "CrossSessionProbe",
+    "condition": "query_budget_2",
+    "metric": "total_leaked_edges",
+    "value": 48,
+    "notes": ""
+  },
+  {
+    "system": "privacyguard-docker",
+    "dataset": "sample_dialogues",
+    "attack": "CrossSessionProbe",
+    "condition": "query_budget_2",
+    "metric": "query_count",
+    "value": 24,
+    "notes": ""
+  },
+  {
+    "system": "privacyguard-docker",
+    "dataset": "sample_dialogues",
+    "attack": "CrossSessionProbe",
+    "condition": "query_budget_2",
+    "metric": "leakage_event_count",
+    "value": 88,
+    "notes": ""
+  },
+  {
+    "system": "privacyguard-docker",
+    "dataset": "sample_dialogues",
+    "attack": "CrossSessionProbe",
+    "condition": "query_budget_4",
+    "metric": "total_leaked_edges",
+    "value": 48,
+    "notes": ""
+  },
+  {
+    "system": "privacyguard-docker",
+    "dataset": "sample_dialogues",
+    "attack": "CrossSessionProbe",
+    "condition": "query_budget_4",
+    "metric": "query_count",
+    "value": 48,
+    "notes": ""
+  },
+  {
+    "system": "privacyguard-docker",
+    "dataset": "sample_dialogues",
+    "attack": "CrossSessionProbe",
+    "condition": "query_budget_4",
+    "metric": "leakage_event_count",
+    "value": 132,
+    "notes": ""
+  },
+  {
+    "system": "privacyguard-docker",
+    "dataset": "sample_dialogues",
+    "attack": "CrossSessionProbe",
+    "condition": "query_budget_all",
+    "metric": "total_leaked_edges",
+    "value": 48,
+    "notes": ""
+  },
+  {
+    "system": "privacyguard-docker",
+    "dataset": "sample_dialogues",
+    "attack": "CrossSessionProbe",
+    "condition": "query_budget_all",
+    "metric": "query_count",
+    "value": 48,
+    "notes": ""
+  },
+  {
+    "system": "privacyguard-docker",
+    "dataset": "sample_dialogues",
+    "attack": "CrossSessionProbe",
+    "condition": "query_budget_all",
+    "metric": "leakage_event_count",
+    "value": 132,
+    "notes": ""
+  },
+  {
+    "system": "privacyguard-docker",
+    "dataset": "sample_dialogues",
+    "attack": "SessionGraphLink",
+    "condition": "structure_only",
+    "metric": "evaluated_users",
+    "value": 6,
+    "notes": ""
+  },
+  {
+    "system": "privacyguard-docker",
+    "dataset": "sample_dialogues",
+    "attack": "SessionGraphLink",
+    "condition": "structure_only",
+    "metric": "top1_accuracy",
+    "value": 0.3333333333333333,
+    "notes": ""
+  },
+  {
+    "system": "privacyguard-docker",
+    "dataset": "sample_dialogues",
+    "attack": "SessionGraphLink",
+    "condition": "structure_only",
+    "metric": "top3_accuracy",
+    "value": 1.0,
+    "notes": ""
+  },
+  {
+    "system": "privacyguard-docker",
+    "dataset": "sample_dialogues",
+    "attack": "SessionGraphLink",
+    "condition": "structure_only",
+    "metric": "mean_reciprocal_rank",
+    "value": 0.611111111111111,
+    "notes": ""
+  },
+  {
+    "system": "privacyguard-docker",
+    "dataset": "sample_dialogues",
+    "attack": "SessionGraphLink",
+    "condition": "semantic_labels",
+    "metric": "evaluated_users",
+    "value": 6,
+    "notes": ""
+  },
+  {
+    "system": "privacyguard-docker",
+    "dataset": "sample_dialogues",
+    "attack": "SessionGraphLink",
+    "condition": "semantic_labels",
+    "metric": "top1_accuracy",
+    "value": 0.3333333333333333,
+    "notes": ""
+  },
+  {
+    "system": "privacyguard-docker",
+    "dataset": "sample_dialogues",
+    "attack": "SessionGraphLink",
+    "condition": "semantic_labels",
+    "metric": "top3_accuracy",
+    "value": 1.0,
+    "notes": ""
+  },
+  {
+    "system": "privacyguard-docker",
+    "dataset": "sample_dialogues",
+    "attack": "SessionGraphLink",
+    "condition": "semantic_labels",
+    "metric": "mean_reciprocal_rank",
+    "value": 0.6666666666666666,
+    "notes": ""
+  },
+  {
+    "system": "privacyguard-docker",
+    "dataset": "sample_dialogues",
+    "attack": "TemporalPathInfer",
+    "condition": "timestamp_order",
+    "metric": "evaluated_sessions",
+    "value": 12,
+    "notes": ""
+  },
+  {
+    "system": "privacyguard-docker",
+    "dataset": "sample_dialogues",
+    "attack": "TemporalPathInfer",
+    "condition": "timestamp_order",
+    "metric": "average_ordering_accuracy",
+    "value": 0.5,
+    "notes": ""
+  },
+  {
+    "system": "privacyguard-docker",
+    "dataset": "sample_dialogues",
+    "attack": "TemporalPathInfer",
+    "condition": "timestamp_order",
+    "metric": "pairwise_ordering_accuracy",
+    "value": 1.0,
+    "notes": ""
+  },
+  {
+    "system": "privacyguard-docker",
+    "dataset": "sample_dialogues",
+    "attack": "TemporalPathInfer",
+    "condition": "timestamp_order",
+    "metric": "edge_precision",
+    "value": 0.4924603174603175,
+    "notes": ""
+  },
+  {
+    "system": "privacyguard-docker",
+    "dataset": "sample_dialogues",
+    "attack": "TemporalPathInfer",
+    "condition": "timestamp_order",
+    "metric": "edge_recall",
+    "value": 1.0,
+    "notes": ""
+  },
+  {
+    "system": "privacyguard-docker",
+    "dataset": "sample_dialogues",
+    "attack": "TemporalPathInfer",
+    "condition": "timestamp_order",
+    "metric": "edge_f1",
+    "value": 0.6562998405103669,
+    "notes": ""
+  }
+]
