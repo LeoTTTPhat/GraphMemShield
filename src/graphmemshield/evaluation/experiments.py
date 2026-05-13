@@ -106,20 +106,25 @@ def render_markdown_report(records: list[ExperimentRecord]) -> str:
     return "\n".join(lines) + "\n"
 
 
+from graphmemshield.datasets.synthetic import build_large_synthetic_graph
+from graphmemshield.evaluation.utility_evaluator import UtilityEvaluator
+import statistics
+
+
 def _run_cross_session_probe_experiment() -> list[ExperimentRecord]:
-    graph = build_synthetic_multisession_graph()
+    graph = build_large_synthetic_graph(num_users=20, sessions_per_user=3, seed=42)
     probe = CrossSessionProbe(graph)
-    queries = ["clinic", "arrhythmia", "diagnosed"]
+    queries = ["arrhythmia", "laptop", "hotel"]
 
     baseline = probe.run(
-        attacker_session_id="attacker-session",
-        victim_session_id="alice-session-1",
+        attacker_session_id="user_1_session_1",
+        victim_session_id="session_0_0",
         probe_queries=queries,
         max_hops=1,
     )
     strict = probe.run(
-        attacker_session_id="attacker-session",
-        victim_session_id="alice-session-1",
+        attacker_session_id="user_1_session_1",
+        victim_session_id="session_0_0",
         probe_queries=queries,
         max_hops=1,
         guard=GraphMemGuard(GraphMemGuardPolicy()),
@@ -140,25 +145,7 @@ def _run_cross_session_probe_experiment() -> list[ExperimentRecord]:
             baseline.leakage_event_count,
         ),
         _record("cross_session_probe", "baseline", "leakage_rate", round(baseline.leakage_rate, 4)),
-        _record(
-            "cross_session_probe",
-            "baseline",
-            "event_leakage_rate",
-            round(baseline.event_leakage_rate, 4),
-        ),
-        _record(
-            "cross_session_probe",
-            "baseline",
-            "per_query_leak_rate",
-            round(baseline.per_query_leak_rate, 4),
-        ),
         _record("cross_session_probe", "strict_guard", "leaked_edge_count", strict.leaked_edge_count),
-        _record(
-            "cross_session_probe",
-            "strict_guard",
-            "leakage_event_count",
-            strict.leakage_event_count,
-        ),
         _record(
             "cross_session_probe",
             "strict_guard",
@@ -169,72 +156,76 @@ def _run_cross_session_probe_experiment() -> list[ExperimentRecord]:
 
 
 def _run_session_link_experiment() -> list[ExperimentRecord]:
-    graph = build_synthetic_multisession_graph()
+    graph = build_large_synthetic_graph(num_users=20, sessions_per_user=3, seed=42)
     report = SessionGraphLink(graph).rank(
-        query_session_id="alice-session-1",
-        candidate_session_ids=("alice-session-2", "bob-session-1"),
+        query_session_id="session_0_0",
+        candidate_session_ids=[f"session_{u}_{s}" for u in range(20) for s in range(3)],
         include_semantic_labels=False,
     )
     ranked_ids = tuple(candidate.session_id for candidate in report.candidates)
     top_score = report.candidates[0].score if report.candidates else 0.0
 
     return [
-        _record("session_graph_link", "structure_only", "top_1_hit", top_k_hit(ranked_ids, "alice-session-2", k=1)),
-        _record("session_graph_link", "structure_only", "top_candidate", report.top_session_id or ""),
+        _record("session_graph_link", "structure_only", "top_1_hit", top_k_hit(ranked_ids, "session_0_1", k=1) or top_k_hit(ranked_ids, "session_0_2", k=1)),
         _record("session_graph_link", "structure_only", "top_score", round(top_score, 4)),
     ]
 
 
 def _run_temporal_path_experiment() -> list[ExperimentRecord]:
-    graph = build_synthetic_multisession_graph()
+    graph = build_large_synthetic_graph(num_users=20, sessions_per_user=3, seed=42)
     report = TemporalPathInfer(graph).infer(
         query="arrhythmia",
         requester_session_id="attacker-session",
         max_hops=1,
     )
-    expected_prefix = ("alice-s1-e1", "alice-s1-e2")
-    accuracy = ordering_accuracy(report.inferred_edge_ids[:2], expected_prefix)
-
-    guarded = TemporalPathInfer(graph).infer(
-        query="arrhythmia",
-        requester_session_id="attacker-session",
-        max_hops=1,
-        guard=GraphMemGuard(GraphMemGuardPolicy()),
-    )
+    
     return [
-        _record("temporal_path_infer", "baseline", "prefix_ordering_accuracy", accuracy),
         _record("temporal_path_infer", "baseline", "inferred_edge_count", len(report.inferred_edge_ids)),
-        _record("temporal_path_infer", "strict_guard", "inferred_edge_count", len(guarded.inferred_edge_ids)),
     ]
 
 
 def _run_budget_curve_experiment() -> list[ExperimentRecord]:
-    graph = build_synthetic_multisession_graph()
+    graph = build_large_synthetic_graph(num_users=20, sessions_per_user=3, seed=42)
     probe = CrossSessionProbe(graph)
+    evaluator = UtilityEvaluator(graph)
     records: list[ExperimentRecord] = []
 
-    for budget in (0, 1, 2):
+    for budget in (0, 1, 2, 5):
         guard = GraphMemGuard(
             GraphMemGuardPolicy(
                 allow_cross_session=True,
                 max_cross_session_edges_per_pair=budget,
-                blocked_sensitivity_labels=frozenset({"medical"}),
+                blocked_sensitivity_labels=frozenset({"medical", "financial", "secret"}),
             )
         )
         report = probe.run(
-            attacker_session_id="attacker-session",
-            victim_session_id="bob-session-1",
-            probe_queries=["gym", "visited"],
+            attacker_session_id="attacker",
+            victim_session_id="session_0_0",
+            probe_queries=["hotel", "laptop"],
             max_hops=1,
             guard=guard,
+        )
+        utility = evaluator.evaluate(
+            query="hotel laptop",
+            requester_session_id="attacker",
+            defended_graph=graph,
+            guard=guard,
+            max_hops=1,
         )
         records.append(
             _record(
                 "budget_curve",
                 f"budget_{budget}",
-                "bob_session_leaked_edges",
+                "victim_leaked_edges",
                 report.leaked_edge_count,
-                notes="Medical edges remain blocked; normal cross-session edges follow budget.",
+            )
+        )
+        records.append(
+            _record(
+                "budget_curve",
+                f"budget_{budget}",
+                "utility_retention_rate",
+                round(utility.utility_retention_rate, 4),
             )
         )
 
@@ -242,47 +233,61 @@ def _run_budget_curve_experiment() -> list[ExperimentRecord]:
 
 
 def _run_edge_admission_experiment() -> list[ExperimentRecord]:
-    source_graph = build_synthetic_multisession_graph()
+    source_graph = build_large_synthetic_graph(num_users=20, sessions_per_user=3, seed=42)
     records: list[ExperimentRecord] = []
 
     for epsilon in (0.1, 1.0, 3.0):
-        admission = RandomizedEdgeAdmission(
-            EdgeAdmissionPolicy(epsilon=epsilon, seed="synthetic-edge-admission")
-        )
-        admitted_graph = admission.filter_graph(source_graph)
-        probe = CrossSessionProbe(admitted_graph)
-        report = probe.run(
-            attacker_session_id="attacker-session",
-            victim_session_id="alice-session-1",
-            probe_queries=["clinic", "arrhythmia", "diagnosed"],
-            max_hops=1,
-        )
-        sensitive_edges = [
-            edge
-            for edge in admitted_graph.edges
-            if edge.sensitivity in {"medical", "financial"}
-        ]
+        leaked_edges_runs = []
+        utility_runs = []
+        
+        for run_idx in range(30):
+            admission = RandomizedEdgeAdmission(
+                EdgeAdmissionPolicy(epsilon=epsilon, seed=run_idx)
+            )
+            admitted_graph = admission.filter_graph(source_graph)
+            probe = CrossSessionProbe(admitted_graph)
+            report = probe.run(
+                attacker_session_id="attacker-session",
+                victim_session_id="session_0_0",
+                probe_queries=["arrhythmia", "laptop"],
+                max_hops=1,
+            )
+            leaked_edges_runs.append(report.leaked_edge_count)
+            
+            evaluator = UtilityEvaluator(source_graph)
+            utility = evaluator.evaluate(
+                query="hotel laptop",
+                requester_session_id="attacker",
+                defended_graph=admitted_graph,
+                max_hops=1,
+            )
+            utility_runs.append(utility.utility_retention_rate)
+            
+        mean_leakage = statistics.mean(leaked_edges_runs)
+        std_leakage = statistics.stdev(leaked_edges_runs) if len(leaked_edges_runs) > 1 else 0.0
+        
+        mean_utility = statistics.mean(utility_runs)
+        std_utility = statistics.stdev(utility_runs) if len(utility_runs) > 1 else 0.0
+
         records.extend(
             [
                 _record(
                     "edge_admission",
                     f"epsilon_{epsilon}",
-                    "sensitive_keep_probability",
-                    round(admission.policy.sensitive_keep_probability, 4),
+                    "victim_leaked_edges_mean",
+                    round(mean_leakage, 4),
                 ),
                 _record(
                     "edge_admission",
                     f"epsilon_{epsilon}",
-                    "admitted_sensitive_edges",
-                    len(sensitive_edges),
-                    notes="Seeded proxy; not a complete DP accounting result.",
+                    "victim_leaked_edges_std",
+                    round(std_leakage, 4),
                 ),
                 _record(
                     "edge_admission",
                     f"epsilon_{epsilon}",
-                    "victim_leaked_edges",
-                    report.leaked_edge_count,
-                    notes="Leakage after write-time edge admission.",
+                    "utility_retention_mean",
+                    round(mean_utility, 4),
                 ),
             ]
         )

@@ -3,55 +3,34 @@
     "experiment": "cross_session_probe",
     "condition": "baseline",
     "metric": "leaked_edge_count",
-    "value": 2,
+    "value": 3,
     "notes": ""
   },
   {
     "experiment": "cross_session_probe",
     "condition": "baseline",
     "metric": "unique_leaked_edge_count",
-    "value": 2,
+    "value": 3,
     "notes": ""
   },
   {
     "experiment": "cross_session_probe",
     "condition": "baseline",
     "metric": "leakage_event_count",
-    "value": 6,
+    "value": 3,
     "notes": ""
   },
   {
     "experiment": "cross_session_probe",
     "condition": "baseline",
     "metric": "leakage_rate",
-    "value": 0.5,
-    "notes": ""
-  },
-  {
-    "experiment": "cross_session_probe",
-    "condition": "baseline",
-    "metric": "event_leakage_rate",
-    "value": 0.5,
-    "notes": ""
-  },
-  {
-    "experiment": "cross_session_probe",
-    "condition": "baseline",
-    "metric": "per_query_leak_rate",
-    "value": 1.0,
+    "value": 0.0323,
     "notes": ""
   },
   {
     "experiment": "cross_session_probe",
     "condition": "strict_guard",
     "metric": "leaked_edge_count",
-    "value": 0,
-    "notes": ""
-  },
-  {
-    "experiment": "cross_session_probe",
-    "condition": "strict_guard",
-    "metric": "leakage_event_count",
     "value": 0,
     "notes": ""
   },
@@ -72,13 +51,6 @@
   {
     "experiment": "session_graph_link",
     "condition": "structure_only",
-    "metric": "top_candidate",
-    "value": "alice-session-2",
-    "notes": ""
-  },
-  {
-    "experiment": "session_graph_link",
-    "condition": "structure_only",
     "metric": "top_score",
     "value": 1.0,
     "notes": ""
@@ -86,106 +58,127 @@
   {
     "experiment": "temporal_path_infer",
     "condition": "baseline",
-    "metric": "prefix_ordering_accuracy",
-    "value": 1.0,
+    "metric": "inferred_edge_count",
+    "value": 23,
     "notes": ""
   },
   {
-    "experiment": "temporal_path_infer",
-    "condition": "baseline",
-    "metric": "inferred_edge_count",
-    "value": 4,
-    "notes": ""
-  },
-  {
-    "experiment": "temporal_path_infer",
-    "condition": "strict_guard",
-    "metric": "inferred_edge_count",
+    "experiment": "budget_curve",
+    "condition": "budget_0",
+    "metric": "victim_leaked_edges",
     "value": 0,
     "notes": ""
   },
   {
     "experiment": "budget_curve",
     "condition": "budget_0",
-    "metric": "bob_session_leaked_edges",
-    "value": 0,
-    "notes": "Medical edges remain blocked; normal cross-session edges follow budget."
+    "metric": "utility_retention_rate",
+    "value": 0.0,
+    "notes": ""
   },
   {
     "experiment": "budget_curve",
     "condition": "budget_1",
-    "metric": "bob_session_leaked_edges",
-    "value": 1,
-    "notes": "Medical edges remain blocked; normal cross-session edges follow budget."
+    "metric": "victim_leaked_edges",
+    "value": 0,
+    "notes": ""
+  },
+  {
+    "experiment": "budget_curve",
+    "condition": "budget_1",
+    "metric": "utility_retention_rate",
+    "value": 0.0,
+    "notes": ""
   },
   {
     "experiment": "budget_curve",
     "condition": "budget_2",
-    "metric": "bob_session_leaked_edges",
-    "value": 2,
-    "notes": "Medical edges remain blocked; normal cross-session edges follow budget."
+    "metric": "victim_leaked_edges",
+    "value": 0,
+    "notes": ""
   },
   {
-    "experiment": "edge_admission",
-    "condition": "epsilon_0.1",
-    "metric": "sensitive_keep_probability",
-    "value": 0.525,
+    "experiment": "budget_curve",
+    "condition": "budget_2",
+    "metric": "utility_retention_rate",
+    "value": 0.0,
+    "notes": ""
+  },
+  {
+    "experiment": "budget_curve",
+    "condition": "budget_5",
+    "metric": "victim_leaked_edges",
+    "value": 0,
+    "notes": ""
+  },
+  {
+    "experiment": "budget_curve",
+    "condition": "budget_5",
+    "metric": "utility_retention_rate",
+    "value": 1.0,
     "notes": ""
   },
   {
     "experiment": "edge_admission",
     "condition": "epsilon_0.1",
-    "metric": "admitted_sensitive_edges",
-    "value": 3,
-    "notes": "Seeded proxy; not a complete DP accounting result."
-  },
-  {
-    "experiment": "edge_admission",
-    "condition": "epsilon_0.1",
-    "metric": "victim_leaked_edges",
+    "metric": "victim_leaked_edges_mean",
     "value": 1,
-    "notes": "Leakage after write-time edge admission."
+    "notes": ""
   },
   {
     "experiment": "edge_admission",
-    "condition": "epsilon_1.0",
-    "metric": "sensitive_keep_probability",
-    "value": 0.7311,
+    "condition": "epsilon_0.1",
+    "metric": "victim_leaked_edges_std",
+    "value": 0.9826,
+    "notes": ""
+  },
+  {
+    "experiment": "edge_admission",
+    "condition": "epsilon_0.1",
+    "metric": "utility_retention_mean",
+    "value": 1.0,
     "notes": ""
   },
   {
     "experiment": "edge_admission",
     "condition": "epsilon_1.0",
-    "metric": "admitted_sensitive_edges",
-    "value": 3,
-    "notes": "Seeded proxy; not a complete DP accounting result."
+    "metric": "victim_leaked_edges_mean",
+    "value": 1.7667,
+    "notes": ""
   },
   {
     "experiment": "edge_admission",
     "condition": "epsilon_1.0",
-    "metric": "victim_leaked_edges",
-    "value": 1,
-    "notes": "Leakage after write-time edge admission."
+    "metric": "victim_leaked_edges_std",
+    "value": 1.1943,
+    "notes": ""
   },
   {
     "experiment": "edge_admission",
-    "condition": "epsilon_3.0",
-    "metric": "sensitive_keep_probability",
-    "value": 0.9526,
+    "condition": "epsilon_1.0",
+    "metric": "utility_retention_mean",
+    "value": 1.0,
     "notes": ""
   },
   {
     "experiment": "edge_admission",
     "condition": "epsilon_3.0",
-    "metric": "admitted_sensitive_edges",
-    "value": 5,
-    "notes": "Seeded proxy; not a complete DP accounting result."
+    "metric": "victim_leaked_edges_mean",
+    "value": 2.7333,
+    "notes": ""
   },
   {
     "experiment": "edge_admission",
     "condition": "epsilon_3.0",
-    "metric": "victim_leaked_edges",
-    "value": 2,
-    "notes": "Leakage after write-time edge admission."
+    "metric": "victim_leaked_edges_std",
+    "value": 0.6397,
+    "notes": ""
+  },
+  {
+    "experiment": "edge_admission",
+    "condition": "epsilon_3.0",
+    "metric": "utility_retention_mean",
+    "value": 1.0,
+    "notes": ""
   }
 ]

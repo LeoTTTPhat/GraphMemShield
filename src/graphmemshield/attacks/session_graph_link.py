@@ -100,6 +100,25 @@ def session_feature_vector(
         features[f"degree:{node_degree}"] += 1
 
     features[f"edge-count:{len(edges)}"] += 1
+
+    # 1-WL Kernel Feature Extraction
+    import hashlib
+    from collections import defaultdict
+    adj = defaultdict(list)
+    node_labels = {}
+    for edge in edges:
+        adj[edge.source_id].append((edge.target_id, edge.relation))
+        adj[edge.target_id].append((edge.source_id, edge.relation))
+    
+    for node in adj.keys():
+        node_labels[node] = str(degree[node])
+        
+    for node, neighbors in adj.items():
+        neighbor_labels = sorted([node_labels[n] + rel for n, rel in neighbors])
+        wl_string = node_labels[node] + "|" + "-".join(neighbor_labels)
+        wl_hash = hashlib.sha256(wl_string.encode()).hexdigest()[:8]
+        features[f"wl1:{wl_hash}"] += 1
+
     return features
 
 

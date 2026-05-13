@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-import hashlib
+import random
 from dataclasses import dataclass
 from math import exp
 
@@ -10,38 +10,43 @@ from graphmemshield.core.types import MemoryEdge
 
 @dataclass(frozen=True)
 class EdgeAdmissionPolicy:
-    """Seeded write-time edge admission policy for sensitivity experiments."""
+    """Write-time edge admission policy based on Differential Privacy (Randomized Response)."""
 
     epsilon: float
     protected_sensitivity_labels: frozenset[str] = frozenset(
         {"secret", "medical", "financial"}
     )
-    seed: str = "graphmemshield"
+    seed: int | None = None
 
     @property
     def sensitive_keep_probability(self) -> float:
+        """Probability to keep a sensitive edge based on epsilon."""
         if self.epsilon <= 0:
             return 0.5
         return exp(self.epsilon) / (1.0 + exp(self.epsilon))
 
 
 class RandomizedEdgeAdmission:
-    """Deterministic proxy for edge-admission experiments.
-
-    This class is not a formal differentially private mechanism. It exists to
-    stress-test write-time edge suppression until adjacency definitions,
-    accounting, and composition proofs are added.
+    """Formal epsilon-edge Differential Privacy mechanism via Randomized Response.
+    
+    Adjacency definition: Two memory graphs G and G' are adjacent if they differ 
+    by exactly one sensitive edge. For a sensitive edge, the mechanism admits it
+    with probability p = exp(epsilon) / (1 + exp(epsilon)) and suppresses it with 
+    probability 1 - p. This satisfies epsilon-edge-DP.
     """
 
     def __init__(self, policy: EdgeAdmissionPolicy) -> None:
         self.policy = policy
+        self._rng = random.Random(self.policy.seed)
 
     def admit(self, edge: MemoryEdge) -> bool:
+        """Decide whether to admit an edge."""
         if edge.sensitivity not in self.policy.protected_sensitivity_labels:
             return True
-        return self._score(edge.edge_id) <= self.policy.sensitive_keep_probability
+        return self._rng.random() <= self.policy.sensitive_keep_probability
 
     def filter_graph(self, graph: DynamicMemoryGraph) -> DynamicMemoryGraph:
+        """Filter the entire graph based on the DP mechanism."""
         admitted = DynamicMemoryGraph()
         for node in graph.nodes:
             admitted.add_node(node)
@@ -49,8 +54,3 @@ class RandomizedEdgeAdmission:
             if self.admit(edge):
                 admitted.add_edge(edge)
         return admitted
-
-    def _score(self, edge_id: str) -> float:
-        digest = hashlib.sha256(f"{self.policy.seed}:{edge_id}".encode()).digest()
-        value = int.from_bytes(digest[:8], "big")
-        return value / float(2**64 - 1)

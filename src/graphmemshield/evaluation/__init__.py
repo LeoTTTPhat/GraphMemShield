@@ -12,9 +12,11 @@ from graphmemshield.evaluation.metrics import (
     set_precision_recall_f1,
     top_k_hit,
 )
+from graphmemshield.evaluation.utility_evaluator import UtilityEvaluator
 
 __all__ = [
     "ExperimentRecord",
+    "UtilityEvaluator",
     "leakage_reduction",
     "ordering_accuracy",
     "pairwise_ordering_accuracy",
