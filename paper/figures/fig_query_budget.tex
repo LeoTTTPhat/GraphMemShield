@@ -1,0 +1,40 @@
+% =====================================================================
+% Query-budget curve on the Docker-backed sample dataset.
+% Unique leaked edges saturate; events scale with query count.
+% =====================================================================
+\begin{tikzpicture}
+\begin{axis}[
+    width=\columnwidth,
+    height=5.2cm,
+    xlabel={Per-session query budget $b$},
+    ylabel={Count},
+    xtick={1,2,4,12},
+    xticklabels={1,2,4,all (12)},
+    ymin=0, ymax=145,
+    xmin=0.5, xmax=13,
+    grid=major, grid style={dashed, gray!25},
+    legend style={
+        font=\scriptsize,
+        at={(0.02,0.98)}, anchor=north west,
+        draw=gray!50, fill=white, fill opacity=0.85, text opacity=1
+    },
+    xticklabel style={font=\footnotesize},
+    yticklabel style={font=\footnotesize},
+    xlabel style={font=\footnotesize},
+    ylabel style={font=\footnotesize},
+    axis line style={gray!60},
+]
+% Unique leaked edges (saturates)
+\addplot[mark=*, thick, color=red!70!black, mark options={fill=red!50}]
+    coordinates {(1,48)(2,48)(4,48)(12,48)};
+% Total queries issued
+\addplot[mark=square*, thick, color=blue!70!black,
+         mark options={fill=blue!40}, dashed]
+    coordinates {(1,12)(2,24)(4,48)(12,48)};
+% Leakage events
+\addplot[mark=triangle*, thick, color=orange!85!black,
+         mark options={fill=orange!50}]
+    coordinates {(1,48)(2,88)(4,132)(12,132)};
+\legend{unique leaked edges, queries issued, leakage events}
+\end{axis}
+\end{tikzpicture}

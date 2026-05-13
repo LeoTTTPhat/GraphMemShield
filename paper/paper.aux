@@ -1,0 +1,98 @@
+\relax 
+\citation{Carlini2021,Mireshghallah2023}
+\citation{Zeng2024,Qi2024RAG}
+\citation{He2021Linkstealing,Wu2022GraphMI,Olatunji2023GraphPrivacy}
+\@writefile{toc}{\contentsline {section}{\numberline {I}Introduction}{1}{}\protected@file@percent }
+\citation{Carlini2021}
+\citation{Mireshghallah2023}
+\citation{Zeng2024}
+\citation{Qi2024RAG}
+\citation{Wang2025GraphRAG}
+\citation{He2021Linkstealing}
+\citation{Wu2022GraphMI}
+\citation{Duddu2020}
+\citation{Hay2009,Jorgensen2016,Karwa2014}
+\citation{Daigavane2021,Sajadmanesh2023GAP}
+\citation{Shokri2017,Salem2019}
+\citation{Backes2017Walk2friends}
+\citation{Pasquier2017}
+\@writefile{toc}{\contentsline {section}{\numberline {II}Related Work}{2}{}\protected@file@percent }
+\newlabel{sec:related}{{II}{2}}
+\@writefile{toc}{\contentsline {section}{\numberline {III}System and Threat Model}{2}{}\protected@file@percent }
+\newlabel{sec:threat}{{III}{2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-A}}Dynamic KG Memory}{2}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-B}}Adjacency}{2}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-C}}Adversaries}{2}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-D}}Sensitive Objects}{2}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-E}}Out-of-Scope}{2}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces System architecture of GraphMemShield. Write-time admission ($\Pi $) and read-time guard ($\Gamma $) bracket the dynamic KG; the audit harness exposes attack and metric modules.}}{3}{}\protected@file@percent }
+\newlabel{fig:arch}{{1}{3}}
+\@writefile{toc}{\contentsline {section}{\numberline {IV}The GraphMemShield Framework}{3}{}\protected@file@percent }
+\newlabel{sec:framework}{{IV}{3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-A}}Overview}{3}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-B}}Attack 1: \textsc  {CrossSessionProbe}}{3}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-C}}Attack 2: \textsc  {SessionGraphLink}}{3}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-D}}Attack 3: \textsc  {TemporalPathInfer}}{3}{}\protected@file@percent }
+\newlabel{alg:retrieve}{{\mbox  {IV-G}}{3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-E}}Defense 1: \textsc  {GraphMemGuard}}{3}{}\protected@file@percent }
+\newlabel{eq:guard}{{1}{3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-F}}Defense 2: \textsc  {RandomizedEdgeAdmission}}{3}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-G}}Algorithmic Summary}{3}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {V}Implementation}{3}{}\protected@file@percent }
+\newlabel{sec:impl}{{V}{3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-A}}Open-source Package}{3}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-B}}Datasets}{4}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-C}}Reproducibility}{4}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {VI}Experimental Evaluation}{4}{}\protected@file@percent }
+\newlabel{sec:experiments}{{VI}{4}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-A}}Research Questions}{4}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-B}}Experimental Setup}{4}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-C}}RQ1 \& RQ2: Cross-Session Exposure}{4}{}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {I}{\ignorespaces Cross-session leakage (RQ1, RQ2). Strict guard uses $(\alpha {=}0, b{=}0, \mathcal  {B})$.}}{4}{}\protected@file@percent }
+\newlabel{tab:leakage}{{I}{4}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Leaked victim-owned edges before and after applying \textsc  {GraphMemGuard} (strict). Strict provenance/session isolation eliminates measured leakage on both datasets.}}{4}{}\protected@file@percent }
+\newlabel{fig:leakage}{{2}{4}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {VI-C}1}Query-Budget Curve}{4}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-D}}RQ3: Session Linkage}{4}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-E}}RQ4: Temporal Path Exposure}{4}{}\protected@file@percent }
+\expandafter \gdef \csname pgfplots@labelstyle@plot:keep\endcsname {mark={*},thick={\pgfkeysnovalue },color={blue!70!black},mark options={fill=blue!50}}
+\expandafter \gdef \csname pgfplots@show@ref@plot:keep\endcsname {\begingroup \def \pgfplots@draw@image {\def \tikz@plot@handler {\pgfkeys {/pgf/plots/@handler options/.cd, start=\relax , end macro=\relax , point macro=\pgfutil@gobble , jump macro=\relax , special macro=\pgfutil@gobble , point macro=\pgf@plot@line@handler , jump=\global \let \pgf@plotstreampoint \pgf@plot@line@handler@move }\begingroup \escapechar =-1 \edef \pgfplotsplothandlername {\string \pgfplothandlerlineto }\pgfmath@smuggleone \pgfplotsplothandlername \endgroup \def \pgfplotsplothandlerLUAfactory {function(axis, pointmetainputhandler) return pgfplots.GenericPlothandler.new("\pgfplotsplothandlername ", axis,pointmetainputhandler) end}\def \pgfplotsplothandlerLUAvisualizerfactory {pgfplots.defaultPlotVisualizerFactory}}\pgfkeysdef {/pgfplots/legend image code}{\draw [/pgfplots/mesh=false,bar width=3pt,bar shift=0pt,mark repeat=2,mark phase=2,] plot coordinates { (0cm,0cm) (0.3cm,0cm) (0.6cm,0cm)};}\pgfkeysdef {/pgfplots/every legend image post}{}\pgfkeyssetvalue {/pgfplots/mark list fill}{.!80!black}\pgfkeysdef {/pgfplots/every crossref picture}{\pgfkeysalso {baseline,yshift=0.3em}}\pgfplots@show@small@legendplots {mark={*},thick={\pgfkeysnovalue },color={blue!70!black},mark options={fill=blue!50}}{}}\ifpgfpicture \scope [/pgfplots/every crossref picture]\pgfplots@draw@image \endscope \else \expandafter \ifx \csname tikzappendtofigurename\endcsname \relax \else \begingroup \tikzappendtofigurename {_crossref}\fi \tikz [/pgfplots/every crossref picture]{\pgfplots@draw@image }\expandafter \ifx \csname tikzappendtofigurename\endcsname \relax \else \endgroup \fi \fi \endgroup }
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Query-budget curve on the Docker-backed sample dataset. Unique leaked edges saturate at $b{=}1$; leakage events scale linearly with retrieval count.}}{5}{}\protected@file@percent }
+\newlabel{fig:budget}{{3}{5}}
+\@writefile{lot}{\contentsline {table}{\numberline {II}{\ignorespaces Session-linking results on Docker-backed sample dataset.}}{5}{}\protected@file@percent }
+\newlabel{tab:link}{{II}{5}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-F}}RQ5: Edge-Admission Sweep}{5}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-G}}Bounded-Sharing Mode}{5}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {VII}Discussion, Scope, and Ethics}{5}{}\protected@file@percent }
+\newlabel{sec:discussion}{{VII}{5}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VII-A}}What the Numbers Mean}{5}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces \textsc  {SessionGraphLink} accuracy. Adding semantic tokens improves MRR but not Top-1 in this regime.}}{5}{}\protected@file@percent }
+\newlabel{fig:link}{{4}{5}}
+\newlabel{plot:keep}{{\expandafter\protect\csname pgfplots@show@ref@plot:keep\endcsname}{5}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces \textsc  {RandomizedEdgeAdmission} sweep on the synthetic multisession graph. Keep-probability follows $\sigma (\varepsilon )$; admitted sensitive edges and downstream leakage rise monotonically.}}{5}{}\protected@file@percent }
+\newlabel{fig:admission}{{5}{5}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VII-B}}Scope and Limitations}{5}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VII-C}}Ethical Considerations}{5}{}\protected@file@percent }
+\bibstyle{IEEEtran}
+\bibcite{Carlini2021}{1}
+\bibcite{Mireshghallah2023}{2}
+\bibcite{Zeng2024}{3}
+\bibcite{Qi2024RAG}{4}
+\bibcite{Wang2025GraphRAG}{5}
+\bibcite{He2021Linkstealing}{6}
+\bibcite{Wu2022GraphMI}{7}
+\bibcite{Olatunji2023GraphPrivacy}{8}
+\bibcite{Duddu2020}{9}
+\bibcite{Hay2009}{10}
+\bibcite{Jorgensen2016}{11}
+\bibcite{Karwa2014}{12}
+\bibcite{Daigavane2021}{13}
+\bibcite{Sajadmanesh2023GAP}{14}
+\bibcite{Shokri2017}{15}
+\bibcite{Salem2019}{16}
+\bibcite{Backes2017Walk2friends}{17}
+\bibcite{Pasquier2017}{18}
+\@writefile{toc}{\contentsline {section}{\numberline {VIII}Conclusion}{6}{}\protected@file@percent }
+\newlabel{sec:conclusion}{{VIII}{6}}
+\@writefile{toc}{\contentsline {section}{References}{6}{}\protected@file@percent }
+\gdef \@abspage@last{6}

@@ -1,0 +1,41 @@
+% =====================================================================
+% Session-linking accuracy: structure-only vs structure+semantic
+% =====================================================================
+\begin{tikzpicture}
+\begin{axis}[
+    width=\columnwidth,
+    height=5.0cm,
+    ybar=3pt,
+    bar width=10pt,
+    enlarge x limits=0.25,
+    ymin=0, ymax=1.15,
+    ylabel={Accuracy / MRR},
+    symbolic x coords={Top-1, Top-3, MRR},
+    xtick=data,
+    xticklabel style={font=\footnotesize},
+    yticklabel style={font=\footnotesize},
+    ylabel style={font=\footnotesize},
+    legend style={
+        font=\scriptsize,
+        at={(0.02,0.98)}, anchor=north west,
+        draw=gray!50, fill=white, fill opacity=0.85, text opacity=1
+    },
+    nodes near coords={\pgfmathprintnumber[fixed,fixed zerofill,
+                       precision=2]{\pgfplotspointmeta}},
+    nodes near coords style={font=\scriptsize, color=black!75},
+    grid=major, grid style={dashed, gray!25},
+    axis line style={gray!60},
+]
+\addplot+[draw=blue!70!black, fill=blue!30] coordinates {
+    (Top-1, 0.333)
+    (Top-3, 1.000)
+    (MRR,   0.611)
+};
+\addplot+[draw=purple!70!black, fill=purple!30] coordinates {
+    (Top-1, 0.333)
+    (Top-3, 1.000)
+    (MRR,   0.667)
+};
+\legend{structure-only, structure + semantic}
+\end{axis}
+\end{tikzpicture}
