@@ -1,0 +1,49 @@
+{
+  "health": {
+    "edge": {
+      "status": "ok",
+      "tier": "edge",
+      "timestamp": "2026-05-09T06:00:55.677Z"
+    },
+    "fog": {
+      "status": "ok",
+      "tier": "fog",
+      "timestamp": "2026-05-09T06:00:55.679Z"
+    },
+    "cloud": {
+      "status": "ok",
+      "tier": "cloud",
+      "mongoState": 1,
+      "timestamp": "2026-05-09T06:00:55.683Z"
+    }
+  },
+  "record_counts": {
+    "graphmem-alice": 2,
+    "graphmem-bob": 1
+  },
+  "graph": {
+    "node_count": 15,
+    "edge_count": 15
+  },
+  "baseline": {
+    "leaked_edge_count": 5,
+    "leakage_event_count": 15,
+    "leaked_edge_ids": [
+      "69fecd97d496cab51b9c28ee:city",
+      "69fecd97d496cab51b9c28ee:clinic",
+      "69fecd97d496cab51b9c28ee:condition",
+      "69fecd97d496cab51b9c28ee:heartRate",
+      "69fecd97d496cab51b9c28ee:submitted"
+    ],
+    "leakage_rate": 0.5,
+    "event_leakage_rate": 0.5,
+    "per_query_leak_rate": 1.0
+  },
+  "defended": {
+    "leaked_edge_count": 0,
+    "leakage_event_count": 0,
+    "leaked_edge_ids": [],
+    "leakage_reduction": 1.0,
+    "framing": "strict provenance/session isolation"
+  }
+}

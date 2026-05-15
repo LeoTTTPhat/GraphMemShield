@@ -24,6 +24,7 @@
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.17}
 \usetikzlibrary{arrows.meta,shapes.geometric,positioning,fit,calc,backgrounds,decorations.pathmorphing}
+\newtheorem{theorem}{Theorem}
 
 \hyphenation{op-tical net-works semi-conduc-tor}
 
@@ -46,30 +47,40 @@ Mitigating Cross-Session Privacy Leakage in Dynamic KG Memories}
 \maketitle
 
 \begin{abstract}
-Modern graph-backed applications increasingly rely on persistent
-knowledge-graph (KG) memories that ingest entities, relations,
-provenance, and timestamps from one user session and reuse them in
-later sessions. While prior work studies leakage from model parameters,
-prompt context, or static graph indices, the privacy boundary of a
-\emph{dynamic, multi-user, multi-session} KG memory remains
-under-examined. We show that even when raw text is hidden, the
-combination of cross-session retrieval, structural fingerprints, and
-write-time metadata leaks information about the underlying user. We
-introduce \textbf{GraphMemShield}, an auditing framework comprising
-(i) a formal model of dynamic KG memory with provenance-aware edges,
-(ii) three baseline attacks---\textsc{CrossSessionProbe},
-\textsc{SessionGraphLink}, and \textsc{TemporalPathInfer}---that
-quantify edge exposure, session re-identification, and write-order
-inference, and (iii) two defenses, \textsc{GraphMemGuard} for
-provenance-filtered retrieval with bounded cross-session exposure and
-\textsc{RandomizedEdgeAdmission} as a write-time edge-suppression
-proxy. We evaluate the framework on a large-scale synthetic graph ($\ge 20$ users, $\ge 60$ sessions, $\ge 1000$ edges). The unmitigated probe exposes all victim-owned edges in targeted domains. We demonstrate that strict provenance/session isolation reduces exposure to zero, while bounded sharing ($b \in \{1, 2, 5\}$) allows operators to trade residual leakage for cross-session utility retention. We formalise \textsc{RandomizedEdgeAdmission} as an $\varepsilon$-edge differentially private mechanism using Randomized Response, proving its privacy bound and empirically mapping its utility tradeoff over $30$ independent trials. Furthermore, we strengthen the \textsc{SessionGraphLink} baseline using the 1-Weisfeiler-Lehman (1-WL) kernel. By grounding the framework in formal privacy and evaluating it at scale, we position GraphMemShield as a robust benchmark and defensive foundation for next-generation graph memory systems.
+Persistent knowledge-graph (KG) memories are becoming a practical
+substrate for graph-backed assistants: they extract entities,
+relations, timestamps, and provenance from one session and later
+retrieve $k$-hop neighborhoods to ground another response. This
+creates a privacy boundary that is neither standard model
+memorization nor ordinary document-RAG leakage: the sensitive object
+is a live, multi-user, provenance-tagged graph. We introduce
+\textbf{GraphMemShield}, a reproducible audit and mitigation framework
+for this setting. It formalizes dynamic KG memory under edge-event
+adjacency, implements attacks for cross-session edge exposure,
+session linkage, temporal inference, adaptive probing, and response
+leakage, and evaluates defenses based on provenance-aware bounded
+sharing and fixed-universe randomized response. Across five
+workloads---synthetic, Docker-backed, enterprise/health/finance,
+MultiWOZ~2.1, and Enron-style communication graphs---unguarded
+retrieval exposes victim-owned edges and sensitive response content.
+On the 2,304-edge enterprise benchmark, multi-hop retrieval increases
+unguarded leakage from 9 to 12 victim edges; a full
+backend--retrieval--response pipeline leaks 12 victim edges and 8
+sensitive terms without a guard. Bounded sharing makes the
+privacy--utility tradeoff explicit: increasing the per-pair budget
+from 0 to 10 raises non-sensitive utility retention from 0.0 to 0.614
+while keeping unique victim leakage capped at three edges. We further
+show that this guarantee depends on correct sensitivity provenance,
+add lexical and semantic black-box response leakage scoring, and
+separate a non-DP edge-suppression heuristic from a fixed-universe
+randomized-response mechanism with explicit composition and
+full-graph-release scope accounting.
 \end{abstract}
 
 \begin{IEEEkeywords}
 Knowledge-graph memory, cross-session leakage, provenance,
-graph-augmented retrieval, differential privacy, session linkage,
-auditing.
+graph-augmented retrieval, privacy auditing, session linkage,
+bounded sharing.
 \end{IEEEkeywords}
 
 \IEEEpeerreviewmaketitle
@@ -113,6 +124,19 @@ sensitive fact. Even if responses are sanitised, the observable
 sessions across pseudonymised IDs and (b) reconstruct the sequence of
 writes that introduced the sensitive neighbourhood.
 
+\noindent\textbf{Main findings.} Graph memory leakage is not merely a
+retrieval-count artifact. On the enterprise benchmark, moving from
+one-hop to two-hop expansion saturates the graph and raises unguarded
+victim leakage from 9 to 12 edges; the hybrid backend--retrieval--
+response pipeline then carries the same leakage into final text. On
+MultiWOZ~2.1, the public-corpus run produces a 36,408-edge graph and
+67 unguarded victim-edge leaks. On an Enron-style communication graph,
+the same audit surface appears in sender--recipient--subject
+structure. Across these settings, strict isolation removes
+cross-session exposure, but the more operational result is bounded
+sharing: it exposes a tunable utility/risk curve and remains bounded
+under multi-hop expansion, provided sensitivity provenance is correct.
+
 \noindent\textbf{Contributions.} This paper makes the following
 contributions:
 
@@ -124,21 +148,25 @@ contributions:
     \item We instantiate three reproducible baseline
     attacks---\textsc{CrossSessionProbe},
     \textsc{SessionGraphLink}, and
-    \textsc{TemporalPathInfer}---and a unified
-    \emph{leakage event}/\emph{unique edge} accounting that supports
-    both single-shot and budgeted query regimes.
+    \textsc{TemporalPathInfer}---and extend them with adaptive
+    probing, multi-hop retrieval, black-box response scoring, and
+    semantic leakage scoring.
     \item We present \textsc{GraphMemGuard}, a retrieval-time defense
     combining provenance filtering, blocked-sensitivity sets, and a
     bounded per-pair exposure budget, together with
-    \textsc{RandomizedEdgeAdmission}, an $\varepsilon$-edge differentially
-    private write-time mechanism based on Randomized Response, complete
-    with formal proofs and empirical utility evaluations.
-    \item We release an open-source artefact (Python package, unit
-    tests) that reproduces all figures and tables on a large-scale
-    multi-user graph, demonstrating statistical rigor via repeated 
-    trials.
-    \item We strengthen the auditing framework with a Weisfeiler-Lehman
-    (1-WL) kernel baseline for session linkage.
+    \textsc{RandomizedEdgeAdmission}, a seeded write-time
+    edge-suppression heuristic, and a fixed-universe randomized-response
+    release mechanism for formal per-edge privacy over a public
+    candidate edge universe.
+    \item We release an open-source artifact (Python package, unit
+    tests, data fixtures, and generated outputs) that reproduces
+    results on synthetic, Docker-backed, enterprise-style, MultiWOZ,
+    and Enron-style communication workloads.
+    \item We include a persistent property-graph backend experiment,
+    Kuzu latency measurements, 1-WL, graph-edit, and embedding
+    session-linkage baselines, timestamp-hidden temporal inference,
+    provenance-error robustness, and full-graph privacy scope
+    accounting.
 \end{itemize}
 
 \noindent\textbf{Roadmap.} Section~\ref{sec:related} surveys prior
@@ -146,10 +174,11 @@ work on memory leakage, retrieval-augmented privacy, and graph
 privacy. Section~\ref{sec:threat} defines the system and threat
 models. Section~\ref{sec:framework} presents the GraphMemShield
 abstractions, attacks, and defenses. Section~\ref{sec:impl}
-describes the open-source implementation, including the Docker-backed
-adapter. Section~\ref{sec:experiments} reports synthetic and batched
-results. Section~\ref{sec:discussion} discusses scope, limitations,
-and ethics. Section~\ref{sec:conclusion} concludes.
+describes the open-source implementation and datasets.
+Section~\ref{sec:experiments} reports the attack, defense, backend,
+public-corpus, and privacy-accounting results.
+Section~\ref{sec:discussion} discusses scope, limitations, and
+ethics. Section~\ref{sec:conclusion} concludes.
 
 %% ============================================================
 \section{Related Work}
@@ -172,7 +201,7 @@ extraction surface; recent work~\cite{Wang2025GraphRAG} extracted
 entities and relations from graph-backed RAG by exploiting the
 $k$-hop expansion. GraphMemShield differs by treating the KG as a
 \emph{multi-user, multi-session, append-only} structure and by
-isolating the cross-session boundary as the primary privacy artefact.
+isolating the cross-session boundary as the primary privacy artifact.
 
 \textbf{Graph privacy.} Link-stealing~\cite{He2021Linkstealing},
 graph model inversion~\cite{Wu2022GraphMI}, and embedding-leakage
@@ -183,8 +212,10 @@ networks~\cite{Daigavane2021,Sajadmanesh2023GAP} provide formal
 guarantees on \emph{static} graphs or \emph{model parameters}, not on
 the live retrieval pipeline of an evolving multi-user memory. Our
 framework is intentionally aligned with these formalisms (we adopt
-edge-event adjacency) so that future versions of
-\textsc{RandomizedEdgeAdmission} can plug in established DP machinery.
+edge-event adjacency), but the formal claim is deliberately narrow:
+only fixed-universe candidate-edge bits receive a DP statement, and
+full graph publication requires every released edge bit to enter that
+universe.
 
 \textbf{Membership inference and re-identification.} Membership
 inference attacks~\cite{Shokri2017,Salem2019} reveal whether a record
@@ -240,9 +271,11 @@ We consider three adversaries:
     Inspects metadata for ground-truth evaluation; never used as an
     attacker against a deployed system, only to audit.
 \end{enumerate}
-Our experiments instantiate $\mathcal{A}_g$ because it is the
-strictly stronger of the two practical adversaries and gives an upper
-bound on cross-session leakage measurable from the retrieval API.
+Our experiments instantiate $\mathcal{A}_g$ to measure the retrieval
+surface directly and $\mathcal{A}_b$ to score whether final response
+text leaks victim-owned edges or sensitive terms. The gray-box setting
+gives an upper bound on retrieval contamination, while the black-box
+setting captures what an ordinary requester may actually observe.
 
 \subsection{Sensitive Objects}
 The sensitive objects are: (i) edge existence
@@ -264,8 +297,10 @@ component and focus on the graph retrieval boundary.
 \subsection{Overview}
 Figure~\ref{fig:arch} shows the framework. Sessions write into the
 dynamic KG via an admission policy~$\Pi$. Retrieval consults the KG
-through a guard~$\Gamma$. Three pluggable attack modules consume the
-audit interface, and an evaluation harness aggregates JSON, CSV, and
+through a guard~$\Gamma$. Attack and scoring modules consume the
+audit interface, including cross-session probing, session linkage,
+temporal ordering, adaptive multi-hop probing, and response-level
+leakage scoring. The evaluation harness aggregates JSON, CSV, and
 Markdown reports.
 
 \begin{figure}[t]
@@ -302,9 +337,9 @@ returned edges by their observable timestamp metadata. We report
 (i) \emph{prefix ordering accuracy} for the leading $|P|$ edges,
 (ii) \emph{pairwise ordering accuracy} restricted to comparable
 ground-truth pairs, and (iii) edge precision/recall/F1 against the
-ground-truth path. This is deliberately a \emph{provenance exposure}
-baseline; stronger attackers that perform beam search over hidden
-timestamps are future work.
+ground-truth path. We also evaluate a timestamp-hidden heuristic based
+on relation priority and path continuity to test whether ordering
+signals remain after explicit timestamps are removed.
 
 \subsection{Defense 1: \textsc{GraphMemGuard}}
 \textsc{GraphMemGuard} is parameterised by a triple
@@ -330,16 +365,74 @@ pair. The strict configuration $\alpha=0,\ b=0$ realises full
 provenance/session isolation and yields a hard upper bound on the
 defense.
 
-This write-time module accepts a sensitive edge with probability
-$p = \sigma(\varepsilon) = \frac{e^\varepsilon}{1 + e^\varepsilon}$ and suppresses it with probability
-$1 - p$. Non-sensitive edges are always admitted. 
-
-\newtheorem{theorem}{Theorem}
 \begin{theorem}
-\label{thm:dp}
-\textsc{RandomizedEdgeAdmission} satisfies $\varepsilon$-edge differential privacy.
+\label{thm:guard-bound}
+For any requester session $s_r$ and owner session $s_o$, a
+\textsc{GraphMemGuard} policy with cross-session budget $b$ admits at
+most $b$ cross-session exposure events from $s_o$ to $s_r$. If a
+sensitivity label $\ell \in \mathcal{B}$ is correctly assigned, then
+edges with label $\ell$ have zero cross-session exposure.
 \end{theorem}
-\emph{Proof.} Let $\mathcal{G}$ and $\mathcal{G}'$ be adjacent memory graphs differing in exactly one sensitive edge $e$. For any subset of admitted edges $S$, if $e \notin S$, the probability of producing $S$ is identical for both graphs. If $e \in S$, then $\mathcal{M}(\mathcal{G})$ admits $e$ with probability $\frac{e^\varepsilon}{1 + e^\varepsilon}$, while $\mathcal{M}(\mathcal{G}')$ suppresses it with probability $\frac{1}{1 + e^\varepsilon}$ (or vice versa). The ratio of probabilities is at most $e^\varepsilon$, satisfying the definition of $\varepsilon$-DP. \hfill $\blacksquare$
+\emph{Proof.} For owner-equal edges the predicate returns true and no
+cross-session exposure is counted. For owner-different edges, the
+predicate first rejects every edge whose sensitivity lies in
+$\mathcal{B}$. If the edge is not blocked, it is admitted only while
+$c(s_r,s_o)<b$, and each admitted cross-session edge increments the
+same counter through \textsc{Record}. Thus no more than $b$ admitted
+cross-session exposure events can be recorded for the pair. Correctly
+labelled blocked edges are rejected before the budget check, so their
+cross-session exposure is zero. \hfill $\blacksquare$
+
+\subsection{Defense 2: \textsc{RandomizedEdgeAdmission}}
+This write-time module accepts a sensitive edge with probability
+$p = \sigma(\varepsilon) = \frac{e^\varepsilon}{1 + e^\varepsilon}$
+and suppresses it with probability $1 - p$. Non-sensitive edges are
+always admitted. We use the parameter name $\varepsilon$ only to align
+the sweep with randomized-response intuition: larger values retain
+more sensitive edges and therefore usually preserve more utility while
+allowing more downstream leakage.
+
+\textbf{Non-DP status.} The current mechanism is \emph{not}
+$\varepsilon$-edge differentially private under edge-event adjacency.
+If neighbouring histories differ by one sensitive edge $e$, an output
+containing $e$ has positive probability when $e$ is present and zero
+probability when $e$ is absent, so the likelihood ratio is unbounded.
+A formal edge-DP write-time release mechanism would need a public
+candidate edge universe and randomized response over both present and
+absent sensitive candidates, plus composition accounting over repeated
+writes. We therefore report \textsc{RandomizedEdgeAdmission} only as a
+seeded suppression heuristic for stress-testing the audit harness.
+
+\subsection{Defense 3: Fixed-Universe Randomized Response}
+For formal privacy experiments, we additionally implement
+\textsc{FixedUniverseRandomizedResponse}. Let $\mathcal{U}$ be a public
+candidate set of protected edges and let each graph history induce a
+bit vector $x \in \{0,1\}^{|\mathcal{U}|}$ over edge presence. For
+each candidate edge independently, the mechanism outputs bit $1$ with
+probability $\frac{e^\varepsilon}{1+e^\varepsilon}$ when $x_i=1$ and
+with probability $\frac{1}{1+e^\varepsilon}$ when $x_i=0$.
+The guarantee is scoped only to protected candidate-edge membership:
+the universe $\mathcal{U}$, candidate endpoints, relation labels, and
+the number of releases are public. Non-protected edges and graph
+statistics released outside $\mathcal{U}$ are outside this privacy
+claim. Releasing the same protected universe repeatedly incurs
+sequential composition cost, which we report explicitly in the
+evaluation.
+
+\begin{theorem}
+\label{thm:fixed-universe-dp}
+\textsc{FixedUniverseRandomizedResponse} satisfies
+$\varepsilon$-local differential privacy for each protected candidate
+edge bit and $k\varepsilon$ privacy under basic composition for $k$
+released protected bits.
+\end{theorem}
+\emph{Proof.} For any output bit $y_i \in \{0,1\}$ and neighbouring
+inputs $x_i,x'_i$ that differ in one candidate edge, the likelihood
+ratio is at most
+$\frac{e^\varepsilon/(1+e^\varepsilon)}
+{1/(1+e^\varepsilon)} = e^\varepsilon$; the same bound holds for
+$y_i=0$. Independent release over $k$ protected bits composes by the
+standard sequential composition theorem. \hfill $\blacksquare$
 
 \subsection{Algorithmic Summary}
 Algorithm~\ref{alg:retrieve} states the guarded retrieval procedure
@@ -380,18 +473,60 @@ The framework is published as the Python package
 (graph and types), \texttt{attacks/}, \texttt{defenses/},
 \texttt{datasets/}, \texttt{evaluation/}, and \texttt{adapters/}. The
 package is installed in editable mode for reproducible experiments
-and is exercised by 22 unit tests covering ingestion, retrieval,
+and is exercised by 41 unit tests covering ingestion, retrieval,
 attacks, defenses, and metrics.
 
 \subsection{Datasets}
-Two datasets back the reported numbers:
+Five workloads back the reported numbers:
 
-\noindent\textbf{Large-scale multi-session graph.} A deterministically generated 
-synthetic graph simulating $20$ users with $3$ sessions each ($60$ sessions total), 
-yielding over $1,000$ edges. The generator weaves motifs across four domains 
+\noindent\textbf{Synthetic multi-session graph.} A deterministically generated
+synthetic graph simulating $20$ users with $3$ sessions each
+($60$ sessions total), yielding $134$ nodes and $159$ edges in the
+current artifact. The generator weaves motifs across four domains
 (\emph{health, finance, work, location}), applying sensitivity labels such that 
 \textsc{GraphMemGuard} and \textsc{RandomizedEdgeAdmission} can selectively 
 filter edges.
+
+\noindent\textbf{Docker-backed read-path graph.} A de-identified
+dialogue benchmark with $12$ records, $6$ users, $12$ sessions,
+$36$ nodes, and $48$ edges. Records are seeded into MongoDB and read
+through the Cloud API before being converted into the GraphMemShield
+memory graph. This evaluates the read-path integration and should not
+be interpreted as a full end-to-end encrypted proof pipeline.
+
+\noindent\textbf{Enterprise/health/finance benchmark.} To stress the
+attacks beyond toy scale, we generate a deterministic de-identified
+benchmark with $576$ dialogue records, $48$ users, $192$ sessions,
+$162$ nodes, and $2,304$ provenance-tagged edges. The workload mixes
+health, finance, work, and location motifs and is exported as JSONL so
+that approved public or institutional traces can be substituted using
+the same schema.
+
+\noindent\textbf{Public-format ingestion.} We add parsers for common
+MultiWOZ JSON exports and Enron-style maildir trees. The artifact
+tests these loaders on schema-faithful fixtures and maps both formats
+into the same \texttt{DialogueRecord} relation schema used by all
+attacks and defenses. We run MultiWOZ~2.1 end-to-end by downloading
+the upstream public zip, capping the artifact run at $1,000$
+dialogues, and producing $6,613$ records, $955$ sessions, $2,708$
+nodes, and $36,408$ edges.
+
+\noindent\textbf{Enron-style communication graph.} We add an
+Enron-maildir-compatible communication-graph experiment. When
+\texttt{GRAPHMEMSHIELD\_ENRON\_MAILDIR} points to an approved local
+maildir, the loader ingests that corpus directly; otherwise the
+artifact generates a reproducible Enron-style fixture with $160$
+messages, $6$ users, $160$ subject-thread sessions, $179$ nodes, and
+$447$ edges. This workload stresses sender--recipient--subject
+structure rather than task-oriented dialogue slots.
+
+\noindent\textbf{Persistent property graph.} We add a SQLite-backed
+property-graph adapter with explicit node and edge property tables.
+The enterprise benchmark is written to disk, read back, and evaluated
+through the same attack harness, providing a persistent backend
+experiment while keeping the artifact self-contained. We also provide
+an optional Kuzu adapter; the experiment records Kuzu availability and
+runs the same roundtrip when the local Kuzu Python package is present.
 
 \subsection{Utility Metrics}
 To measure the privacy-utility tradeoff, we track the \emph{utility retention rate}: 
@@ -399,18 +534,25 @@ the fraction of non-sensitive edges that remain reachable for cross-session quer
 under a given defense policy, compared to the unmitigated baseline.
 
 \subsection{Reproducibility}
-Each result in this paper is reproduced by:
+The core artifact is reproduced by:
 
 \begin{verbatim}
 python examples/run_experiments.py
 python examples/run_privacyguard_batch_experiment.py
+python examples/generate_enterprise_benchmark.py
+python examples/run_tifs_revision_experiments.py
+python examples/run_multiwoz_experiment.py
+python examples/run_enron_experiment.py
 python examples/generate_aggregate_report.py
 \end{verbatim}
 
 \noindent
 which write \texttt{output/synthetic\_experiments.\{json,csv,md\}},
-\texttt{output/privacyguard\_batch\_results.\{json,csv,md\}}, and the
-62-row \texttt{output/aggregate\_results.\{json,csv,md\}}.
+\texttt{output/privacyguard\_batch\_results.\{json,csv,md\}},
+\texttt{output/tifs\_revision\_results.\{json,csv,md\}},
+\texttt{output/multiwoz\_results.\{json,csv,md\}},
+\texttt{output/enron\_results.\{json,csv,md\}}, and the 391-row
+\texttt{output/aggregate\_results.\{json,csv,md\}}.
 
 %% ============================================================
 \section{Experimental Evaluation}
@@ -427,24 +569,63 @@ re-identify anonymised sessions, and what is the gain from semantic
 labels?\\
 \textbf{RQ4.} What does observable provenance metadata reveal about
 write-order and sensitive paths?\\
-\textbf{RQ5.} How does a write-time edge-admission proxy trade
-sensitive-edge retention for downstream leakage as $\varepsilon$
-varies?
+\textbf{RQ5.} How much final-response leakage remains under black-box
+response scoring?\\
+\textbf{RQ6.} How do stronger session-linkage and timestamp-hidden
+temporal baselines perform?\\
+\textbf{RQ7.} How does fixed-universe randomized response trade
+candidate-edge privacy for utility and synthetic edge injection?\\
+\textbf{RQ8.} How does leakage change under multi-hop graph expansion
+and under a full backend--retrieval--guard--response hybrid pipeline?\\
+\textbf{RQ9.} How robust are the results to provenance errors,
+stronger response generators, tighter utility metrics, and repeated
+formal privacy releases?
+
+\begin{table}[t]
+    \caption{Threat-to-metric mapping used by GraphMemShield.}
+    \label{tab:threat-metric}
+    \centering
+    \small
+    \begin{tabular}{lll}
+        \toprule
+        \textbf{Threat} & \textbf{Metric} & \textbf{Defense} \\
+        \midrule
+        Edge exposure & leaked edges/events & guard budget \\
+        Response leakage & leaked terms/edges & bounded sharing \\
+        Session linkage & Top-$k$, MRR & provenance minim. \\
+        Temporal inference & pairwise order acc. & timestamp strip \\
+        Edge presence & released/synthetic bits & fixed-univ. RR \\
+        \bottomrule
+    \end{tabular}
+\end{table}
 
 \subsection{Experimental Setup}
 We instantiate $\mathcal{A}_g$ with a fixed query bank derived from
 each domain's seed entities (e.g., \emph{clinic}, \emph{arrhythmia},
-\emph{diagnosed}, \emph{gym}, \emph{visited}). All retrievals use
-$k{=}1$. Strict guard runs use the policy
+\emph{diagnosed}, \emph{gym}, \emph{visited}). Unless a multi-hop
+experiment explicitly varies the radius, retrievals use $k{=}1$.
+Strict guard runs use the policy
 $(\alpha{=}0, b{=}0,
 \mathcal{B}{=}\{\textit{secret},\textit{medical},\textit{financial}\})$.
-Budgeted runs vary $b \in \{0, 1, 2\}$. Edge-admission runs sweep $\varepsilon \in \{0.1, 1.0, 3.0\}$ and are evaluated 
-over $30$ independent trials to compute means and standard deviations.
+Budgeted runs vary $b \in \{0,1,2,5\}$ and include $b{=}10$ for the
+enterprise utility curve. Edge-admission runs sweep
+$\varepsilon \in \{0.1, 1.0, 3.0\}$ and are evaluated over $30$
+independent trials to compute means and standard deviations.
+
+\subsection{Evaluation Thesis}
+The evaluation is organised around three claims. First, dynamic KG
+retrieval creates measurable cross-session leakage in both toy and
+public-format workloads. Second, leakage is not exhausted by retrieved
+edge counts: final responses, semantic paraphrases, session
+fingerprints, and temporal metadata expose additional surfaces. Third,
+bounded sharing is a practical middle point between unusable strict
+isolation and unsafe global sharing, but it relies on correct
+provenance and sensitivity labels.
 
 \subsection{RQ1 \& RQ2: Cross-Session Exposure}
 Table~\ref{tab:leakage} reports the headline numbers. On the
-synthetic graph the baseline retrieves $2$ unique victim-owned edges
-($6$ leakage events across $3$ probe queries, leakage rate $0.5$); on
+synthetic graph the baseline retrieves $3$ unique victim-owned edges
+($3$ leakage events across $3$ probe queries, leakage rate $0.0323$); on
 the Docker-backed batch graph the baseline exposes \emph{all} $48$
 victim-owned edges across $48$ queries. Strict isolation reduces both
 to zero, yielding a leakage reduction of $1.0$ in both regimes. The
@@ -461,7 +642,7 @@ visualisation in Figure~\ref{fig:leakage} makes the gap explicit.
         \textbf{System} & \textbf{Dataset} & \textbf{Cond.} &
         \textbf{Leak.} & \textbf{Red.} \\
         \midrule
-        Synthetic sim. & multisession & baseline      & 2  & --   \\
+        Synthetic sim. & multisession & baseline      & 3  & --   \\
         Synthetic sim. & multisession & strict\_guard & 0  & 1.00 \\
         PG-Docker      & seed         & baseline      & 5  & --   \\
         PG-Docker      & seed         & strict\_guard & 0  & 1.00 \\
@@ -546,26 +727,27 @@ seed entities.
 \subsection{RQ5: Edge-Admission Sweep}
 Figure~\ref{fig:admission} reports the synthetic edge-admission sweep
 for $\varepsilon \in \{0.1, 1.0, 3.0\}$. The keep-probability rises
-from $0.525$ to $0.953$ across the sweep, while the number of
-admitted sensitive edges climbs from $3$ to $5$ and the resulting
-victim leakage rises from $1$ to $2$ unique edges. We emphasise that
-the seeded-hash mechanism is a controlled proxy: the curve is
-\emph{indicative of} the privacy--utility surface of a future
-provable mechanism rather than a guarantee of edge differential
-privacy.
+from $0.525$ to $0.953$ across the sweep. Across $30$ trials, mean
+victim leakage rises from $1.00$ to $2.73$ unique edges, with standard
+deviation falling from $0.98$ to $0.64$ as retention becomes nearly
+deterministic. The measured non-sensitive utility retention is $1.00$
+for all three settings in this synthetic workload. We emphasise that
+the seeded mechanism is a controlled proxy: the curve stress-tests
+the audit harness and should not be read as a guarantee of edge
+differential privacy.
 
 \begin{figure}[t]
     \centering
     \input{figures/fig_edge_admission.tex}
     \caption{\textsc{RandomizedEdgeAdmission} sweep on the synthetic
     multisession graph. Keep-probability follows
-    $\sigma(\varepsilon)$; admitted sensitive edges and downstream
-    leakage rise monotonically.}
+    $\sigma(\varepsilon)$; mean downstream victim leakage rises with
+    the one-sided retention probability.}
     \label{fig:admission}
 \end{figure}
 
 \subsection{Bounded-Sharing Mode}
-For completeness, the budgeted policy ($\alpha{=}1$,
+The budgeted policy ($\alpha{=}1$,
 $\mathcal{B}{=}\{\textit{medical}\}$) is exercised on the synthetic
 graph against the non-medical Bob session. Increasing the per-pair
 budget $b$ from $0$ to $2$ admits $0$, $1$, and $2$ cross-session
@@ -574,40 +756,231 @@ illustrates that \textsc{GraphMemGuard} can interpolate between
 strict isolation and bounded sharing, providing operators with a
 direct lever for the privacy--utility tradeoff at retrieval time.
 
+On the larger enterprise/health/finance benchmark, bounded sharing is
+the primary defensive setting rather than an appendix result. Strict
+isolation proves that provenance filtering can sever the
+cross-session boundary, but many graph-memory applications need some
+collaborative recall. With sensitive labels blocked, increasing $b$
+from $0$ to $10$ raises non-sensitive utility retention from $0.000$
+to $0.614$, while unique victim-edge leakage is capped at $0$, $1$,
+$2$, $3$, and $3$ edges for $b \in \{0,1,2,5,10\}$. This curve is the
+central defense result: it gives operators a visible control surface
+for deciding how much cross-session graph utility is worth the
+residual exposure.
+
+\subsection{Black-Box Response Leakage}
+We add a deterministic response-level scorer that only observes final
+text generated from retrieved graph context. We compare a literal
+template generator, a local abstractive generator, and an optional
+OpenAI-backed generator when an API key is configured. On the
+enterprise benchmark, the unguarded template response to an attacker
+query reveals $12$ victim-owned edges and $8$ sensitive victim terms.
+Strictly bounded sharing with $b{=}0$ reduces both counts to zero. At
+$b{=}5$, the response still reveals $3$ victim-owned edges and
+$2$ sensitive terms, demonstrating why edge-level retrieval metrics
+must be complemented with black-box response scoring. In the local
+artifact run, the OpenAI-backed condition is recorded as skipped when
+no API key is present rather than silently replaced by a template.
+
+\subsection{Backend and Stronger Attack Baselines}
+The persistent property-graph roundtrip preserves all $162$ nodes,
+$2,304$ edges, and $192$ sessions; running \textsc{CrossSessionProbe}
+on the reloaded graph finds $9$ leaked victim edges under the
+unguarded policy. The optional Kuzu backend runs the same experiment
+when its Python package is available; otherwise the result table
+records the missing dependency. For session linkage, we evaluate cosine feature
+matching, 1-WL features, a graph-edit-distance proxy, and hashed
+embeddings on $24$ users. Structure-only variants remain weak in this
+hard cross-domain setting, while the embedding variant reaches
+Top-1/Top-3/MRR of $0.042/0.125/0.166$. The result is intentionally
+reported as a baseline rather than an attack ceiling: it shows that
+cross-domain session linkage is harder than same-domain linkage and
+motivates learned graph encoders in future work. For timestamp-hidden
+temporal inference, a relation-priority/path-continuity heuristic
+achieves pairwise ordering accuracy between $0.606$ and $0.716$ across
+the four enterprise query families.
+
+\subsection{Adaptive Probing and Multi-Seed Confidence Intervals}
+We add \textsc{AdaptiveCrossSessionProbe}, which starts from a small
+seed query set, observes returned entity and relation tokens, and uses
+them as follow-up probes until a query budget is exhausted. This
+models a stronger gray-box adversary than a fixed query bank. We also
+repeat the bounded-sharing experiment over ten independently generated
+enterprise benchmark seeds and report means with 95\% confidence
+intervals for leakage and utility retention. These intervals separate
+policy effects from a single graph generator draw.
+
+\subsection{External MultiWOZ and Communication Graph Runs}
+The MultiWOZ~2.1 external run confirms that the leakage pattern is not
+limited to generated enterprise traces. With the default $1,000$
+dialogue cap, the graph contains $36,408$ edges. The unguarded probe
+leaks $67$ victim-owned edges across $536$ leakage events. Bounded sharing
+reduces leaked edges to $0$, $1$, $2$, and $5$ for
+$b\in\{0,1,2,5\}$ respectively. The response-level scorer observes
+$67$ leaked victim edges in the unguarded template response; guarded
+MultiWOZ response scores are reported as stress-test indicators
+because common slot values can create conservative black-box matches
+across unrelated dialogues.
+
+The Enron-compatible communication graph evaluates a different
+communication data shape: sender--recipient--subject interactions. In the default
+artifact fixture, the graph contains $447$ edges. A $2$-hop unguarded
+communication probe leaks $3$ victim-session edges across $24$
+events. Bounded sharing reduces retrieved leakage to $0$, $1$, $2$,
+and $2$ edges for $b\in\{0,1,2,5\}$. We additionally score final
+responses with both exact lexical matching and semantic alias
+matching. The baseline template and evidence-dump generators leak
+$2$ victim edges under both scorers, while the $b{=}0$ guarded
+responses leak zero lexical or semantic victim edges and zero
+sensitive subject terms.
+
+\subsection{Kuzu Overhead}
+
+For the Kuzu backend, writing the $2,304$-edge enterprise graph takes
+$23.14$ seconds and reading it back takes $0.056$ seconds in the local
+verification environment. Over $100$ retrieval queries, unguarded
+retrieval averages $2.43$ ms/query, strict-guard retrieval averages
+$1.42$ ms/query, and bounded-guard retrieval averages $1.41$ ms/query.
+The guard-enabled cases are faster here because blocked
+provenance/sensitivity edges shrink the graph-expansion frontier.
+
+\subsection{Multi-Hop and Hybrid-Pipeline Evaluation}
+We finally evaluate whether the privacy conclusions survive deeper
+graph expansion and a composed application pipeline. In the
+enterprise benchmark, moving from $1$-hop to $2$-hop retrieval
+increases unguarded victim-edge leakage from $9$ to $12$ edges and
+expands unique retrieved edges from $1,956$ to the full $2,304$-edge
+graph. A third hop does not increase leakage further because the graph
+is already saturated. Under bounded sharing with $b{=}5$ and blocked
+sensitive labels, leakage remains fixed at $3$ victim edges for
+$1$-, $2$-, and $3$-hop retrieval, showing that the per-pair budget
+continues to bind under deeper expansion.
+
+The hybrid pipeline chains a persistent backend reload, adaptive
+probing, optional guard enforcement, local-abstractive response
+generation, and black-box response scoring. The unguarded pipeline
+issues $6$ adaptive queries and leaks $12$ victim edges and $8$
+sensitive terms in the final response text. Strict isolation reduces
+both response leakage counts to zero. The bounded $b{=}5$ pipeline
+also yields zero final-response leakage in this adaptive $2$-hop
+setting because the sensitivity block removes the victim's protected
+edges before response generation.
+
+\subsection{Robustness, Strong Generators, and Utility}
+We add a robustness sweep that corrupts sensitivity provenance on the
+victim session before applying bounded sharing. With no injected
+sensitivity error, the bounded $b{=}5$ setting leaks $3$ victim edges
+through non-sensitive sharing. Corrupting $10\%$, $25\%$, and $50\%$
+of the victim's sensitive labels to \textit{normal} raises retrieval
+leakage to $4$, $5$, and $5$ victim edges and raises final-response
+leakage under an evidence-dump generator to $6$, $9$, and $12$ victim
+edges. This makes provenance correctness an explicit assumption of
+the defense: bounded sharing is robust to multi-hop expansion, but
+not to systematic sensitivity downgrading.
+
+We also compare a literal template generator, a local abstractive
+generator, and a worst-case evidence-dump generator under an adaptive
+$8$-query, $2$-hop probe. In the unguarded condition all three
+generators expose $12$ victim edges and $8$ sensitive terms. Under
+bounded $b{=}5$, local abstraction exposes zero victim edges, while
+template and evidence-dump responses expose $3$ victim edges and
+$2$ sensitive terms. Finally, we replace coarse utility retention
+with non-sensitive relevance precision/recall/F1. Bounded sharing
+keeps precision at $1.0$ on the evaluated benign queries, but recall
+ranges from $0.0$ to $0.667$, showing that leakage control comes with
+query-dependent collaborative-utility loss.
+
+\subsection{Semantic Response Leakage}
+The semantic leakage scorer extends exact edge matching with
+synonym/alias sets and requires relation, source-side, and target-side
+evidence before assigning an edge-level leak. This reduces false
+attribution from shared enterprise terms while still catching
+paraphrased disclosures such as ``private'', ``sensitive'', or
+``confidential'' for secret material. On the enterprise benchmark,
+semantic edge leakage matches lexical edge leakage in the
+evidence-dump condition: $12$ victim edges unguarded and $3$ under
+bounded $b{=}5$. On the Enron-style communication graph, the scorer
+distinguishes guarded responses with shared business vocabulary from
+true sender--subject disclosures, yielding zero semantic edge leakage
+under $b{=}0$.
+
+\subsection{Fixed-Universe Privacy Sweep}
+The fixed-universe randomized-response experiment uses $160$ protected
+candidate edges, including $40$ absent candidates. As
+$\varepsilon$ increases from $0.5$ to $2.0$, released edges increase
+from $2,280$ to $2,294$ and synthetic absent-edge emissions fall from
+$16$ to $3$, reflecting the expected shift from privacy-preserving
+noise toward faithful release. Unlike the one-sided suppression proxy,
+this mechanism has a clear fixed-universe privacy statement and a
+composition cost over released protected bits. We now report the
+mechanism's probability-level accounting: for
+$\varepsilon\in\{0.5,1.0,2.0\}$, the measured single-release privacy
+loss equals $0.5$, $1.0$, and $2.0$ respectively, and basic
+sequential composition gives total privacy cost
+$k\varepsilon$ for $k\in\{1,5,10\}$ repeated releases.
+
+\subsection{Full-Graph Release Privacy}
+We further account for the difference between protected-edge release
+privacy and full-graph release privacy. If only sensitive candidate
+edges are randomized and non-sensitive edges are released verbatim,
+the guarantee scope is ``protected candidate edges only'' and the
+release is not a full-graph DP mechanism. In the enterprise graph,
+this scoped setting covers $1,152$ protected edges while releasing
+$1,152$ unprotected edges outside the guarantee. A true full-graph
+release would require every one of the $2,304$ candidate edge bits to
+be included in the randomized-response universe. Under basic
+composition, the full-graph candidate-universe cost is therefore
+$2,304\varepsilon$ for one release, or $11,520$ when
+$\varepsilon{=}1$ over five repeated releases. We report these values
+explicitly to prevent the fixed-universe result from being read as
+unqualified privacy for arbitrary full graph publication.
+
 %% ============================================================
 \section{Discussion, Scope, and Ethics}
 \label{sec:discussion}
 
 \subsection{What the Numbers Mean}
-The headline result---48 leaked edges $\rightarrow$ 0 leaked
-edges---is a strict-isolation baseline. It demonstrates that the
-audit pipeline correctly observes the dynamic KG memory and that the
-provenance guard severs the cross-session boundary. The interesting
-operational regime is the budgeted middle, where allowing
-$b{=}1$--$2$ cross-session edges per session pair preserves utility
-for collaborative queries while still excluding sensitive labels.
-The query-budget curve confirms the auditor's intuition that, under
-the baseline policy, exposure saturates at the smallest non-trivial
-adversarial budget, so single-shot retrieval-time defenses are
-appropriate.
+The results support a simple interpretation: the privacy boundary of a
+graph-backed memory is the retrieval policy, not the raw text store.
+When retrieval is global, entity overlap and $k$-hop expansion carry
+victim-owned edges into unrelated sessions and then into final
+responses. When retrieval is provenance-aware, strict isolation
+removes this channel, and bounded sharing turns it into an explicit
+budgeted risk. The enterprise multi-hop and hybrid-pipeline results
+are the clearest evidence: unguarded retrieval reaches 12 victim
+edges and leaks them in final text, while the guarded pipeline blocks
+the protected response leakage in the tested setting. The MultiWOZ
+and Enron-style runs show that the same audit surface appears in both
+task-oriented dialogue graphs and communication graphs.
+
+The most important caveat is equally clear. \textsc{GraphMemGuard}
+can only enforce the policy it sees: if sensitivity provenance is
+systematically downgraded, response leakage rises. Thus the defense is
+best understood as a provenance-aware control plane for graph memory,
+not as an end-to-end guarantee against extraction, bad labeling, or
+all forms of graph publication.
 
 \subsection{Scope and Limitations}
-The current artefact is intentionally framed as a benchmark and
+The current artifact is intentionally framed as a benchmark and
 defensive baseline, not as a fully formal mechanism. We emphasise:
-(i) the dataset is small and de-identified; large-scale validation
-on PersonaChat, MultiWOZ, or controlled health/finance corpora is
-queued as future work; (ii) the Docker integration exercises the
+(i) the Docker-backed dataset is small and de-identified, while the
+larger enterprise/health/finance workload is deterministic; the
+MultiWOZ run improves public-corpus coverage and the Enron-compatible
+runner covers communication-graph structure, but additional approved
+PersonaChat, full Enron maildir, or institutional traces remain future work;
+(ii) the Docker integration exercises the
 read-path through the Cloud API but not the full
 \texttt{validate-and-prove} pipeline of the underlying PrivacyGuard
-mock; (iii) \textsc{SessionGraphLink} is heuristic and does not yet
-include Weisfeiler--Lehman or graph-edit-distance baselines;
-(iv) \textsc{TemporalPathInfer} measures provenance exposure rather
-than hidden-order inference, and a beam-search variant is needed for
-the no-timestamp regime; (v) \textsc{RandomizedEdgeAdmission} is a
-seeded proxy and lacks the adjacency, accounting, and composition
-proofs required for an $\varepsilon$-edge-DP claim. We stress these
-limits because the strict-guard reduction of $1.0$ would otherwise
-overstate the framework's contribution.
+mock; (iii) \textsc{SessionGraphLink} is heuristic even with the
+current 1-WL, graph-edit proxy, and hashed-embedding baselines, and
+learned graph encoders remain future work; (iv)
+\textsc{TemporalPathInfer} now includes a timestamp-hidden heuristic
+but still lacks a learned response-likelihood attacker; (v)
+\textsc{RandomizedEdgeAdmission} remains a non-DP one-sided proxy, and
+formal privacy claims should use the separate fixed-universe
+randomized-response mechanism with explicit composition accounting.
+We stress these limits because the strict-guard reduction of $1.0$
+would otherwise overstate the framework's contribution.
 
 \subsection{Ethical Considerations}
 All datasets used in this paper are synthetic or de-identified;
@@ -615,7 +988,10 @@ no real users or production systems were probed. The framework is
 released for defensive auditing of graph-backed application
 memories. Operators integrating GraphMemShield should publish their
 chosen $(\alpha, b, \mathcal{B})$ policy and document the
-corresponding upper bound on cross-session exposure.
+corresponding upper bound on cross-session exposure. If real
+enterprise mail or dialogue traces are used, the artifact should be
+run only on approved, access-controlled corpora and reported in
+aggregate form.
 
 %% ============================================================
 \section{Conclusion}
@@ -623,16 +999,24 @@ corresponding upper bound on cross-session exposure.
 We presented GraphMemShield, a reproducible auditing and mitigation
 framework for cross-session privacy leakage in dynamic KG memories
 of graph-backed applications. The framework formalises edge-event
-adjacency, provides three baseline attacks targeting cross-session
-exposure, structural linkage, and provenance ordering, and ships two
-defenses spanning retrieval-time isolation and write-time admission.
-On the Docker-backed batched workload, strict provenance/session
-isolation removes \emph{all} 48 victim-owned cross-session edges,
-while a query-budget sweep clarifies that exposure is determined by
-schema coverage rather than probe count. We release the open-source
-artefact, document the gap between the current proxy and a fully
-provable mechanism, and outline the dataset, accounting, and adversary
-extensions that constitute the next milestone.
+adjacency, provides attack modules for cross-session exposure,
+structural linkage, temporal inference, adaptive probing, and
+black-box response leakage, and evaluates retrieval-time bounded
+sharing together with write-time admission and fixed-universe
+randomized response. Across synthetic, Docker-backed,
+enterprise-style, public MultiWOZ, and Enron-style communication
+workloads, unguarded graph
+retrieval exposes victim-owned edges, while provenance-aware bounded
+sharing gives operators an explicit privacy--utility control surface.
+The strongest results are the multi-hop and hybrid-pipeline runs:
+unguarded enterprise retrieval reaches 12 victim edges, whereas
+strict and bounded guarded pipelines remove final-response leakage in
+the tested setting. Robustness experiments show the remaining
+assumption clearly: the defense depends on correct sensitivity
+provenance, and systematic label downgrading re-opens leakage. The
+open-source artifact packages these attacks, defenses, backends,
+public-format ingestion paths, and privacy-accounting checks as a
+TIFS-ready benchmark for future graph-memory privacy mechanisms.
 
 %% ============================================================
 \bibliographystyle{IEEEtran}
