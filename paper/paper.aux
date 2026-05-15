@@ -23,10 +23,12 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-A}}Dynamic KG Memory}{2}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-B}}Adjacency}{2}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-C}}Adversaries}{2}{}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces System architecture of GraphMemShield. Write-time admission ($\Pi $) and read-time guard ($\Gamma $) bracket the dynamic KG; the audit harness exposes attack and metric modules.}}{3}{}\protected@file@percent }
-\newlabel{fig:arch}{{1}{3}{}{figure.1}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-D}}Sensitive Objects}{3}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-E}}Out-of-Scope}{3}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-D}}Sensitive Objects}{2}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-E}}Out-of-Scope}{2}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Threat model: a requester can retrieve or induce a response about a victim-owned neighbourhood through shared entity overlap unless provenance-aware guards filter the expansion.}}{3}{}\protected@file@percent }
+\newlabel{fig:threat}{{1}{3}{}{figure.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces System architecture of GraphMemShield. Write-time admission ($\Pi $) and read-time guard ($\Gamma $) bracket the dynamic KG; the audit harness exposes attack and metric modules.}}{3}{}\protected@file@percent }
+\newlabel{fig:arch}{{2}{3}{}{figure.2}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {IV}The GraphMemShield Framework}{3}{}\protected@file@percent }
 \newlabel{sec:framework}{{IV}{3}{}{section.4}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-A}}Overview}{3}{}\protected@file@percent }
@@ -60,22 +62,22 @@
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {VI-D}1}Query-Budget Curve}{5}{}\protected@file@percent }
 \expandafter \gdef \csname pgfplots@labelstyle@plot:keep\endcsname {mark={*},thick={\pgfkeysnovalue },color={blue!70!black},mark options={fill=blue!50}}
 \expandafter \gdef \csname pgfplots@show@ref@plot:keep\endcsname {\begingroup \def \pgfplots@draw@image {\def \tikz@plot@handler {\pgfkeys {/pgf/plots/@handler options/.cd, start=\relax , end macro=\relax , point macro=\pgfutil@gobble , jump macro=\relax , special macro=\pgfutil@gobble , point macro=\pgf@plot@line@handler , jump=\global \let \pgf@plotstreampoint \pgf@plot@line@handler@move }\begingroup \escapechar =-1 \edef \pgfplotsplothandlername {\string \pgfplothandlerlineto }\pgfmath@smuggleone \pgfplotsplothandlername \endgroup \def \pgfplotsplothandlerLUAfactory {function(axis, pointmetainputhandler) return pgfplots.GenericPlothandler.new("\pgfplotsplothandlername ", axis,pointmetainputhandler) end}\def \pgfplotsplothandlerLUAvisualizerfactory {pgfplots.defaultPlotVisualizerFactory}}\pgfkeysdef {/pgfplots/legend image code}{\draw [/pgfplots/mesh=false,bar width=3pt,bar shift=0pt,mark repeat=2,mark phase=2,] plot coordinates { (0cm,0cm) (0.3cm,0cm) (0.6cm,0cm)};}\pgfkeysdef {/pgfplots/every legend image post}{}\pgfkeyssetvalue {/pgfplots/mark list fill}{.!80!black}\pgfkeysdef {/pgfplots/every crossref picture}{\pgfkeysalso {baseline,yshift=0.3em}}\pgfplots@show@small@legendplots {mark={*},thick={\pgfkeysnovalue },color={blue!70!black},mark options={fill=blue!50}}{}}\ifpgfpicture \scope [/pgfplots/every crossref picture]\pgfplots@draw@image \endscope \else \expandafter \ifx \csname tikzappendtofigurename\endcsname \relax \else \begingroup \tikzappendtofigurename {_crossref}\fi \tikz [/pgfplots/every crossref picture]{\pgfplots@draw@image }\expandafter \ifx \csname tikzappendtofigurename\endcsname \relax \else \endgroup \fi \fi \endgroup }
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Leaked victim-owned edges before and after applying \textsc  {GraphMemGuard} (strict). Strict provenance/session isolation eliminates measured leakage on both datasets.}}{6}{}\protected@file@percent }
-\newlabel{fig:leakage}{{2}{6}{}{figure.2}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Query-budget curve on the Docker-backed sample dataset. Unique leaked edges saturate at $b{=}1$; leakage events scale linearly with retrieval count.}}{6}{}\protected@file@percent }
-\newlabel{fig:budget}{{3}{6}{}{figure.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Leaked victim-owned edges before and after applying \textsc  {GraphMemGuard} (strict). Strict provenance/session isolation eliminates measured leakage on both datasets.}}{6}{}\protected@file@percent }
+\newlabel{fig:leakage}{{3}{6}{}{figure.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Query-budget curve on the Docker-backed sample dataset. Unique leaked edges saturate at $b{=}1$; leakage events scale linearly with retrieval count.}}{6}{}\protected@file@percent }
+\newlabel{fig:budget}{{4}{6}{}{figure.4}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-E}}RQ3: Session Linkage}{6}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-F}}RQ4: Temporal Path Exposure}{6}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-G}}RQ5: Edge-Admission Sweep}{6}{}\protected@file@percent }
 \@writefile{lot}{\contentsline {table}{\numberline {III}{\ignorespaces Session-linking results on Docker-backed sample dataset.}}{6}{}\protected@file@percent }
 \newlabel{tab:link}{{III}{6}{}{table.3}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces \textsc  {SessionGraphLink} accuracy. Adding semantic tokens improves MRR but not Top-1 in this regime.}}{6}{}\protected@file@percent }
-\newlabel{fig:link}{{4}{6}{}{figure.4}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces \textsc  {SessionGraphLink} accuracy. Adding semantic tokens improves MRR but not Top-1 in this regime.}}{6}{}\protected@file@percent }
+\newlabel{fig:link}{{5}{6}{}{figure.5}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-H}}Bounded-Sharing Mode}{6}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-I}}Black-Box Response Leakage}{6}{}\protected@file@percent }
 \newlabel{plot:keep}{{\expandafter\protect\csname pgfplots@show@ref@plot:keep\endcsname}{7}{}{subsection.6.7}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces \textsc  {RandomizedEdgeAdmission} sweep on the synthetic multisession graph. Keep-probability follows $\sigma (\varepsilon )$; mean downstream victim leakage rises with the one-sided retention probability.}}{7}{}\protected@file@percent }
-\newlabel{fig:admission}{{5}{7}{}{figure.5}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces \textsc  {RandomizedEdgeAdmission} sweep on the synthetic multisession graph. Keep-probability follows $\sigma (\varepsilon )$; mean downstream victim leakage rises with the one-sided retention probability.}}{7}{}\protected@file@percent }
+\newlabel{fig:admission}{{6}{7}{}{figure.6}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-J}}Backend and Stronger Attack Baselines}{7}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-K}}Adaptive Probing and Multi-Seed Confidence Intervals}{7}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-L}}External MultiWOZ and Communication Graph Runs}{7}{}\protected@file@percent }
@@ -90,14 +92,15 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VII-A}}What the Numbers Mean}{8}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VII-B}}Scope and Limitations}{8}{}\protected@file@percent }
 \bibstyle{IEEEtran}
+\bibdata{paper}
 \bibcite{Carlini2021}{1}
 \bibcite{Mireshghallah2023}{2}
 \bibcite{Zeng2024}{3}
 \bibcite{Qi2024RAG}{4}
-\bibcite{Wang2025GraphRAG}{5}
-\bibcite{He2021Linkstealing}{6}
-\bibcite{Wu2022GraphMI}{7}
-\bibcite{Olatunji2023GraphPrivacy}{8}
+\bibcite{He2021Linkstealing}{5}
+\bibcite{Wu2022GraphMI}{6}
+\bibcite{Olatunji2023GraphPrivacy}{7}
+\bibcite{Wang2025GraphRAG}{8}
 \bibcite{Duddu2020}{9}
 \bibcite{Hay2009}{10}
 \bibcite{Jorgensen2016}{11}

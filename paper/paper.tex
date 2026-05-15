@@ -1,6 +1,5 @@
 %% =====================================================================
-%% GraphMemShield: Auditing and Mitigating Cross-Session Privacy Leakage
-%% in Dynamic Knowledge-Graph Memories for Graph-Backed Applications
+%% GraphMemShield: Auditing Cross-Session Leakage in Graph Memories
 %%
 %% Submission to IEEE Transactions on Information Forensics and Security
 %%
@@ -30,19 +29,17 @@
 
 \begin{document}
 
-\title{GraphMemShield: Auditing and Mitigating Cross-Session
-Privacy Leakage in Dynamic Knowledge-Graph Memories
-for Graph-Backed Applications}
+\title{GraphMemShield: Auditing Cross-Session Leakage in Graph Memories}
 
 \author{Anonymous Author(s)
 \thanks{Manuscript prepared for IEEE Transactions on Information
 Forensics and Security. The associated open-source artifact is
-available at \texttt{https://github.com/SonHaXuan/GraphMemShield}.}}
+available at \texttt{https://github.com/LeoTTTPhat/GraphMemShield}.}}
 
 \markboth{IEEE Transactions on Information Forensics and Security,
 Vol.~XX, No.~X, May~2026}%
-{Author~\MakeLowercase{\textit{et al.}}: GraphMemShield: Auditing and
-Mitigating Cross-Session Privacy Leakage in Dynamic KG Memories}
+{Author~\MakeLowercase{\textit{et al.}}: GraphMemShield: Auditing
+Cross-Session Leakage in Graph Memories}
 
 \maketitle
 
@@ -277,6 +274,54 @@ text leaks victim-owned edges or sensitive terms. The gray-box setting
 gives an upper bound on retrieval contamination, while the black-box
 setting captures what an ordinary requester may actually observe.
 
+\begin{figure}[t]
+    \centering
+    \begin{tikzpicture}[
+        >=Latex,
+        font=\footnotesize,
+        every node/.style={inner sep=1.5pt},
+        ent/.style={circle, draw=black, fill=white, minimum size=0.55cm},
+        sess/.style={ellipse, draw, dashed, inner sep=4pt, align=center,
+                     font=\scriptsize\itshape},
+        relV/.style={->, thick, red!70!black},
+        relA/.style={->, thick, blue!60!black},
+        leak/.style={->, very thick, orange!85!black, decorate,
+                     decoration={snake, amplitude=.5mm, segment length=2mm}}
+    ]
+    \node[ent] (alice)   at (-3.0, 1.2) {\scriptsize A};
+    \node[ent] (clinic)  at (-1.0, 1.2) {\scriptsize C};
+    \node[ent] (cond)    at ( 1.0, 1.2) {\scriptsize $\kappa$};
+    \node[ent] (bob)     at (-3.0,-1.2) {\scriptsize B};
+    \node[ent] (gym)     at (-1.0,-1.2) {\scriptsize G};
+    \node[ent] (laptop)  at ( 1.0,-1.2) {\scriptsize L};
+    \node[ent] (req)     at ( 3.4, 0.0) {\scriptsize $u_r$};
+    \draw[relV] (alice)  -- node[above,font=\tiny\itshape]{visited}    (clinic);
+    \draw[relV] (clinic) -- node[above,font=\tiny\itshape]{diagnosed}  (cond);
+    \draw[relA] (bob)    -- node[below,font=\tiny\itshape]{visited}    (gym);
+    \draw[relA] (bob)    .. controls +(0.6,-0.6) and +(-0.6,-0.6) ..
+                          node[below,font=\tiny\itshape]{purchased}   (laptop);
+    \node[sess, fit={(alice)(clinic)(cond)},
+          label={[red!60!black,font=\tiny]above:victim $s_v$ (medical)}] {};
+    \node[sess, fit={(bob)(gym)(laptop)},
+          label={[blue!60!black,font=\tiny]below:other $s_o$ (financial)}] {};
+    \draw[->, thick, dashed] (req) to[bend left=15]
+          node[above,font=\tiny\itshape]{probe ``clinic''} (clinic);
+    \draw[leak] (clinic) to[bend right=20] (req);
+    \node[font=\tiny\itshape, orange!80!black]
+          at (2.5, 0.85) {cross-session leak};
+    \node[anchor=west, font=\tiny] at (-3.6,-2.2)
+          {\textcolor{red!70!black}{$\rightarrow$} victim edge};
+    \node[anchor=west, font=\tiny] at (-1.0,-2.2)
+          {\textcolor{blue!60!black}{$\rightarrow$} non-victim edge};
+    \node[anchor=west, font=\tiny] at ( 1.6,-2.2)
+          {\textcolor{orange!85!black}{$\leadsto$} leakage};
+    \end{tikzpicture}
+    \caption{Threat model: a requester can retrieve or induce a
+    response about a victim-owned neighbourhood through shared entity
+    overlap unless provenance-aware guards filter the expansion.}
+    \label{fig:threat}
+\end{figure}
+
 \subsection{Sensitive Objects}
 The sensitive objects are: (i) edge existence
 $\mathbf{1}[e \in E_t]$, (ii) edge ownership
@@ -305,7 +350,60 @@ Markdown reports.
 
 \begin{figure}[t]
     \centering
-    \input{figures/fig_architecture.tex}
+    \begin{tikzpicture}[
+        >=Latex,
+        font=\footnotesize,
+        box/.style={draw, rounded corners=2pt, align=center,
+                    minimum width=2.0cm, minimum height=0.7cm,
+                    inner sep=2pt, fill=white},
+        user/.style={box, fill=blue!8, draw=blue!60},
+        write/.style={box, fill=orange!12, draw=orange!70},
+        kg/.style  ={box, fill=green!10, draw=green!55!black,
+                     minimum width=2.6cm, minimum height=1.6cm},
+        guard/.style={box, fill=red!10, draw=red!70},
+        attack/.style={box, fill=purple!8, draw=purple!70},
+        audit/.style ={box, fill=gray!10, draw=gray!70},
+        note/.style ={font=\scriptsize\itshape, gray!60!black},
+        arr/.style  ={->, thick}
+    ]
+    \node[user]                       (u1) {User $u_1$ \\ session $s_1$};
+    \node[user, right=0.5cm of u1]    (u2) {User $u_2$ \\ session $s_2$};
+    \node[user, right=0.5cm of u2]    (uN) {User $u_n$ \\ session $s_n$};
+    \node[write, below=0.6cm of u2]   (pi) {Admission $\Pi$ \\
+                                            \scriptsize \textsc{RandEdgeAdm.}};
+    \node[kg, below=0.7cm of pi]      (kg) {Dynamic KG $\mathcal{G}_t$ \\
+            \scriptsize $(V_t, E_t, \pi)$ \\
+            \scriptsize provenance-tagged};
+    \node[guard, right=1.7cm of kg]   (gam) {Guard $\Gamma$ \\
+            \scriptsize \textsc{GraphMemGuard}};
+    \node[user, right=0.6cm of gam]   (req) {Requester \\ session $s_r$};
+    \node[attack, below=0.9cm of kg]  (atk1) {\textsc{CrossSessionProbe}};
+    \node[attack, right=0.4cm of atk1](atk2) {\textsc{SessionGraphLink}};
+    \node[attack, right=0.4cm of atk2](atk3) {\textsc{TemporalPathInfer}};
+    \node[audit, below=0.5cm of atk2] (rep) {Audit harness $\rightarrow$
+                                              JSON / CSV / Markdown};
+    \draw[arr] (u1) -- (pi);
+    \draw[arr] (u2) -- (pi);
+    \draw[arr] (uN) -- (pi);
+    \draw[arr] (pi) -- (kg);
+    \draw[arr] (kg) -- node[above,note]{retrieve} (gam);
+    \draw[arr, dashed] (gam) -- node[above,note]{$k$-hop $R$} (req);
+    \draw[arr] (req) to[bend right=18] node[below,note]{query $q$} (gam);
+    \draw[arr] (kg)  -- (atk1);
+    \draw[arr] (kg)  -- (atk2);
+    \draw[arr] (kg)  -- (atk3);
+    \draw[arr] (atk1) -- (rep);
+    \draw[arr] (atk2) -- (rep);
+    \draw[arr] (atk3) -- (rep);
+    \begin{scope}[on background layer]
+        \node[draw=gray!40, dashed, rounded corners=3pt,
+              fit=(u1)(uN)(pi),
+              label={[gray!60!black,font=\scriptsize\itshape]above:write path}] {};
+        \node[draw=gray!40, dashed, rounded corners=3pt,
+              fit=(gam)(req),
+              label={[gray!60!black,font=\scriptsize\itshape]above:read path}] {};
+    \end{scope}
+    \end{tikzpicture}
     \caption{System architecture of GraphMemShield. Write-time
     admission ($\Pi$) and read-time guard ($\Gamma$) bracket the
     dynamic KG; the audit harness exposes attack and metric modules.}
@@ -654,7 +752,44 @@ visualisation in Figure~\ref{fig:leakage} makes the gap explicit.
 
 \begin{figure}[t]
     \centering
-    \input{figures/fig_leakage_results.tex}
+    \begin{tikzpicture}
+    \begin{axis}[
+        width=\columnwidth,
+        height=5.0cm,
+        ybar=2pt,
+        bar width=10pt,
+        enlarge x limits=0.22,
+        ymin=0, ymax=55,
+        ylabel={Leaked victim-owned edges},
+        symbolic x coords={Synthetic, PG-seed, PG-batch},
+        xtick=data,
+        xticklabel style={font=\footnotesize},
+        yticklabel style={font=\footnotesize},
+        ylabel style={font=\footnotesize},
+        legend style={
+            font=\scriptsize,
+            at={(0.02,0.98)}, anchor=north west,
+            draw=gray!50, fill=white, fill opacity=0.85, text opacity=1,
+            nodes={inner sep=1pt}, row sep=-1pt
+        },
+        nodes near coords,
+        nodes near coords style={font=\scriptsize, color=black!75},
+        grid=major, grid style={dashed, gray!25},
+        axis line style={gray!60},
+    ]
+    \addplot+[draw=red!70!black, fill=red!30] coordinates {
+        (Synthetic, 3)
+        (PG-seed,  5)
+        (PG-batch, 48)
+    };
+    \addplot+[draw=green!55!black, fill=green!35] coordinates {
+        (Synthetic, 0)
+        (PG-seed,  0)
+        (PG-batch, 0)
+    };
+    \legend{baseline, strict \textsc{GraphMemGuard}}
+    \end{axis}
+    \end{tikzpicture}
     \caption{Leaked victim-owned edges before and after applying
     \textsc{GraphMemGuard} (strict). Strict provenance/session
     isolation eliminates measured leakage on both datasets.}
@@ -675,7 +810,39 @@ adjacency definition.
 
 \begin{figure}[t]
     \centering
-    \input{figures/fig_query_budget.tex}
+    \begin{tikzpicture}
+    \begin{axis}[
+        width=\columnwidth,
+        height=5.2cm,
+        xlabel={Per-session query budget $b$},
+        ylabel={Count},
+        xtick={1,2,4,12},
+        xticklabels={1,2,4,all (12)},
+        ymin=0, ymax=145,
+        xmin=0.5, xmax=13,
+        grid=major, grid style={dashed, gray!25},
+        legend style={
+            font=\scriptsize,
+            at={(0.02,0.98)}, anchor=north west,
+            draw=gray!50, fill=white, fill opacity=0.85, text opacity=1
+        },
+        xticklabel style={font=\footnotesize},
+        yticklabel style={font=\footnotesize},
+        xlabel style={font=\footnotesize},
+        ylabel style={font=\footnotesize},
+        axis line style={gray!60},
+    ]
+    \addplot[mark=*, thick, color=red!70!black, mark options={fill=red!50}]
+        coordinates {(1,48)(2,48)(4,48)(12,48)};
+    \addplot[mark=square*, thick, color=blue!70!black,
+             mark options={fill=blue!40}, dashed]
+        coordinates {(1,12)(2,24)(4,48)(12,48)};
+    \addplot[mark=triangle*, thick, color=orange!85!black,
+             mark options={fill=orange!50}]
+        coordinates {(1,48)(2,88)(4,132)(12,132)};
+    \legend{unique leaked edges, queries issued, leakage events}
+    \end{axis}
+    \end{tikzpicture}
     \caption{Query-budget curve on the Docker-backed sample dataset.
     Unique leaked edges saturate at $b{=}1$; leakage events scale
     linearly with retrieval count.}
@@ -708,7 +875,44 @@ Figure~\ref{fig:link} visualises the comparison.
 
 \begin{figure}[t]
     \centering
-    \input{figures/fig_session_link.tex}
+    \begin{tikzpicture}
+    \begin{axis}[
+        width=\columnwidth,
+        height=5.0cm,
+        ybar=3pt,
+        bar width=10pt,
+        enlarge x limits=0.25,
+        ymin=0, ymax=1.15,
+        ylabel={Accuracy / MRR},
+        symbolic x coords={Top-1, Top-3, MRR},
+        xtick=data,
+        xticklabel style={font=\footnotesize},
+        yticklabel style={font=\footnotesize},
+        ylabel style={font=\footnotesize},
+        legend style={
+            font=\scriptsize,
+            at={(0.02,0.98)}, anchor=north west,
+            draw=gray!50, fill=white, fill opacity=0.85, text opacity=1
+        },
+        nodes near coords={\pgfmathprintnumber[fixed,fixed zerofill,
+                           precision=2]{\pgfplotspointmeta}},
+        nodes near coords style={font=\scriptsize, color=black!75},
+        grid=major, grid style={dashed, gray!25},
+        axis line style={gray!60},
+    ]
+    \addplot+[draw=blue!70!black, fill=blue!30] coordinates {
+        (Top-1, 0.333)
+        (Top-3, 1.000)
+        (MRR,   0.611)
+    };
+    \addplot+[draw=purple!70!black, fill=purple!30] coordinates {
+        (Top-1, 0.333)
+        (Top-3, 1.000)
+        (MRR,   0.667)
+    };
+    \legend{structure-only, structure + semantic}
+    \end{axis}
+    \end{tikzpicture}
     \caption{\textsc{SessionGraphLink} accuracy. Adding semantic
     tokens improves MRR but not Top-1 in this regime.}
     \label{fig:link}
@@ -738,7 +942,56 @@ differential privacy.
 
 \begin{figure}[t]
     \centering
-    \input{figures/fig_edge_admission.tex}
+    \begin{tikzpicture}
+    \begin{axis}[
+        width=\columnwidth,
+        height=5.4cm,
+        xlabel={$\varepsilon$},
+        ylabel={Sensitive keep-probability $\sigma(\varepsilon)$},
+        axis y line*=left,
+        xmode=normal,
+        xtick={0.1,1.0,3.0},
+        ymin=0.4, ymax=1.0,
+        grid=major, grid style={dashed, gray!25},
+        legend style={
+            font=\scriptsize,
+            at={(0.02,0.98)}, anchor=north west,
+            draw=gray!50, fill=white, fill opacity=0.85, text opacity=1
+        },
+        xticklabel style={font=\footnotesize},
+        yticklabel style={font=\footnotesize},
+        xlabel style={font=\footnotesize},
+        ylabel style={font=\footnotesize, color=blue!60!black},
+        axis line style={gray!60},
+    ]
+    \addplot[mark=*, thick, color=blue!70!black, mark options={fill=blue!50}]
+        coordinates {(0.1,0.5250)(1.0,0.7311)(3.0,0.9526)};
+    \label{plot:keep}
+    \end{axis}
+
+    \begin{axis}[
+        width=\columnwidth,
+        height=5.4cm,
+        axis y line*=right,
+        axis x line=none,
+        ylabel={Mean leaked edges},
+        ylabel style={font=\footnotesize, color=red!70!black},
+        yticklabel style={font=\footnotesize, color=red!70!black},
+        ymin=0, ymax=3.5,
+        legend style={
+            font=\scriptsize,
+            at={(0.98,0.02)}, anchor=south east,
+            draw=gray!50, fill=white, fill opacity=0.85, text opacity=1
+        },
+    ]
+    \addlegendimage{/pgfplots/refstyle=plot:keep}
+    \addlegendentry{$\sigma(\varepsilon)$ keep-prob.}
+    \addplot[mark=triangle*, thick, color=red!75!black,
+             mark options={fill=red!55}]
+        coordinates {(0.1,1.0000)(1.0,1.7667)(3.0,2.7333)};
+    \addlegendentry{mean victim leaked edges}
+    \end{axis}
+    \end{tikzpicture}
     \caption{\textsc{RandomizedEdgeAdmission} sweep on the synthetic
     multisession graph. Keep-probability follows
     $\sigma(\varepsilon)$; mean downstream victim leakage rises with
@@ -1020,102 +1273,7 @@ TIFS-ready benchmark for future graph-memory privacy mechanisms.
 
 %% ============================================================
 \bibliographystyle{IEEEtran}
-\begin{thebibliography}{20}
+\bibliography{paper}
 
-\bibitem{Carlini2021}
-N.~Carlini \emph{et al.},
-``Extracting training data from large language models,''
-in \emph{Proc. USENIX Security}, 2021.
-
-\bibitem{Mireshghallah2023}
-F.~Mireshghallah, A.~Goyal, A.~Uniyal, T.~Berg-Kirkpatrick, and R.~Shokri,
-``Memorisation in fine-tuned dialogue models,''
-in \emph{Proc. EMNLP}, 2023.
-
-\bibitem{Zeng2024}
-W.~Zeng, K.~Liu, R.~Lin, and B.~Hooi,
-``The good and the bad: Exploring privacy issues in
-retrieval-augmented generation (RAG),''
-\emph{arXiv:2402.16893}, 2024.
-
-\bibitem{Qi2024RAG}
-Y.~Qi \emph{et al.},
-``Follow my instruction and spill the beans: Scalable data extraction
-from retrieval-augmented generation systems,''
-\emph{arXiv:2402.17840}, 2024.
-
-\bibitem{Wang2025GraphRAG}
-J.~Wang, Z.~Lin, T.~Xu, and Q.~Liu,
-``Exposing privacy risks in graph retrieval-augmented generation,''
-\emph{arXiv:2503.05923}, 2025.
-
-\bibitem{He2021Linkstealing}
-X.~He, J.~Jia, M.~Backes, N.~Z.~Gong, and Y.~Zhang,
-``Stealing links from graph neural networks,''
-in \emph{Proc. USENIX Security}, 2021.
-
-\bibitem{Wu2022GraphMI}
-B.~Wu, X.~Yang, S.~Pan, and X.~Yuan,
-``Model inversion attacks against graph neural networks,''
-\emph{IEEE Trans.\ Knowledge and Data Engineering}, vol.~35, 2022.
-
-\bibitem{Olatunji2023GraphPrivacy}
-I.~E.~Olatunji \emph{et al.},
-``Membership inference attacks on graph neural networks,''
-in \emph{Proc. ACSAC}, 2023.
-
-\bibitem{Duddu2020}
-V.~Duddu, A.~Boutet, and V.~Shejwalkar,
-``Quantifying privacy leakage in graph embedding,''
-in \emph{Proc. MobiQuitous}, 2020.
-
-\bibitem{Hay2009}
-M.~Hay, C.~Li, G.~Miklau, and D.~Jensen,
-``Accurate estimation of the degree distribution of private networks,''
-in \emph{Proc. IEEE ICDM}, 2009.
-
-\bibitem{Jorgensen2016}
-Z.~Jorgensen, T.~Yu, and G.~Cormode,
-``Publishing attributed social graphs with formal privacy guarantees,''
-in \emph{Proc. ACM SIGMOD}, 2016.
-
-\bibitem{Karwa2014}
-V.~Karwa, S.~Raskhodnikova, A.~Smith, and G.~Yaroslavtsev,
-``Private analysis of graph structure,''
-\emph{ACM Trans.\ Database Systems}, vol.~39, 2014.
-
-\bibitem{Daigavane2021}
-A.~Daigavane \emph{et al.},
-``Node-level differentially private graph neural networks,''
-in \emph{Proc. ICLR Workshop}, 2021.
-
-\bibitem{Sajadmanesh2023GAP}
-S.~Sajadmanesh and D.~Gatica-Perez,
-``GAP: Differentially private graph neural networks with aggregation
-perturbation,''
-in \emph{Proc. USENIX Security}, 2023.
-
-\bibitem{Shokri2017}
-R.~Shokri, M.~Stronati, C.~Song, and V.~Shmatikov,
-``Membership inference attacks against machine learning models,''
-in \emph{Proc. IEEE S\&P}, 2017.
-
-\bibitem{Salem2019}
-A.~Salem \emph{et al.},
-``ML-Leaks: Model and data independent membership inference attacks
-and defenses on machine learning models,''
-in \emph{Proc. NDSS}, 2019.
-
-\bibitem{Backes2017Walk2friends}
-M.~Backes \emph{et al.},
-``Walk2friends: Inferring social links from mobility profiles,''
-in \emph{Proc. ACM CCS}, 2017.
-
-\bibitem{Pasquier2017}
-T.~Pasquier \emph{et al.},
-``Practical whole-system provenance capture,''
-in \emph{Proc. ACM SoCC}, 2017.
-
-\end{thebibliography}
 
 \end{document}

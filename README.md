@@ -21,7 +21,7 @@ The project is intended as a source artifact and synthetic/de-identified benchma
 Clone the repository:
 
 ```bash
-git clone https://github.com/SonHaXuan/GraphMemShield.git
+git clone https://github.com/LeoTTTPhat/GraphMemShield.git
 cd GraphMemShield
 ```
 
