@@ -27,7 +27,7 @@ The results should be described as **de-identified benchmark experiments**, not 
 
 1. **Dataset scale is small**
    - Current Docker batch dataset has 12 records, 6 users, and 12 sessions.
-   - The TIFS revision benchmark has 576 records, 48 users, 192 sessions, and 2304 edges, but it is deterministic/de-identified rather than an externally hosted public corpus.
+   - The CIKM revision benchmark has 576 records, 48 users, 192 sessions, and 2304 edges, but it is deterministic/de-identified rather than an externally hosted public corpus.
    - MultiWOZ and Enron-format loaders are implemented; full public-corpus runs require evaluator-supplied licensed data files.
 
 2. **The Docker system is a mock deployment**
@@ -50,7 +50,7 @@ The results should be described as **de-identified benchmark experiments**, not 
    - A stronger paper version should add beam search over relation paths and response-likelihood scoring.
 
 6. **Black-box response scoring is deterministic**
-   - The TIFS revision experiments add response-level leakage scoring using deterministic template and local abstractive generators.
+   - The CIKM revision experiments add response-level leakage scoring using deterministic template and local abstractive generators.
    - OpenAI-backed response generation is implemented as an optional path and is skipped when `OPENAI_API_KEY` is not configured.
    - A production system should additionally score real model responses from deployed graph-backed applications.
 

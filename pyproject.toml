@@ -26,6 +26,8 @@ classifiers = [
 [project.optional-dependencies]
 dev = ["pytest>=8.0.0"]
 backends = ["kuzu>=0.11.3"]
+frameworks = ["langgraph>=1.2.0", "mem0ai>=2.0.0"]
+attacks = ["scikit-learn>=1.8.0", "numpy>=2.0.0"]
 llm = ["openai>=2.0.0"]
 
 [tool.setuptools.packages.find]

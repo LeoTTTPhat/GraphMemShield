@@ -15,8 +15,11 @@ def main() -> None:
     rows.extend(_load_synthetic_rows())
     rows.extend(_load_single_docker_rows())
     rows.extend(_load_batch_rows())
-    rows.extend(_load_tifs_revision_rows())
+    rows.extend(_load_cikm_revision_rows())
     rows.extend(_load_multiwoz_rows())
+    rows.extend(_load_langgraph_rows())
+    rows.extend(_load_mem0_rows())
+    rows.extend(_load_deployed_graphrag_rows())
     rows.extend(_load_enron_rows())
 
     os.makedirs(OUTPUT_DIR, exist_ok=True)
@@ -124,8 +127,8 @@ def _load_batch_rows() -> list[dict[str, Any]]:
     return list(payload.get("results", []))
 
 
-def _load_tifs_revision_rows() -> list[dict[str, Any]]:
-    path = os.path.join(OUTPUT_DIR, "tifs_revision_results.json")
+def _load_cikm_revision_rows() -> list[dict[str, Any]]:
+    path = os.path.join(OUTPUT_DIR, "cikm_revision_results.json")
     if not os.path.exists(path):
         return []
     with open(path, "r", encoding="utf-8") as handle:
@@ -138,7 +141,7 @@ def _load_tifs_revision_rows() -> list[dict[str, Any]]:
             condition=row["condition"],
             metric=row["metric"],
             value=row["value"],
-            notes="TIFS revision experiment.",
+            notes="CIKM revision experiment.",
         )
         for row in payload
     ]
@@ -179,6 +182,80 @@ def _load_enron_rows() -> list[dict[str, Any]]:
             metric=row["metric"],
             value=row["value"],
             notes="Enron maildir or Enron-style communication graph run.",
+        )
+        for row in payload
+    ]
+
+
+def _load_deployed_graphrag_rows() -> list[dict[str, Any]]:
+    rows: list[dict[str, Any]] = []
+    for filename, dataset, notes in (
+        (
+            "public_multiwoz_http_trace.json",
+            "public_multiwoz_http_trace",
+            "Public Proxy GraphRAG Trace: live local HTTP service over MultiWOZ-derived graph memory.",
+        ),
+        (
+            "internal_tracekg_rag_openai_trace.json",
+            "approved_internal_openai_rag_trace",
+            "Approved Internal OpenAI-RAG Trace: de-identified TraceKG RAG export through the same HTTP audit harness.",
+        ),
+    ):
+        path = os.path.join(OUTPUT_DIR, filename)
+        if not os.path.exists(path):
+            continue
+        with open(path, "r", encoding="utf-8") as handle:
+            payload = json.load(handle)
+        rows.extend(
+            _row(
+                system=row["system"],
+                dataset=dataset,
+                attack=row["experiment"],
+                condition=row["condition"],
+                metric=row["metric"],
+                value=row["value"],
+                notes=notes,
+            )
+            for row in payload
+        )
+    return rows
+
+
+def _load_langgraph_rows() -> list[dict[str, Any]]:
+    path = os.path.join(OUTPUT_DIR, "langgraph_memory_trace.json")
+    if not os.path.exists(path):
+        return []
+    with open(path, "r", encoding="utf-8") as handle:
+        payload = json.load(handle)
+    return [
+        _row(
+            system=row["system"],
+            dataset=row["dataset"],
+            attack=row["experiment"],
+            condition=row["condition"],
+            metric=row["metric"],
+            value=row["value"],
+            notes="Real LangGraph StateGraph memory workflow over the enterprise sensitive graph.",
+        )
+        for row in payload
+    ]
+
+
+def _load_mem0_rows() -> list[dict[str, Any]]:
+    path = os.path.join(OUTPUT_DIR, "mem0_memory_trace.json")
+    if not os.path.exists(path):
+        return []
+    with open(path, "r", encoding="utf-8") as handle:
+        payload = json.load(handle)
+    return [
+        _row(
+            system=row["system"],
+            dataset=row["dataset"],
+            attack=row["experiment"],
+            condition=row["condition"],
+            metric=row["metric"],
+            value=row["value"],
+            notes="Real Mem0 memory integration with local Qdrant storage and OpenAI embeddings.",
         )
         for row in payload
     ]
@@ -227,6 +304,10 @@ def _render_markdown(rows: list[dict[str, Any]]) -> str:
             "## Remaining Manual Work",
             "",
             "- Replace de-identified sample data with additional approved public datasets where licensing permits.",
+            "- Reproduce the public HTTP trace with `examples/run_deployed_graphrag_trace.py`.",
+            "- Reproduce the LangGraph memory integration with `examples/run_langgraph_memory_experiment.py`.",
+            "- Reproduce the Mem0 memory integration with `examples/run_mem0_memory_experiment.py` when `OPENAI_API_KEY` is configured.",
+            "- Reproduce the approved internal HTTP trace by converting the TraceKG export, setting `GRAPHMEMSHIELD_PRODUCTION_GRAPHRAG_JSONL`, and running `examples/run_deployed_graphrag_trace.py`.",
             "- Run `examples/run_enron_experiment.py` against a full approved Enron maildir by setting `GRAPHMEMSHIELD_ENRON_MAILDIR`.",
             "- Connect the property-graph adapter to a live Neo4j deployment for system-level latency and policy tests.",
         ]

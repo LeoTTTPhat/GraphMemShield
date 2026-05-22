@@ -1,0 +1,1114 @@
+[
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "dataset",
+    "condition": "deployed_http_agent_memory",
+    "metric": "trace_mode",
+    "value": "public_multiwoz_proxy"
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "dataset",
+    "condition": "deployed_http_agent_memory",
+    "metric": "approved_internal_deployment_trace",
+    "value": false
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "dataset",
+    "condition": "deployed_http_agent_memory",
+    "metric": "source_path",
+    "value": "/Users/phatttt/Documents/Claude/Projects/GraphMemShield/data/multiwoz_2_1_sample.jsonl"
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "dataset",
+    "condition": "deployed_http_agent_memory",
+    "metric": "records",
+    "value": 6613
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "dataset",
+    "condition": "deployed_http_agent_memory",
+    "metric": "users",
+    "value": 955
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "dataset",
+    "condition": "deployed_http_agent_memory",
+    "metric": "sessions",
+    "value": 955
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "dataset",
+    "condition": "deployed_http_agent_memory",
+    "metric": "nodes",
+    "value": 2708
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "dataset",
+    "condition": "deployed_http_agent_memory",
+    "metric": "edges",
+    "value": 36408
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "backend",
+    "condition": "deployed_http_agent_memory",
+    "metric": "sqlite_path",
+    "value": "/Users/phatttt/Documents/Claude/Projects/GraphMemShield/output/deployed_graphrag_trace.sqlite"
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "backend",
+    "condition": "deployed_http_agent_memory",
+    "metric": "http_service",
+    "value": "http://127.0.0.1:56404"
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_cross_session_probe",
+    "condition": "global",
+    "metric": "queries",
+    "value": 8
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_cross_session_probe",
+    "condition": "global",
+    "metric": "retrieved_edges",
+    "value": 270662
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_cross_session_probe",
+    "condition": "global",
+    "metric": "unique_retrieved_edges",
+    "value": 36259
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_cross_session_probe",
+    "condition": "global",
+    "metric": "leaked_edges",
+    "value": 67
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_cross_session_probe",
+    "condition": "global",
+    "metric": "leakage_events",
+    "value": 536
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_cross_session_probe",
+    "condition": "global",
+    "metric": "per_query_leak_rate",
+    "value": 1.0
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_cross_session_probe",
+    "condition": "owner_only",
+    "metric": "queries",
+    "value": 8
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_cross_session_probe",
+    "condition": "owner_only",
+    "metric": "retrieved_edges",
+    "value": 225
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_cross_session_probe",
+    "condition": "owner_only",
+    "metric": "unique_retrieved_edges",
+    "value": 45
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_cross_session_probe",
+    "condition": "owner_only",
+    "metric": "leaked_edges",
+    "value": 0
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_cross_session_probe",
+    "condition": "owner_only",
+    "metric": "leakage_events",
+    "value": 0
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_cross_session_probe",
+    "condition": "owner_only",
+    "metric": "per_query_leak_rate",
+    "value": 0.0
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_cross_session_probe",
+    "condition": "label_only",
+    "metric": "queries",
+    "value": 8
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_cross_session_probe",
+    "condition": "label_only",
+    "metric": "retrieved_edges",
+    "value": 183235
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_cross_session_probe",
+    "condition": "label_only",
+    "metric": "unique_retrieved_edges",
+    "value": 33103
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_cross_session_probe",
+    "condition": "label_only",
+    "metric": "leaked_edges",
+    "value": 58
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_cross_session_probe",
+    "condition": "label_only",
+    "metric": "leakage_events",
+    "value": 348
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_cross_session_probe",
+    "condition": "label_only",
+    "metric": "per_query_leak_rate",
+    "value": 0.75
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_cross_session_probe",
+    "condition": "owner_label",
+    "metric": "queries",
+    "value": 8
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_cross_session_probe",
+    "condition": "owner_label",
+    "metric": "retrieved_edges",
+    "value": 183235
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_cross_session_probe",
+    "condition": "owner_label",
+    "metric": "unique_retrieved_edges",
+    "value": 33103
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_cross_session_probe",
+    "condition": "owner_label",
+    "metric": "leaked_edges",
+    "value": 58
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_cross_session_probe",
+    "condition": "owner_label",
+    "metric": "leakage_events",
+    "value": 348
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_cross_session_probe",
+    "condition": "owner_label",
+    "metric": "per_query_leak_rate",
+    "value": 0.75
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_cross_session_probe",
+    "condition": "bounded5",
+    "metric": "queries",
+    "value": 8
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_cross_session_probe",
+    "condition": "bounded5",
+    "metric": "retrieved_edges",
+    "value": 4864
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_cross_session_probe",
+    "condition": "bounded5",
+    "metric": "unique_retrieved_edges",
+    "value": 4652
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_cross_session_probe",
+    "condition": "bounded5",
+    "metric": "leaked_edges",
+    "value": 5
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_cross_session_probe",
+    "condition": "bounded5",
+    "metric": "leakage_events",
+    "value": 5
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_cross_session_probe",
+    "condition": "bounded5",
+    "metric": "per_query_leak_rate",
+    "value": 0.125
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_cross_session_probe",
+    "condition": "owner_level_budget",
+    "metric": "queries",
+    "value": 8
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_cross_session_probe",
+    "condition": "owner_level_budget",
+    "metric": "retrieved_edges",
+    "value": 23349
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_cross_session_probe",
+    "condition": "owner_level_budget",
+    "metric": "unique_retrieved_edges",
+    "value": 4652
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_cross_session_probe",
+    "condition": "owner_level_budget",
+    "metric": "leaked_edges",
+    "value": 5
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_cross_session_probe",
+    "condition": "owner_level_budget",
+    "metric": "leakage_events",
+    "value": 30
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_cross_session_probe",
+    "condition": "owner_level_budget",
+    "metric": "per_query_leak_rate",
+    "value": 0.75
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_blackbox_response",
+    "condition": "global",
+    "metric": "response_chars",
+    "value": 1652059
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_blackbox_response",
+    "condition": "global",
+    "metric": "leaked_edges",
+    "value": 67
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_blackbox_response",
+    "condition": "global",
+    "metric": "leaked_terms",
+    "value": 23
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_blackbox_response",
+    "condition": "owner_only",
+    "metric": "response_chars",
+    "value": 1890
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_blackbox_response",
+    "condition": "owner_only",
+    "metric": "leaked_edges",
+    "value": 0
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_blackbox_response",
+    "condition": "owner_only",
+    "metric": "leaked_terms",
+    "value": 0
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_blackbox_response",
+    "condition": "label_only",
+    "metric": "response_chars",
+    "value": 1482249
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_blackbox_response",
+    "condition": "label_only",
+    "metric": "leaked_edges",
+    "value": 58
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_blackbox_response",
+    "condition": "label_only",
+    "metric": "leaked_terms",
+    "value": 21
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_blackbox_response",
+    "condition": "owner_label",
+    "metric": "response_chars",
+    "value": 1482249
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_blackbox_response",
+    "condition": "owner_label",
+    "metric": "leaked_edges",
+    "value": 58
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_blackbox_response",
+    "condition": "owner_label",
+    "metric": "leaked_terms",
+    "value": 21
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_blackbox_response",
+    "condition": "bounded5",
+    "metric": "response_chars",
+    "value": 216841
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_blackbox_response",
+    "condition": "bounded5",
+    "metric": "leaked_edges",
+    "value": 5
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_blackbox_response",
+    "condition": "bounded5",
+    "metric": "leaked_terms",
+    "value": 11
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_blackbox_response",
+    "condition": "owner_level_budget",
+    "metric": "response_chars",
+    "value": 216841
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_blackbox_response",
+    "condition": "owner_level_budget",
+    "metric": "leaked_edges",
+    "value": 5
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_blackbox_response",
+    "condition": "owner_level_budget",
+    "metric": "leaked_terms",
+    "value": 11
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_generator_response",
+    "condition": "global_template",
+    "metric": "status",
+    "value": "ok"
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_generator_response",
+    "condition": "global_template",
+    "metric": "context_edges",
+    "value": 24
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_generator_response",
+    "condition": "global_template",
+    "metric": "response_chars",
+    "value": 1110
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_generator_response",
+    "condition": "global_template",
+    "metric": "leaked_edges",
+    "value": 24
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_generator_response",
+    "condition": "global_template",
+    "metric": "leaked_terms",
+    "value": 18
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_generator_response",
+    "condition": "global_local_abstractive",
+    "metric": "status",
+    "value": "ok"
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_generator_response",
+    "condition": "global_local_abstractive",
+    "metric": "context_edges",
+    "value": 24
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_generator_response",
+    "condition": "global_local_abstractive",
+    "metric": "response_chars",
+    "value": 234
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_generator_response",
+    "condition": "global_local_abstractive",
+    "metric": "leaked_edges",
+    "value": 0
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_generator_response",
+    "condition": "global_local_abstractive",
+    "metric": "leaked_terms",
+    "value": 10
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_generator_response",
+    "condition": "global_evidence_dump",
+    "metric": "status",
+    "value": "ok"
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_generator_response",
+    "condition": "global_evidence_dump",
+    "metric": "context_edges",
+    "value": 24
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_generator_response",
+    "condition": "global_evidence_dump",
+    "metric": "response_chars",
+    "value": 3528
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_generator_response",
+    "condition": "global_evidence_dump",
+    "metric": "leaked_edges",
+    "value": 24
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_generator_response",
+    "condition": "global_evidence_dump",
+    "metric": "leaked_terms",
+    "value": 18
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_generator_response",
+    "condition": "global_openai",
+    "metric": "status",
+    "value": "ok"
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_generator_response",
+    "condition": "global_openai",
+    "metric": "context_edges",
+    "value": 24
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_generator_response",
+    "condition": "global_openai",
+    "metric": "response_chars",
+    "value": 247
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_generator_response",
+    "condition": "global_openai",
+    "metric": "leaked_edges",
+    "value": 0
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_generator_response",
+    "condition": "global_openai",
+    "metric": "leaked_terms",
+    "value": 5
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_generator_response",
+    "condition": "owner_only_template",
+    "metric": "status",
+    "value": "ok"
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_generator_response",
+    "condition": "owner_only_template",
+    "metric": "context_edges",
+    "value": 24
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_generator_response",
+    "condition": "owner_only_template",
+    "metric": "response_chars",
+    "value": 1039
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_generator_response",
+    "condition": "owner_only_template",
+    "metric": "leaked_edges",
+    "value": 0
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_generator_response",
+    "condition": "owner_only_template",
+    "metric": "leaked_terms",
+    "value": 0
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_generator_response",
+    "condition": "owner_only_local_abstractive",
+    "metric": "status",
+    "value": "ok"
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_generator_response",
+    "condition": "owner_only_local_abstractive",
+    "metric": "context_edges",
+    "value": 24
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_generator_response",
+    "condition": "owner_only_local_abstractive",
+    "metric": "response_chars",
+    "value": 172
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_generator_response",
+    "condition": "owner_only_local_abstractive",
+    "metric": "leaked_edges",
+    "value": 0
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_generator_response",
+    "condition": "owner_only_local_abstractive",
+    "metric": "leaked_terms",
+    "value": 0
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_generator_response",
+    "condition": "owner_only_evidence_dump",
+    "metric": "status",
+    "value": "ok"
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_generator_response",
+    "condition": "owner_only_evidence_dump",
+    "metric": "context_edges",
+    "value": 24
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_generator_response",
+    "condition": "owner_only_evidence_dump",
+    "metric": "response_chars",
+    "value": 3448
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_generator_response",
+    "condition": "owner_only_evidence_dump",
+    "metric": "leaked_edges",
+    "value": 0
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_generator_response",
+    "condition": "owner_only_evidence_dump",
+    "metric": "leaked_terms",
+    "value": 0
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_generator_response",
+    "condition": "owner_only_openai",
+    "metric": "status",
+    "value": "ok"
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_generator_response",
+    "condition": "owner_only_openai",
+    "metric": "context_edges",
+    "value": 24
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_generator_response",
+    "condition": "owner_only_openai",
+    "metric": "response_chars",
+    "value": 227
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_generator_response",
+    "condition": "owner_only_openai",
+    "metric": "leaked_edges",
+    "value": 0
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_generator_response",
+    "condition": "owner_only_openai",
+    "metric": "leaked_terms",
+    "value": 0
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_generator_response",
+    "condition": "bounded5_template",
+    "metric": "status",
+    "value": "ok"
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_generator_response",
+    "condition": "bounded5_template",
+    "metric": "context_edges",
+    "value": 24
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_generator_response",
+    "condition": "bounded5_template",
+    "metric": "response_chars",
+    "value": 1067
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_generator_response",
+    "condition": "bounded5_template",
+    "metric": "leaked_edges",
+    "value": 5
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_generator_response",
+    "condition": "bounded5_template",
+    "metric": "leaked_terms",
+    "value": 11
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_generator_response",
+    "condition": "bounded5_local_abstractive",
+    "metric": "status",
+    "value": "ok"
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_generator_response",
+    "condition": "bounded5_local_abstractive",
+    "metric": "context_edges",
+    "value": 24
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_generator_response",
+    "condition": "bounded5_local_abstractive",
+    "metric": "response_chars",
+    "value": 192
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_generator_response",
+    "condition": "bounded5_local_abstractive",
+    "metric": "leaked_edges",
+    "value": 0
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_generator_response",
+    "condition": "bounded5_local_abstractive",
+    "metric": "leaked_terms",
+    "value": 8
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_generator_response",
+    "condition": "bounded5_evidence_dump",
+    "metric": "status",
+    "value": "ok"
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_generator_response",
+    "condition": "bounded5_evidence_dump",
+    "metric": "context_edges",
+    "value": 24
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_generator_response",
+    "condition": "bounded5_evidence_dump",
+    "metric": "response_chars",
+    "value": 3476
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_generator_response",
+    "condition": "bounded5_evidence_dump",
+    "metric": "leaked_edges",
+    "value": 5
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_generator_response",
+    "condition": "bounded5_evidence_dump",
+    "metric": "leaked_terms",
+    "value": 11
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_generator_response",
+    "condition": "bounded5_openai",
+    "metric": "status",
+    "value": "ok"
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_generator_response",
+    "condition": "bounded5_openai",
+    "metric": "context_edges",
+    "value": 24
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_generator_response",
+    "condition": "bounded5_openai",
+    "metric": "response_chars",
+    "value": 181
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_generator_response",
+    "condition": "bounded5_openai",
+    "metric": "leaked_edges",
+    "value": 0
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_generator_response",
+    "condition": "bounded5_openai",
+    "metric": "leaked_terms",
+    "value": 5
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_graph_qa",
+    "condition": "global",
+    "metric": "accuracy",
+    "value": 1.0
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_graph_qa",
+    "condition": "owner_only",
+    "metric": "accuracy",
+    "value": 0.0
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_graph_qa",
+    "condition": "label_only",
+    "metric": "accuracy",
+    "value": 0.9
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_graph_qa",
+    "condition": "owner_label",
+    "metric": "accuracy",
+    "value": 0.9
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_graph_qa",
+    "condition": "bounded5",
+    "metric": "accuracy",
+    "value": 0.05
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_graph_qa",
+    "condition": "owner_level_budget",
+    "metric": "accuracy",
+    "value": 0.4
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_case_examples",
+    "condition": "global_leak",
+    "metric": "snippet",
+    "value": "user-multiwoz-mul0019-json restaurant_food restaurant-indian; user-multiwoz-mul0019-json restaurant_pricerange restaurant-expensive"
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_case_examples",
+    "condition": "global_leak",
+    "metric": "victim_edges_in_response",
+    "value": 67
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_case_examples",
+    "condition": "owner_only_blocked",
+    "metric": "snippet",
+    "value": "user-multiwoz-mul0057-json restaurant_food restaurant-modern-european; user-multiwoz-mul0057-json restaurant_area restaurant-centre"
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_case_examples",
+    "condition": "owner_only_blocked",
+    "metric": "victim_edges_in_response",
+    "value": 0
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_case_examples",
+    "condition": "bounded_partial_sharing",
+    "metric": "snippet",
+    "value": "user-multiwoz-mul0019-json restaurant_food restaurant-indian; user-multiwoz-mul0019-json restaurant_area restaurant-centre"
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_case_examples",
+    "condition": "bounded_partial_sharing",
+    "metric": "victim_edges_in_response",
+    "value": 5
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_latency",
+    "condition": "global",
+    "metric": "mean_ms_per_query",
+    "value": 758.2186
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_latency",
+    "condition": "owner_only",
+    "metric": "mean_ms_per_query",
+    "value": 27.1784
+  },
+  {
+    "system": "live_http_agent_memory",
+    "dataset": "deployed_graphrag_trace",
+    "experiment": "http_latency",
+    "condition": "bounded5",
+    "metric": "mean_ms_per_query",
+    "value": 35.4056
+  }
+]

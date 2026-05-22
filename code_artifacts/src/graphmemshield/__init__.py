@@ -1,5 +1,5 @@
 from graphmemshield.attacks.cross_session_probe import CrossSessionProbe
-from graphmemshield.attacks.session_graph_link import SessionGraphLink
+from graphmemshield.attacks.session_graph_link import LearnedSessionGraphLink, SessionGraphLink
 from graphmemshield.attacks.temporal_path_infer import TemporalPathInfer
 from graphmemshield.core.graph import DynamicMemoryGraph
 from graphmemshield.core.types import MemoryEdge, MemoryNode, RetrievalResult
@@ -26,6 +26,7 @@ __all__ = [
     "FullGraphReleasePrivacyReport",
     "GraphMemGuard",
     "GraphMemGuardPolicy",
+    "LearnedSessionGraphLink",
     "MemoryEdge",
     "MemoryNode",
     "RandomizedEdgeAdmission",

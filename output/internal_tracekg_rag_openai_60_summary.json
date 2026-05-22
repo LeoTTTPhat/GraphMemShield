@@ -1,0 +1,1149 @@
+{
+  "model": "gpt-4.1-mini",
+  "task_count": 60,
+  "correct": 60,
+  "accuracy": 1.0,
+  "rows": [
+    {
+      "task_id": "rag-internal-001",
+      "answer": "absorbing Markov chain",
+      "prediction": "absorbing Markov chain",
+      "correct": true,
+      "latency_seconds": 2.2624869346618652,
+      "retrieved": [
+        {
+          "id": "rag-internal-001-d1",
+          "text": "Primary reliability document for approved internal TraceKG case 1. Controlled answer: absorbing Markov chain. TraceKG models reliability with an absorbing Markov chain over success, failure, and repair states.",
+          "score": 0.315544170324846
+        },
+        {
+          "id": "rag-internal-001-d2",
+          "text": "Secondary distractor for unrelated case 101. Controlled answer: mandatory verification. Terminal success without tests triggers a mandatory verification repair.",
+          "score": 0.07336410971409403
+        }
+      ]
+    },
+    {
+      "task_id": "rag-internal-002",
+      "answer": "retrieval-before-answer gating",
+      "prediction": "The controlled answer named in the primary retrieval document for approved internal TraceKG case 2 is \"retrieval-before-answer gating.\"",
+      "correct": true,
+      "latency_seconds": 1.2912230491638184,
+      "retrieved": [
+        {
+          "id": "rag-internal-002-d1",
+          "text": "Primary retrieval document for approved internal TraceKG case 2. Controlled answer: retrieval-before-answer gating. TraceKG recommends retrieval-before-answer gating when an agent answers without sufficient evidence.",
+          "score": 0.37936069467657146
+        },
+        {
+          "id": "rag-internal-002-d3",
+          "text": "Secondary distractor for unrelated case 202. Controlled answer: AgentBench. AgentBench evaluates language-model agents across multiple interactive environments.",
+          "score": 0.07616886645136736
+        }
+      ]
+    },
+    {
+      "task_id": "rag-internal-003",
+      "answer": "navigation rollback",
+      "prediction": "navigation rollback",
+      "correct": true,
+      "latency_seconds": 1.28220796585083,
+      "retrieved": [
+        {
+          "id": "rag-internal-003-d1",
+          "text": "Primary navigation document for approved internal TraceKG case 3. Controlled answer: navigation rollback. Repeated failed navigation is handled by page-state memory and navigation rollback.",
+          "score": 0.40911743639284937
+        },
+        {
+          "id": "rag-internal-003-d3",
+          "text": "Secondary distractor for unrelated case 203. Controlled answer: provenance minimization. Privacy-sensitive trace sharing uses provenance minimization and de-identified benchmark observations.",
+          "score": 0.0664871519672791
+        }
+      ]
+    },
+    {
+      "task_id": "rag-internal-004",
+      "answer": "mandatory verification",
+      "prediction": "mandatory verification",
+      "correct": true,
+      "latency_seconds": 3.886338233947754,
+      "retrieved": [
+        {
+          "id": "rag-internal-004-d1",
+          "text": "Primary verification document for approved internal TraceKG case 4. Controlled answer: mandatory verification. Terminal success without tests triggers a mandatory verification repair.",
+          "score": 0.38550682359875493
+        },
+        {
+          "id": "rag-internal-004-d2",
+          "text": "Secondary distractor for unrelated case 104. Controlled answer: WebArena. WebArena evaluates realistic web navigation agents in browser-like environments.",
+          "score": 0.12018064145155785
+        }
+      ]
+    },
+    {
+      "task_id": "rag-internal-005",
+      "answer": "schema validation",
+      "prediction": "The controlled answer named in the primary schema document for approved internal TraceKG case 5 is \"schema validation.\"",
+      "correct": true,
+      "latency_seconds": 1.2271549701690674,
+      "retrieved": [
+        {
+          "id": "rag-internal-005-d1",
+          "text": "Primary schema document for approved internal TraceKG case 5. Controlled answer: schema validation. Tool precondition failures are mitigated with schema validation before tool execution.",
+          "score": 0.3348351713493827
+        },
+        {
+          "id": "rag-internal-005-d3",
+          "text": "Secondary distractor for unrelated case 205. Controlled answer: retrieval-before-answer gating. TraceKG recommends retrieval-before-answer gating when an agent answers without sufficient evidence.",
+          "score": 0.11493360648067544
+        }
+      ]
+    },
+    {
+      "task_id": "rag-internal-006",
+      "answer": "step budget guard",
+      "prediction": "step budget guard",
+      "correct": true,
+      "latency_seconds": 1.0202579498291016,
+      "retrieved": [
+        {
+          "id": "rag-internal-006-d1",
+          "text": "Primary budget document for approved internal TraceKG case 6. Controlled answer: step budget guard. BudgetExceeded failures are handled by a step budget guard followed by replanning.",
+          "score": 0.3377174409534402
+        },
+        {
+          "id": "rag-internal-006-d3",
+          "text": "Secondary distractor for unrelated case 206. Controlled answer: navigation rollback. Repeated failed navigation is handled by page-state memory and navigation rollback.",
+          "score": 0.09736614533126356
+        }
+      ]
+    },
+    {
+      "task_id": "rag-internal-007",
+      "answer": "WebArena",
+      "prediction": "WebArena",
+      "correct": true,
+      "latency_seconds": 4.705919027328491,
+      "retrieved": [
+        {
+          "id": "rag-internal-007-d1",
+          "text": "Primary web document for approved internal TraceKG case 7. Controlled answer: WebArena. WebArena evaluates realistic web navigation agents in browser-like environments.",
+          "score": 0.40170961153813894
+        },
+        {
+          "id": "rag-internal-007-d3",
+          "text": "Secondary distractor for unrelated case 207. Controlled answer: mandatory verification. Terminal success without tests triggers a mandatory verification repair.",
+          "score": 0.07288503738604386
+        }
+      ]
+    },
+    {
+      "task_id": "rag-internal-008",
+      "answer": "SWE-bench",
+      "prediction": "SWE-bench",
+      "correct": true,
+      "latency_seconds": 1.020003080368042,
+      "retrieved": [
+        {
+          "id": "rag-internal-008-d1",
+          "text": "Primary coding document for approved internal TraceKG case 8. Controlled answer: SWE-bench. SWE-bench evaluates agents on real-world GitHub issue resolution tasks.",
+          "score": 0.2790342204390434
+        },
+        {
+          "id": "rag-internal-008-d2",
+          "text": "Secondary distractor for unrelated case 108. Controlled answer: absorbing Markov chain. TraceKG models reliability with an absorbing Markov chain over success, failure, and repair states.",
+          "score": 0.08270271990356645
+        }
+      ]
+    },
+    {
+      "task_id": "rag-internal-009",
+      "answer": "AgentBench",
+      "prediction": "AgentBench",
+      "correct": true,
+      "latency_seconds": 0.9573748111724854,
+      "retrieved": [
+        {
+          "id": "rag-internal-009-d1",
+          "text": "Primary agent document for approved internal TraceKG case 9. Controlled answer: AgentBench. AgentBench evaluates language-model agents across multiple interactive environments.",
+          "score": 0.3080853984609813
+        },
+        {
+          "id": "rag-internal-009-d2",
+          "text": "Secondary distractor for unrelated case 109. Controlled answer: retrieval-before-answer gating. TraceKG recommends retrieval-before-answer gating when an agent answers without sufficient evidence.",
+          "score": 0.13656843398699742
+        }
+      ]
+    },
+    {
+      "task_id": "rag-internal-010",
+      "answer": "provenance minimization",
+      "prediction": "provenance minimization",
+      "correct": true,
+      "latency_seconds": 0.893801212310791,
+      "retrieved": [
+        {
+          "id": "rag-internal-010-d1",
+          "text": "Primary privacy document for approved internal TraceKG case 10. Controlled answer: provenance minimization. Privacy-sensitive trace sharing uses provenance minimization and de-identified benchmark observations.",
+          "score": 0.3479792787101574
+        },
+        {
+          "id": "rag-internal-010-d3",
+          "text": "Secondary distractor for unrelated case 210. Controlled answer: WebArena. WebArena evaluates realistic web navigation agents in browser-like environments.",
+          "score": 0.11936426209885777
+        }
+      ]
+    },
+    {
+      "task_id": "rag-internal-011",
+      "answer": "absorbing Markov chain",
+      "prediction": "absorbing Markov chain",
+      "correct": true,
+      "latency_seconds": 1.007659912109375,
+      "retrieved": [
+        {
+          "id": "rag-internal-011-d1",
+          "text": "Primary reliability document for approved internal TraceKG case 11. Controlled answer: absorbing Markov chain. TraceKG models reliability with an absorbing Markov chain over success, failure, and repair states.",
+          "score": 0.3361504076510562
+        },
+        {
+          "id": "rag-internal-011-d2",
+          "text": "Secondary distractor for unrelated case 111. Controlled answer: mandatory verification. Terminal success without tests triggers a mandatory verification repair.",
+          "score": 0.07164755632858945
+        }
+      ]
+    },
+    {
+      "task_id": "rag-internal-012",
+      "answer": "retrieval-before-answer gating",
+      "prediction": "The controlled answer named in the primary retrieval document for approved internal TraceKG case 12 is \"retrieval-before-answer gating.\"",
+      "correct": true,
+      "latency_seconds": 1.2299132347106934,
+      "retrieved": [
+        {
+          "id": "rag-internal-012-d1",
+          "text": "Primary retrieval document for approved internal TraceKG case 12. Controlled answer: retrieval-before-answer gating. TraceKG recommends retrieval-before-answer gating when an agent answers without sufficient evidence.",
+          "score": 0.39800038580292224
+        },
+        {
+          "id": "rag-internal-012-d3",
+          "text": "Secondary distractor for unrelated case 212. Controlled answer: AgentBench. AgentBench evaluates language-model agents across multiple interactive environments.",
+          "score": 0.07438668813438544
+        }
+      ]
+    },
+    {
+      "task_id": "rag-internal-013",
+      "answer": "navigation rollback",
+      "prediction": "The controlled answer named in the primary navigation document for approved internal TraceKG case 13 is \"navigation rollback.\"",
+      "correct": true,
+      "latency_seconds": 1.2220039367675781,
+      "retrieved": [
+        {
+          "id": "rag-internal-013-d1",
+          "text": "Primary navigation document for approved internal TraceKG case 13. Controlled answer: navigation rollback. Repeated failed navigation is handled by page-state memory and navigation rollback.",
+          "score": 0.42807724177990897
+        },
+        {
+          "id": "rag-internal-013-d3",
+          "text": "Secondary distractor for unrelated case 213. Controlled answer: provenance minimization. Privacy-sensitive trace sharing uses provenance minimization and de-identified benchmark observations.",
+          "score": 0.06488588064769486
+        }
+      ]
+    },
+    {
+      "task_id": "rag-internal-014",
+      "answer": "mandatory verification",
+      "prediction": "mandatory verification",
+      "correct": true,
+      "latency_seconds": 1.2233588695526123,
+      "retrieved": [
+        {
+          "id": "rag-internal-014-d1",
+          "text": "Primary verification document for approved internal TraceKG case 14. Controlled answer: mandatory verification. Terminal success without tests triggers a mandatory verification repair.",
+          "score": 0.40933460240447433
+        },
+        {
+          "id": "rag-internal-014-d2",
+          "text": "Secondary distractor for unrelated case 114. Controlled answer: WebArena. WebArena evaluates realistic web navigation agents in browser-like environments.",
+          "score": 0.1172373627922257
+        }
+      ]
+    },
+    {
+      "task_id": "rag-internal-015",
+      "answer": "schema validation",
+      "prediction": "The controlled answer named in the primary schema document for approved internal TraceKG case 15 is \"schema validation.\"",
+      "correct": true,
+      "latency_seconds": 1.4319369792938232,
+      "retrieved": [
+        {
+          "id": "rag-internal-015-d1",
+          "text": "Primary schema document for approved internal TraceKG case 15. Controlled answer: schema validation. Tool precondition failures are mitigated with schema validation before tool execution.",
+          "score": 0.3570603423803423
+        },
+        {
+          "id": "rag-internal-015-d3",
+          "text": "Secondary distractor for unrelated case 215. Controlled answer: retrieval-before-answer gating. TraceKG recommends retrieval-before-answer gating when an agent answers without sufficient evidence.",
+          "score": 0.11220034308221137
+        }
+      ]
+    },
+    {
+      "task_id": "rag-internal-016",
+      "answer": "step budget guard",
+      "prediction": "step budget guard",
+      "correct": true,
+      "latency_seconds": 1.2256419658660889,
+      "retrieved": [
+        {
+          "id": "rag-internal-016-d1",
+          "text": "Primary budget document for approved internal TraceKG case 16. Controlled answer: step budget guard. BudgetExceeded failures are handled by a step budget guard followed by replanning.",
+          "score": 0.3590954416168552
+        },
+        {
+          "id": "rag-internal-016-d3",
+          "text": "Secondary distractor for unrelated case 216. Controlled answer: navigation rollback. Repeated failed navigation is handled by page-state memory and navigation rollback.",
+          "score": 0.09502118677304237
+        }
+      ]
+    },
+    {
+      "task_id": "rag-internal-017",
+      "answer": "WebArena",
+      "prediction": "WebArena",
+      "correct": true,
+      "latency_seconds": 1.0212690830230713,
+      "retrieved": [
+        {
+          "id": "rag-internal-017-d1",
+          "text": "Primary web document for approved internal TraceKG case 17. Controlled answer: WebArena. WebArena evaluates realistic web navigation agents in browser-like environments.",
+          "score": 0.42507676059586896
+        },
+        {
+          "id": "rag-internal-017-d3",
+          "text": "Secondary distractor for unrelated case 217. Controlled answer: mandatory verification. Terminal success without tests triggers a mandatory verification repair.",
+          "score": 0.07112967989907353
+        }
+      ]
+    },
+    {
+      "task_id": "rag-internal-018",
+      "answer": "SWE-bench",
+      "prediction": "SWE-bench",
+      "correct": true,
+      "latency_seconds": 1.635627031326294,
+      "retrieved": [
+        {
+          "id": "rag-internal-018-d1",
+          "text": "Primary coding document for approved internal TraceKG case 18. Controlled answer: SWE-bench. SWE-bench evaluates agents on real-world GitHub issue resolution tasks.",
+          "score": 0.30481629497354307
+        },
+        {
+          "id": "rag-internal-018-d2",
+          "text": "Secondary distractor for unrelated case 118. Controlled answer: absorbing Markov chain. TraceKG models reliability with an absorbing Markov chain over success, failure, and repair states.",
+          "score": 0.08073594687531511
+        }
+      ]
+    },
+    {
+      "task_id": "rag-internal-019",
+      "answer": "AgentBench",
+      "prediction": "AgentBench",
+      "correct": true,
+      "latency_seconds": 1.0167500972747803,
+      "retrieved": [
+        {
+          "id": "rag-internal-019-d1",
+          "text": "Primary agent document for approved internal TraceKG case 19. Controlled answer: AgentBench. AgentBench evaluates language-model agents across multiple interactive environments.",
+          "score": 0.33687181552231643
+        },
+        {
+          "id": "rag-internal-019-d2",
+          "text": "Secondary distractor for unrelated case 119. Controlled answer: retrieval-before-answer gating. TraceKG recommends retrieval-before-answer gating when an agent answers without sufficient evidence.",
+          "score": 0.1332665462901127
+        }
+      ]
+    },
+    {
+      "task_id": "rag-internal-020",
+      "answer": "provenance minimization",
+      "prediction": "provenance minimization",
+      "correct": true,
+      "latency_seconds": 1.281012773513794,
+      "retrieved": [
+        {
+          "id": "rag-internal-020-d1",
+          "text": "Primary privacy document for approved internal TraceKG case 20. Controlled answer: provenance minimization. Privacy-sensitive trace sharing uses provenance minimization and de-identified benchmark observations.",
+          "score": 0.3479792787101574
+        },
+        {
+          "id": "rag-internal-020-d3",
+          "text": "Secondary distractor for unrelated case 220. Controlled answer: WebArena. WebArena evaluates realistic web navigation agents in browser-like environments.",
+          "score": 0.11936426209885777
+        }
+      ]
+    },
+    {
+      "task_id": "rag-internal-021",
+      "answer": "absorbing Markov chain",
+      "prediction": "absorbing Markov chain",
+      "correct": true,
+      "latency_seconds": 1.1594631671905518,
+      "retrieved": [
+        {
+          "id": "rag-internal-021-d1",
+          "text": "Primary reliability document for approved internal TraceKG case 21. Controlled answer: absorbing Markov chain. TraceKG models reliability with an absorbing Markov chain over success, failure, and repair states.",
+          "score": 0.3361504076510562
+        },
+        {
+          "id": "rag-internal-021-d2",
+          "text": "Secondary distractor for unrelated case 121. Controlled answer: mandatory verification. Terminal success without tests triggers a mandatory verification repair.",
+          "score": 0.07164755632858945
+        }
+      ]
+    },
+    {
+      "task_id": "rag-internal-022",
+      "answer": "retrieval-before-answer gating",
+      "prediction": "The controlled answer named in the primary retrieval document for approved internal TraceKG case 22 is \"retrieval-before-answer gating.\"",
+      "correct": true,
+      "latency_seconds": 1.2373178005218506,
+      "retrieved": [
+        {
+          "id": "rag-internal-022-d1",
+          "text": "Primary retrieval document for approved internal TraceKG case 22. Controlled answer: retrieval-before-answer gating. TraceKG recommends retrieval-before-answer gating when an agent answers without sufficient evidence.",
+          "score": 0.39800038580292224
+        },
+        {
+          "id": "rag-internal-022-d3",
+          "text": "Secondary distractor for unrelated case 222. Controlled answer: AgentBench. AgentBench evaluates language-model agents across multiple interactive environments.",
+          "score": 0.07438668813438544
+        }
+      ]
+    },
+    {
+      "task_id": "rag-internal-023",
+      "answer": "navigation rollback",
+      "prediction": "navigation rollback",
+      "correct": true,
+      "latency_seconds": 1.228684902191162,
+      "retrieved": [
+        {
+          "id": "rag-internal-023-d1",
+          "text": "Primary navigation document for approved internal TraceKG case 23. Controlled answer: navigation rollback. Repeated failed navigation is handled by page-state memory and navigation rollback.",
+          "score": 0.42807724177990897
+        },
+        {
+          "id": "rag-internal-023-d3",
+          "text": "Secondary distractor for unrelated case 223. Controlled answer: provenance minimization. Privacy-sensitive trace sharing uses provenance minimization and de-identified benchmark observations.",
+          "score": 0.06488588064769486
+        }
+      ]
+    },
+    {
+      "task_id": "rag-internal-024",
+      "answer": "mandatory verification",
+      "prediction": "mandatory verification",
+      "correct": true,
+      "latency_seconds": 0.8401768207550049,
+      "retrieved": [
+        {
+          "id": "rag-internal-024-d1",
+          "text": "Primary verification document for approved internal TraceKG case 24. Controlled answer: mandatory verification. Terminal success without tests triggers a mandatory verification repair.",
+          "score": 0.40933460240447433
+        },
+        {
+          "id": "rag-internal-024-d2",
+          "text": "Secondary distractor for unrelated case 124. Controlled answer: WebArena. WebArena evaluates realistic web navigation agents in browser-like environments.",
+          "score": 0.1172373627922257
+        }
+      ]
+    },
+    {
+      "task_id": "rag-internal-025",
+      "answer": "schema validation",
+      "prediction": "schema validation",
+      "correct": true,
+      "latency_seconds": 1.0608270168304443,
+      "retrieved": [
+        {
+          "id": "rag-internal-025-d1",
+          "text": "Primary schema document for approved internal TraceKG case 25. Controlled answer: schema validation. Tool precondition failures are mitigated with schema validation before tool execution.",
+          "score": 0.3570603423803423
+        },
+        {
+          "id": "rag-internal-025-d3",
+          "text": "Secondary distractor for unrelated case 225. Controlled answer: retrieval-before-answer gating. TraceKG recommends retrieval-before-answer gating when an agent answers without sufficient evidence.",
+          "score": 0.11220034308221137
+        }
+      ]
+    },
+    {
+      "task_id": "rag-internal-026",
+      "answer": "step budget guard",
+      "prediction": "step budget guard",
+      "correct": true,
+      "latency_seconds": 1.3144869804382324,
+      "retrieved": [
+        {
+          "id": "rag-internal-026-d1",
+          "text": "Primary budget document for approved internal TraceKG case 26. Controlled answer: step budget guard. BudgetExceeded failures are handled by a step budget guard followed by replanning.",
+          "score": 0.3590954416168552
+        },
+        {
+          "id": "rag-internal-026-d3",
+          "text": "Secondary distractor for unrelated case 226. Controlled answer: navigation rollback. Repeated failed navigation is handled by page-state memory and navigation rollback.",
+          "score": 0.09502118677304237
+        }
+      ]
+    },
+    {
+      "task_id": "rag-internal-027",
+      "answer": "WebArena",
+      "prediction": "WebArena",
+      "correct": true,
+      "latency_seconds": 1.0532810688018799,
+      "retrieved": [
+        {
+          "id": "rag-internal-027-d1",
+          "text": "Primary web document for approved internal TraceKG case 27. Controlled answer: WebArena. WebArena evaluates realistic web navigation agents in browser-like environments.",
+          "score": 0.42507676059586896
+        },
+        {
+          "id": "rag-internal-027-d3",
+          "text": "Secondary distractor for unrelated case 227. Controlled answer: mandatory verification. Terminal success without tests triggers a mandatory verification repair.",
+          "score": 0.07112967989907353
+        }
+      ]
+    },
+    {
+      "task_id": "rag-internal-028",
+      "answer": "SWE-bench",
+      "prediction": "SWE-bench",
+      "correct": true,
+      "latency_seconds": 1.1510329246520996,
+      "retrieved": [
+        {
+          "id": "rag-internal-028-d1",
+          "text": "Primary coding document for approved internal TraceKG case 28. Controlled answer: SWE-bench. SWE-bench evaluates agents on real-world GitHub issue resolution tasks.",
+          "score": 0.30481629497354307
+        },
+        {
+          "id": "rag-internal-028-d2",
+          "text": "Secondary distractor for unrelated case 128. Controlled answer: absorbing Markov chain. TraceKG models reliability with an absorbing Markov chain over success, failure, and repair states.",
+          "score": 0.08073594687531511
+        }
+      ]
+    },
+    {
+      "task_id": "rag-internal-029",
+      "answer": "AgentBench",
+      "prediction": "AgentBench",
+      "correct": true,
+      "latency_seconds": 3.776901960372925,
+      "retrieved": [
+        {
+          "id": "rag-internal-029-d1",
+          "text": "Primary agent document for approved internal TraceKG case 29. Controlled answer: AgentBench. AgentBench evaluates language-model agents across multiple interactive environments.",
+          "score": 0.33687181552231643
+        },
+        {
+          "id": "rag-internal-029-d2",
+          "text": "Secondary distractor for unrelated case 129. Controlled answer: retrieval-before-answer gating. TraceKG recommends retrieval-before-answer gating when an agent answers without sufficient evidence.",
+          "score": 0.1332665462901127
+        }
+      ]
+    },
+    {
+      "task_id": "rag-internal-030",
+      "answer": "provenance minimization",
+      "prediction": "The controlled answer named in the primary privacy document for approved internal TraceKG case 30 is \"provenance minimization.\"",
+      "correct": true,
+      "latency_seconds": 1.6349749565124512,
+      "retrieved": [
+        {
+          "id": "rag-internal-030-d1",
+          "text": "Primary privacy document for approved internal TraceKG case 30. Controlled answer: provenance minimization. Privacy-sensitive trace sharing uses provenance minimization and de-identified benchmark observations.",
+          "score": 0.3479792787101574
+        },
+        {
+          "id": "rag-internal-030-d3",
+          "text": "Secondary distractor for unrelated case 230. Controlled answer: WebArena. WebArena evaluates realistic web navigation agents in browser-like environments.",
+          "score": 0.11936426209885777
+        }
+      ]
+    },
+    {
+      "task_id": "rag-internal-031",
+      "answer": "absorbing Markov chain",
+      "prediction": "absorbing Markov chain",
+      "correct": true,
+      "latency_seconds": 1.7164783477783203,
+      "retrieved": [
+        {
+          "id": "rag-internal-031-d1",
+          "text": "Primary reliability document for approved internal TraceKG case 31. Controlled answer: absorbing Markov chain. TraceKG models reliability with an absorbing Markov chain over success, failure, and repair states.",
+          "score": 0.3361504076510562
+        },
+        {
+          "id": "rag-internal-031-d2",
+          "text": "Secondary distractor for unrelated case 131. Controlled answer: mandatory verification. Terminal success without tests triggers a mandatory verification repair.",
+          "score": 0.07164755632858945
+        }
+      ]
+    },
+    {
+      "task_id": "rag-internal-032",
+      "answer": "retrieval-before-answer gating",
+      "prediction": "The controlled answer named in the primary retrieval document for approved internal TraceKG case 32 is \"retrieval-before-answer gating.\"",
+      "correct": true,
+      "latency_seconds": 1.1519160270690918,
+      "retrieved": [
+        {
+          "id": "rag-internal-032-d1",
+          "text": "Primary retrieval document for approved internal TraceKG case 32. Controlled answer: retrieval-before-answer gating. TraceKG recommends retrieval-before-answer gating when an agent answers without sufficient evidence.",
+          "score": 0.39800038580292224
+        },
+        {
+          "id": "rag-internal-032-d3",
+          "text": "Secondary distractor for unrelated case 232. Controlled answer: AgentBench. AgentBench evaluates language-model agents across multiple interactive environments.",
+          "score": 0.07438668813438544
+        }
+      ]
+    },
+    {
+      "task_id": "rag-internal-033",
+      "answer": "navigation rollback",
+      "prediction": "navigation rollback",
+      "correct": true,
+      "latency_seconds": 1.0178377628326416,
+      "retrieved": [
+        {
+          "id": "rag-internal-033-d1",
+          "text": "Primary navigation document for approved internal TraceKG case 33. Controlled answer: navigation rollback. Repeated failed navigation is handled by page-state memory and navigation rollback.",
+          "score": 0.42807724177990897
+        },
+        {
+          "id": "rag-internal-033-d3",
+          "text": "Secondary distractor for unrelated case 233. Controlled answer: provenance minimization. Privacy-sensitive trace sharing uses provenance minimization and de-identified benchmark observations.",
+          "score": 0.06488588064769486
+        }
+      ]
+    },
+    {
+      "task_id": "rag-internal-034",
+      "answer": "mandatory verification",
+      "prediction": "mandatory verification",
+      "correct": true,
+      "latency_seconds": 1.509570837020874,
+      "retrieved": [
+        {
+          "id": "rag-internal-034-d1",
+          "text": "Primary verification document for approved internal TraceKG case 34. Controlled answer: mandatory verification. Terminal success without tests triggers a mandatory verification repair.",
+          "score": 0.40933460240447433
+        },
+        {
+          "id": "rag-internal-034-d2",
+          "text": "Secondary distractor for unrelated case 134. Controlled answer: WebArena. WebArena evaluates realistic web navigation agents in browser-like environments.",
+          "score": 0.1172373627922257
+        }
+      ]
+    },
+    {
+      "task_id": "rag-internal-035",
+      "answer": "schema validation",
+      "prediction": "schema validation",
+      "correct": true,
+      "latency_seconds": 1.1484401226043701,
+      "retrieved": [
+        {
+          "id": "rag-internal-035-d1",
+          "text": "Primary schema document for approved internal TraceKG case 35. Controlled answer: schema validation. Tool precondition failures are mitigated with schema validation before tool execution.",
+          "score": 0.3570603423803423
+        },
+        {
+          "id": "rag-internal-035-d3",
+          "text": "Secondary distractor for unrelated case 235. Controlled answer: retrieval-before-answer gating. TraceKG recommends retrieval-before-answer gating when an agent answers without sufficient evidence.",
+          "score": 0.11220034308221137
+        }
+      ]
+    },
+    {
+      "task_id": "rag-internal-036",
+      "answer": "step budget guard",
+      "prediction": "step budget guard",
+      "correct": true,
+      "latency_seconds": 1.097975730895996,
+      "retrieved": [
+        {
+          "id": "rag-internal-036-d1",
+          "text": "Primary budget document for approved internal TraceKG case 36. Controlled answer: step budget guard. BudgetExceeded failures are handled by a step budget guard followed by replanning.",
+          "score": 0.3590954416168552
+        },
+        {
+          "id": "rag-internal-036-d3",
+          "text": "Secondary distractor for unrelated case 236. Controlled answer: navigation rollback. Repeated failed navigation is handled by page-state memory and navigation rollback.",
+          "score": 0.09502118677304237
+        }
+      ]
+    },
+    {
+      "task_id": "rag-internal-037",
+      "answer": "WebArena",
+      "prediction": "WebArena",
+      "correct": true,
+      "latency_seconds": 0.9423017501831055,
+      "retrieved": [
+        {
+          "id": "rag-internal-037-d1",
+          "text": "Primary web document for approved internal TraceKG case 37. Controlled answer: WebArena. WebArena evaluates realistic web navigation agents in browser-like environments.",
+          "score": 0.42507676059586896
+        },
+        {
+          "id": "rag-internal-037-d3",
+          "text": "Secondary distractor for unrelated case 237. Controlled answer: mandatory verification. Terminal success without tests triggers a mandatory verification repair.",
+          "score": 0.07112967989907353
+        }
+      ]
+    },
+    {
+      "task_id": "rag-internal-038",
+      "answer": "SWE-bench",
+      "prediction": "SWE-bench",
+      "correct": true,
+      "latency_seconds": 1.020819902420044,
+      "retrieved": [
+        {
+          "id": "rag-internal-038-d1",
+          "text": "Primary coding document for approved internal TraceKG case 38. Controlled answer: SWE-bench. SWE-bench evaluates agents on real-world GitHub issue resolution tasks.",
+          "score": 0.30481629497354307
+        },
+        {
+          "id": "rag-internal-038-d2",
+          "text": "Secondary distractor for unrelated case 138. Controlled answer: absorbing Markov chain. TraceKG models reliability with an absorbing Markov chain over success, failure, and repair states.",
+          "score": 0.08073594687531511
+        }
+      ]
+    },
+    {
+      "task_id": "rag-internal-039",
+      "answer": "AgentBench",
+      "prediction": "AgentBench",
+      "correct": true,
+      "latency_seconds": 1.2272498607635498,
+      "retrieved": [
+        {
+          "id": "rag-internal-039-d1",
+          "text": "Primary agent document for approved internal TraceKG case 39. Controlled answer: AgentBench. AgentBench evaluates language-model agents across multiple interactive environments.",
+          "score": 0.33687181552231643
+        },
+        {
+          "id": "rag-internal-039-d2",
+          "text": "Secondary distractor for unrelated case 139. Controlled answer: retrieval-before-answer gating. TraceKG recommends retrieval-before-answer gating when an agent answers without sufficient evidence.",
+          "score": 0.1332665462901127
+        }
+      ]
+    },
+    {
+      "task_id": "rag-internal-040",
+      "answer": "provenance minimization",
+      "prediction": "provenance minimization",
+      "correct": true,
+      "latency_seconds": 1.0178110599517822,
+      "retrieved": [
+        {
+          "id": "rag-internal-040-d1",
+          "text": "Primary privacy document for approved internal TraceKG case 40. Controlled answer: provenance minimization. Privacy-sensitive trace sharing uses provenance minimization and de-identified benchmark observations.",
+          "score": 0.3479792787101574
+        },
+        {
+          "id": "rag-internal-040-d3",
+          "text": "Secondary distractor for unrelated case 240. Controlled answer: WebArena. WebArena evaluates realistic web navigation agents in browser-like environments.",
+          "score": 0.11936426209885777
+        }
+      ]
+    },
+    {
+      "task_id": "rag-internal-041",
+      "answer": "absorbing Markov chain",
+      "prediction": "absorbing Markov chain",
+      "correct": true,
+      "latency_seconds": 4.707230806350708,
+      "retrieved": [
+        {
+          "id": "rag-internal-041-d1",
+          "text": "Primary reliability document for approved internal TraceKG case 41. Controlled answer: absorbing Markov chain. TraceKG models reliability with an absorbing Markov chain over success, failure, and repair states.",
+          "score": 0.3361504076510562
+        },
+        {
+          "id": "rag-internal-041-d2",
+          "text": "Secondary distractor for unrelated case 141. Controlled answer: mandatory verification. Terminal success without tests triggers a mandatory verification repair.",
+          "score": 0.07164755632858945
+        }
+      ]
+    },
+    {
+      "task_id": "rag-internal-042",
+      "answer": "retrieval-before-answer gating",
+      "prediction": "retrieval-before-answer gating",
+      "correct": true,
+      "latency_seconds": 1.0216648578643799,
+      "retrieved": [
+        {
+          "id": "rag-internal-042-d1",
+          "text": "Primary retrieval document for approved internal TraceKG case 42. Controlled answer: retrieval-before-answer gating. TraceKG recommends retrieval-before-answer gating when an agent answers without sufficient evidence.",
+          "score": 0.39800038580292224
+        },
+        {
+          "id": "rag-internal-042-d3",
+          "text": "Secondary distractor for unrelated case 242. Controlled answer: AgentBench. AgentBench evaluates language-model agents across multiple interactive environments.",
+          "score": 0.07438668813438544
+        }
+      ]
+    },
+    {
+      "task_id": "rag-internal-043",
+      "answer": "navigation rollback",
+      "prediction": "navigation rollback",
+      "correct": true,
+      "latency_seconds": 1.6029930114746094,
+      "retrieved": [
+        {
+          "id": "rag-internal-043-d1",
+          "text": "Primary navigation document for approved internal TraceKG case 43. Controlled answer: navigation rollback. Repeated failed navigation is handled by page-state memory and navigation rollback.",
+          "score": 0.42807724177990897
+        },
+        {
+          "id": "rag-internal-043-d3",
+          "text": "Secondary distractor for unrelated case 243. Controlled answer: provenance minimization. Privacy-sensitive trace sharing uses provenance minimization and de-identified benchmark observations.",
+          "score": 0.06488588064769486
+        }
+      ]
+    },
+    {
+      "task_id": "rag-internal-044",
+      "answer": "mandatory verification",
+      "prediction": "mandatory verification",
+      "correct": true,
+      "latency_seconds": 1.1592822074890137,
+      "retrieved": [
+        {
+          "id": "rag-internal-044-d1",
+          "text": "Primary verification document for approved internal TraceKG case 44. Controlled answer: mandatory verification. Terminal success without tests triggers a mandatory verification repair.",
+          "score": 0.40933460240447433
+        },
+        {
+          "id": "rag-internal-044-d2",
+          "text": "Secondary distractor for unrelated case 144. Controlled answer: WebArena. WebArena evaluates realistic web navigation agents in browser-like environments.",
+          "score": 0.1172373627922257
+        }
+      ]
+    },
+    {
+      "task_id": "rag-internal-045",
+      "answer": "schema validation",
+      "prediction": "The controlled answer named in the primary schema document for approved internal TraceKG case 45 is \"schema validation.\"",
+      "correct": true,
+      "latency_seconds": 1.336731195449829,
+      "retrieved": [
+        {
+          "id": "rag-internal-045-d1",
+          "text": "Primary schema document for approved internal TraceKG case 45. Controlled answer: schema validation. Tool precondition failures are mitigated with schema validation before tool execution.",
+          "score": 0.3570603423803423
+        },
+        {
+          "id": "rag-internal-045-d3",
+          "text": "Secondary distractor for unrelated case 245. Controlled answer: retrieval-before-answer gating. TraceKG recommends retrieval-before-answer gating when an agent answers without sufficient evidence.",
+          "score": 0.11220034308221137
+        }
+      ]
+    },
+    {
+      "task_id": "rag-internal-046",
+      "answer": "step budget guard",
+      "prediction": "step budget guard",
+      "correct": true,
+      "latency_seconds": 1.2145719528198242,
+      "retrieved": [
+        {
+          "id": "rag-internal-046-d1",
+          "text": "Primary budget document for approved internal TraceKG case 46. Controlled answer: step budget guard. BudgetExceeded failures are handled by a step budget guard followed by replanning.",
+          "score": 0.3590954416168552
+        },
+        {
+          "id": "rag-internal-046-d3",
+          "text": "Secondary distractor for unrelated case 246. Controlled answer: navigation rollback. Repeated failed navigation is handled by page-state memory and navigation rollback.",
+          "score": 0.09502118677304237
+        }
+      ]
+    },
+    {
+      "task_id": "rag-internal-047",
+      "answer": "WebArena",
+      "prediction": "WebArena",
+      "correct": true,
+      "latency_seconds": 1.1294240951538086,
+      "retrieved": [
+        {
+          "id": "rag-internal-047-d1",
+          "text": "Primary web document for approved internal TraceKG case 47. Controlled answer: WebArena. WebArena evaluates realistic web navigation agents in browser-like environments.",
+          "score": 0.42507676059586896
+        },
+        {
+          "id": "rag-internal-047-d3",
+          "text": "Secondary distractor for unrelated case 247. Controlled answer: mandatory verification. Terminal success without tests triggers a mandatory verification repair.",
+          "score": 0.07112967989907353
+        }
+      ]
+    },
+    {
+      "task_id": "rag-internal-048",
+      "answer": "SWE-bench",
+      "prediction": "SWE-bench",
+      "correct": true,
+      "latency_seconds": 1.1175038814544678,
+      "retrieved": [
+        {
+          "id": "rag-internal-048-d1",
+          "text": "Primary coding document for approved internal TraceKG case 48. Controlled answer: SWE-bench. SWE-bench evaluates agents on real-world GitHub issue resolution tasks.",
+          "score": 0.30481629497354307
+        },
+        {
+          "id": "rag-internal-048-d2",
+          "text": "Secondary distractor for unrelated case 148. Controlled answer: absorbing Markov chain. TraceKG models reliability with an absorbing Markov chain over success, failure, and repair states.",
+          "score": 0.08073594687531511
+        }
+      ]
+    },
+    {
+      "task_id": "rag-internal-049",
+      "answer": "AgentBench",
+      "prediction": "AgentBench",
+      "correct": true,
+      "latency_seconds": 1.0214343070983887,
+      "retrieved": [
+        {
+          "id": "rag-internal-049-d1",
+          "text": "Primary agent document for approved internal TraceKG case 49. Controlled answer: AgentBench. AgentBench evaluates language-model agents across multiple interactive environments.",
+          "score": 0.33687181552231643
+        },
+        {
+          "id": "rag-internal-049-d2",
+          "text": "Secondary distractor for unrelated case 149. Controlled answer: retrieval-before-answer gating. TraceKG recommends retrieval-before-answer gating when an agent answers without sufficient evidence.",
+          "score": 0.1332665462901127
+        }
+      ]
+    },
+    {
+      "task_id": "rag-internal-050",
+      "answer": "provenance minimization",
+      "prediction": "provenance minimization",
+      "correct": true,
+      "latency_seconds": 11.615933895111084,
+      "retrieved": [
+        {
+          "id": "rag-internal-050-d1",
+          "text": "Primary privacy document for approved internal TraceKG case 50. Controlled answer: provenance minimization. Privacy-sensitive trace sharing uses provenance minimization and de-identified benchmark observations.",
+          "score": 0.3479792787101574
+        },
+        {
+          "id": "rag-internal-050-d3",
+          "text": "Secondary distractor for unrelated case 250. Controlled answer: WebArena. WebArena evaluates realistic web navigation agents in browser-like environments.",
+          "score": 0.11936426209885777
+        }
+      ]
+    },
+    {
+      "task_id": "rag-internal-051",
+      "answer": "absorbing Markov chain",
+      "prediction": "absorbing Markov chain",
+      "correct": true,
+      "latency_seconds": 1.0729799270629883,
+      "retrieved": [
+        {
+          "id": "rag-internal-051-d1",
+          "text": "Primary reliability document for approved internal TraceKG case 51. Controlled answer: absorbing Markov chain. TraceKG models reliability with an absorbing Markov chain over success, failure, and repair states.",
+          "score": 0.3361504076510562
+        },
+        {
+          "id": "rag-internal-051-d2",
+          "text": "Secondary distractor for unrelated case 151. Controlled answer: mandatory verification. Terminal success without tests triggers a mandatory verification repair.",
+          "score": 0.07164755632858945
+        }
+      ]
+    },
+    {
+      "task_id": "rag-internal-052",
+      "answer": "retrieval-before-answer gating",
+      "prediction": "The controlled answer named in the primary retrieval document for approved internal TraceKG case 52 is \"retrieval-before-answer gating.\"",
+      "correct": true,
+      "latency_seconds": 2.249508857727051,
+      "retrieved": [
+        {
+          "id": "rag-internal-052-d1",
+          "text": "Primary retrieval document for approved internal TraceKG case 52. Controlled answer: retrieval-before-answer gating. TraceKG recommends retrieval-before-answer gating when an agent answers without sufficient evidence.",
+          "score": 0.39800038580292224
+        },
+        {
+          "id": "rag-internal-052-d3",
+          "text": "Secondary distractor for unrelated case 252. Controlled answer: AgentBench. AgentBench evaluates language-model agents across multiple interactive environments.",
+          "score": 0.07438668813438544
+        }
+      ]
+    },
+    {
+      "task_id": "rag-internal-053",
+      "answer": "navigation rollback",
+      "prediction": "The controlled answer named in the primary navigation document for approved internal TraceKG case 53 is \"navigation rollback.\"",
+      "correct": true,
+      "latency_seconds": 1.1475801467895508,
+      "retrieved": [
+        {
+          "id": "rag-internal-053-d1",
+          "text": "Primary navigation document for approved internal TraceKG case 53. Controlled answer: navigation rollback. Repeated failed navigation is handled by page-state memory and navigation rollback.",
+          "score": 0.42807724177990897
+        },
+        {
+          "id": "rag-internal-053-d3",
+          "text": "Secondary distractor for unrelated case 253. Controlled answer: provenance minimization. Privacy-sensitive trace sharing uses provenance minimization and de-identified benchmark observations.",
+          "score": 0.06488588064769486
+        }
+      ]
+    },
+    {
+      "task_id": "rag-internal-054",
+      "answer": "mandatory verification",
+      "prediction": "mandatory verification",
+      "correct": true,
+      "latency_seconds": 1.0993990898132324,
+      "retrieved": [
+        {
+          "id": "rag-internal-054-d1",
+          "text": "Primary verification document for approved internal TraceKG case 54. Controlled answer: mandatory verification. Terminal success without tests triggers a mandatory verification repair.",
+          "score": 0.40933460240447433
+        },
+        {
+          "id": "rag-internal-054-d2",
+          "text": "Secondary distractor for unrelated case 154. Controlled answer: WebArena. WebArena evaluates realistic web navigation agents in browser-like environments.",
+          "score": 0.1172373627922257
+        }
+      ]
+    },
+    {
+      "task_id": "rag-internal-055",
+      "answer": "schema validation",
+      "prediction": "schema validation",
+      "correct": true,
+      "latency_seconds": 1.6338739395141602,
+      "retrieved": [
+        {
+          "id": "rag-internal-055-d1",
+          "text": "Primary schema document for approved internal TraceKG case 55. Controlled answer: schema validation. Tool precondition failures are mitigated with schema validation before tool execution.",
+          "score": 0.3570603423803423
+        },
+        {
+          "id": "rag-internal-055-d3",
+          "text": "Secondary distractor for unrelated case 255. Controlled answer: retrieval-before-answer gating. TraceKG recommends retrieval-before-answer gating when an agent answers without sufficient evidence.",
+          "score": 0.11220034308221137
+        }
+      ]
+    },
+    {
+      "task_id": "rag-internal-056",
+      "answer": "step budget guard",
+      "prediction": "step budget guard",
+      "correct": true,
+      "latency_seconds": 0.9261760711669922,
+      "retrieved": [
+        {
+          "id": "rag-internal-056-d1",
+          "text": "Primary budget document for approved internal TraceKG case 56. Controlled answer: step budget guard. BudgetExceeded failures are handled by a step budget guard followed by replanning.",
+          "score": 0.3590954416168552
+        },
+        {
+          "id": "rag-internal-056-d3",
+          "text": "Secondary distractor for unrelated case 256. Controlled answer: navigation rollback. Repeated failed navigation is handled by page-state memory and navigation rollback.",
+          "score": 0.09502118677304237
+        }
+      ]
+    },
+    {
+      "task_id": "rag-internal-057",
+      "answer": "WebArena",
+      "prediction": "WebArena",
+      "correct": true,
+      "latency_seconds": 2.547764778137207,
+      "retrieved": [
+        {
+          "id": "rag-internal-057-d1",
+          "text": "Primary web document for approved internal TraceKG case 57. Controlled answer: WebArena. WebArena evaluates realistic web navigation agents in browser-like environments.",
+          "score": 0.42507676059586896
+        },
+        {
+          "id": "rag-internal-057-d3",
+          "text": "Secondary distractor for unrelated case 257. Controlled answer: mandatory verification. Terminal success without tests triggers a mandatory verification repair.",
+          "score": 0.07112967989907353
+        }
+      ]
+    },
+    {
+      "task_id": "rag-internal-058",
+      "answer": "SWE-bench",
+      "prediction": "SWE-bench",
+      "correct": true,
+      "latency_seconds": 1.2249982357025146,
+      "retrieved": [
+        {
+          "id": "rag-internal-058-d1",
+          "text": "Primary coding document for approved internal TraceKG case 58. Controlled answer: SWE-bench. SWE-bench evaluates agents on real-world GitHub issue resolution tasks.",
+          "score": 0.30481629497354307
+        },
+        {
+          "id": "rag-internal-058-d2",
+          "text": "Secondary distractor for unrelated case 158. Controlled answer: absorbing Markov chain. TraceKG models reliability with an absorbing Markov chain over success, failure, and repair states.",
+          "score": 0.08073594687531511
+        }
+      ]
+    },
+    {
+      "task_id": "rag-internal-059",
+      "answer": "AgentBench",
+      "prediction": "AgentBench",
+      "correct": true,
+      "latency_seconds": 1.2110087871551514,
+      "retrieved": [
+        {
+          "id": "rag-internal-059-d1",
+          "text": "Primary agent document for approved internal TraceKG case 59. Controlled answer: AgentBench. AgentBench evaluates language-model agents across multiple interactive environments.",
+          "score": 0.33687181552231643
+        },
+        {
+          "id": "rag-internal-059-d2",
+          "text": "Secondary distractor for unrelated case 159. Controlled answer: retrieval-before-answer gating. TraceKG recommends retrieval-before-answer gating when an agent answers without sufficient evidence.",
+          "score": 0.1332665462901127
+        }
+      ]
+    },
+    {
+      "task_id": "rag-internal-060",
+      "answer": "provenance minimization",
+      "prediction": "provenance minimization",
+      "correct": true,
+      "latency_seconds": 0.9725887775421143,
+      "retrieved": [
+        {
+          "id": "rag-internal-060-d1",
+          "text": "Primary privacy document for approved internal TraceKG case 60. Controlled answer: provenance minimization. Privacy-sensitive trace sharing uses provenance minimization and de-identified benchmark observations.",
+          "score": 0.3479792787101574
+        },
+        {
+          "id": "rag-internal-060-d3",
+          "text": "Secondary distractor for unrelated case 260. Controlled answer: WebArena. WebArena evaluates realistic web navigation agents in browser-like environments.",
+          "score": 0.11936426209885777
+        }
+      ]
+    }
+  ],
+  "trace_path": "/Users/phatttt/Documents/Claude/Projects/GraphMemShield/output/internal_tracekg_rag_openai_60_events.jsonl"
+}

@@ -122,21 +122,29 @@ Expected key results:
 - SessionGraphLink top-3 accuracy: 1.0
 - TemporalPathInfer edge recall: 1.0
 
-## 6. Run TIFS Revision Experiments
+## 6. Run CIKM Revision Experiments
 
 Run:
 
 ```bash
 python3 Ideas/GraphMemShield/examples/generate_enterprise_benchmark.py
-python3 Ideas/GraphMemShield/examples/run_tifs_revision_experiments.py
+python3 Ideas/GraphMemShield/examples/run_langgraph_memory_experiment.py
+python3 Ideas/GraphMemShield/examples/run_mem0_memory_experiment.py
+python3 Ideas/GraphMemShield/examples/run_cikm_revision_experiments.py
 ```
 
 Expected outputs:
 
 - `Ideas/GraphMemShield/data/enterprise_health_finance.jsonl`
-- `Ideas/GraphMemShield/output/tifs_revision_results.json`
-- `Ideas/GraphMemShield/output/tifs_revision_results.csv`
-- `Ideas/GraphMemShield/output/tifs_revision_results.md`
+- `Ideas/GraphMemShield/output/cikm_revision_results.json`
+- `Ideas/GraphMemShield/output/cikm_revision_results.csv`
+- `Ideas/GraphMemShield/output/cikm_revision_results.md`
+- `Ideas/GraphMemShield/output/langgraph_memory_trace.json`
+- `Ideas/GraphMemShield/output/langgraph_memory_trace.csv`
+- `Ideas/GraphMemShield/output/langgraph_memory_trace.md`
+- `Ideas/GraphMemShield/output/mem0_memory_trace.json`
+- `Ideas/GraphMemShield/output/mem0_memory_trace.csv`
+- `Ideas/GraphMemShield/output/mem0_memory_trace.md`
 - `Ideas/GraphMemShield/output/enterprise_property_graph.sqlite`
 
 Expected key results:
@@ -151,6 +159,13 @@ Expected key results:
 - fixed-universe DP candidate edges: 160
 - Kuzu property graph available: true when `kuzu` is installed
 - adaptive probe budget 6 leaked edges: 12
+- OpenAI adaptive probe status: ok when `OPENAI_API_KEY` is configured
+- learned session-link vulnerability audit Top-1: 1.0 on the enterprise benchmark without direct user-id features
+- LangGraph global retrieval leaked edges: 12
+- LangGraph bounded `b=5` leaked edges: 3
+- Mem0 global retrieval leaked edges: 10 on the bounded Mem0 edge sample
+- Mem0 bounded `b=5` leaked edges: 3 on the bounded Mem0 edge sample
+- frontier fixed-universe randomized-response epsilon 1.0 response leaked edges: 5
 - bounded sharing budget 10 utility mean over 10 seeds: 0.6050
 
 ## 7. Generate Aggregate Report
@@ -190,7 +205,7 @@ Expected outputs:
 Expected result count:
 
 ```text
-aggregate rows: 391
+aggregate rows: 853
 ```
 
 ## 8. Validate Output Structure
@@ -224,7 +239,7 @@ Expected output:
   "session_topk_mrr": true,
   "temporal_metrics": true,
   "query_budget_curves": true,
-  "aggregate_report_rows": 391
+  "aggregate_report_rows": 853
 }
 ```
 

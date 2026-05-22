@@ -1,0 +1,27 @@
+# LangGraph Agent-Memory Integration
+
+This run uses a real LangGraph StateGraph workflow for write and retrieval nodes.
+
+| System | Dataset | Experiment | Condition | Metric | Value |
+|---|---|---|---|---:|---:|
+| langgraph_agent_memory | enterprise_health_finance | dataset | langgraph | framework | LangGraph |
+| langgraph_agent_memory | enterprise_health_finance | dataset | langgraph | framework_available | True |
+| langgraph_agent_memory | enterprise_health_finance | dataset | langgraph | records | 576 |
+| langgraph_agent_memory | enterprise_health_finance | dataset | langgraph | users | 48 |
+| langgraph_agent_memory | enterprise_health_finance | dataset | langgraph | sessions | 192 |
+| langgraph_agent_memory | enterprise_health_finance | dataset | langgraph | edges | 2304 |
+| langgraph_agent_memory | enterprise_health_finance | langgraph_end_to_end | global | retrieved_edges | 2304 |
+| langgraph_agent_memory | enterprise_health_finance | langgraph_end_to_end | global | leaked_edges | 12 |
+| langgraph_agent_memory | enterprise_health_finance | langgraph_end_to_end | global | response_leaked_edges | 6 |
+| langgraph_agent_memory | enterprise_health_finance | langgraph_end_to_end | global | response_leaked_terms | 8 |
+| langgraph_agent_memory | enterprise_health_finance | langgraph_end_to_end | global | qa_accuracy | 1.0 |
+| langgraph_agent_memory | enterprise_health_finance | langgraph_end_to_end | owner_only | retrieved_edges | 0 |
+| langgraph_agent_memory | enterprise_health_finance | langgraph_end_to_end | owner_only | leaked_edges | 0 |
+| langgraph_agent_memory | enterprise_health_finance | langgraph_end_to_end | owner_only | response_leaked_edges | 0 |
+| langgraph_agent_memory | enterprise_health_finance | langgraph_end_to_end | owner_only | response_leaked_terms | 0 |
+| langgraph_agent_memory | enterprise_health_finance | langgraph_end_to_end | owner_only | qa_accuracy | 0.0 |
+| langgraph_agent_memory | enterprise_health_finance | langgraph_end_to_end | bounded5 | retrieved_edges | 681 |
+| langgraph_agent_memory | enterprise_health_finance | langgraph_end_to_end | bounded5 | leaked_edges | 3 |
+| langgraph_agent_memory | enterprise_health_finance | langgraph_end_to_end | bounded5 | response_leaked_edges | 3 |
+| langgraph_agent_memory | enterprise_health_finance | langgraph_end_to_end | bounded5 | response_leaked_terms | 2 |
+| langgraph_agent_memory | enterprise_health_finance | langgraph_end_to_end | bounded5 | qa_accuracy | 1.0 |

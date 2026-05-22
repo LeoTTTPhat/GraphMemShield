@@ -1,7 +1,7 @@
 %% =====================================================================
 %% GraphMemShield: Auditing Cross-Session Leakage in Graph Memories
 %%
-%% Submission to IEEE Transactions on Information Forensics and Security
+%% Submission to ACM International Conference on Information and Knowledge Management
 %%
 %% Compile with: pdflatex paper.tex && bibtex paper && pdflatex paper.tex
 %% =====================================================================
@@ -32,11 +32,11 @@
 \title{GraphMemShield: Auditing Cross-Session Leakage in Graph Memories}
 
 \author{Anonymous Author(s)
-\thanks{Manuscript prepared for IEEE Transactions on Information
-Forensics and Security. The associated open-source artifact is
+\thanks{Manuscript prepared for the ACM International Conference on
+Information and Knowledge Management. The associated open-source artifact is
 available at \texttt{https://github.com/LeoTTTPhat/GraphMemShield}.}}
 
-\markboth{IEEE Transactions on Information Forensics and Security,
+\markboth{ACM International Conference on Information and Knowledge Management,
 Vol.~XX, No.~X, May~2026}%
 {Author~\MakeLowercase{\textit{et al.}}: GraphMemShield: Auditing
 Cross-Session Leakage in Graph Memories}
@@ -571,7 +571,7 @@ The framework is published as the Python package
 (graph and types), \texttt{attacks/}, \texttt{defenses/},
 \texttt{datasets/}, \texttt{evaluation/}, and \texttt{adapters/}. The
 package is installed in editable mode for reproducible experiments
-and is exercised by 41 unit tests covering ingestion, retrieval,
+and is exercised by 44 unit tests covering ingestion, retrieval,
 attacks, defenses, and metrics.
 
 \subsection{Datasets}
@@ -638,7 +638,7 @@ The core artifact is reproduced by:
 python examples/run_experiments.py
 python examples/run_privacyguard_batch_experiment.py
 python examples/generate_enterprise_benchmark.py
-python examples/run_tifs_revision_experiments.py
+python examples/run_cikm_revision_experiments.py
 python examples/run_multiwoz_experiment.py
 python examples/run_enron_experiment.py
 python examples/generate_aggregate_report.py
@@ -647,9 +647,9 @@ python examples/generate_aggregate_report.py
 \noindent
 which write \texttt{output/synthetic\_experiments.\{json,csv,md\}},
 \texttt{output/privacyguard\_batch\_results.\{json,csv,md\}},
-\texttt{output/tifs\_revision\_results.\{json,csv,md\}},
+\texttt{output/cikm\_revision\_results.\{json,csv,md\}},
 \texttt{output/multiwoz\_results.\{json,csv,md\}},
-\texttt{output/enron\_results.\{json,csv,md\}}, and the 391-row
+\texttt{output/enron\_results.\{json,csv,md\}}, and the 854-row
 \texttt{output/aggregate\_results.\{json,csv,md\}}.
 
 %% ============================================================
@@ -1269,7 +1269,7 @@ assumption clearly: the defense depends on correct sensitivity
 provenance, and systematic label downgrading re-opens leakage. The
 open-source artifact packages these attacks, defenses, backends,
 public-format ingestion paths, and privacy-accounting checks as a
-TIFS-ready benchmark for future graph-memory privacy mechanisms.
+CIKM-ready benchmark for future graph-memory privacy mechanisms.
 
 %% ============================================================
 \bibliographystyle{IEEEtran}

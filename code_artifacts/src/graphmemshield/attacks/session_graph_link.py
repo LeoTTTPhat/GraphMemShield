@@ -95,8 +95,6 @@ def session_feature_vector(
         if include_semantic_labels:
             features[f"source:{edge.source_id}"] += 1
             features[f"target:{edge.target_id}"] += 1
-            if edge.source_user_id:
-                features[f"user:{edge.source_user_id}"] += 1
 
     for left, right in zip(edges, edges[1:]):
         features[f"relation-bigram:{left.relation}>{right.relation}"] += 1
@@ -155,8 +153,179 @@ def _score_sessions(
     raise ValueError(f"unknown session-link method: {method}")
 
 
+class LearnedSessionGraphLink:
+    """Train a lightweight supervised linker over session-pair graph features."""
+
+    def __init__(
+        self,
+        graph: DynamicMemoryGraph,
+        *,
+        include_semantic_labels: bool = False,
+        seed: int = 13,
+    ) -> None:
+        self.graph = graph
+        self.include_semantic_labels = include_semantic_labels
+        self.seed = seed
+        self._model = None
+        self._feature_names: tuple[str, ...] = ()
+
+    def fit(self) -> "LearnedSessionGraphLink":
+        session_ids = sorted({edge.owner_session_id for edge in self.graph.edges})
+        users_by_session = {
+            session_id: _session_user(self.graph.edges_by_session(session_id))
+            for session_id in session_ids
+        }
+        features = []
+        labels = []
+        for left_index, left in enumerate(session_ids):
+            for right in session_ids[left_index + 1 :]:
+                if users_by_session[left] is None or users_by_session[right] is None:
+                    continue
+                features.append(self._pair_features(left, right))
+                labels.append(int(users_by_session[left] == users_by_session[right]))
+
+        if len(set(labels)) < 2:
+            self._model = _ConstantProbabilityModel(sum(labels) / len(labels) if labels else 0.0)
+            return self
+
+        self._feature_names = tuple(sorted({name for row in features for name in row}))
+        matrix = [[row.get(name, 0.0) for name in self._feature_names] for row in features]
+        try:
+            from sklearn.linear_model import LogisticRegression  # type: ignore
+
+            model = LogisticRegression(
+                class_weight="balanced",
+                max_iter=1000,
+                random_state=self.seed,
+            )
+            model.fit(matrix, labels)
+            self._model = model
+        except Exception:  # pragma: no cover - sklearn fallback
+            self._model = _NearestCentroidProbabilityModel().fit(matrix, labels)
+        return self
+
+    def rank(
+        self,
+        *,
+        query_session_id: str,
+        candidate_session_ids: Iterable[str],
+    ) -> SessionLinkReport:
+        if self._model is None:
+            self.fit()
+        candidates: list[SessionLinkCandidate] = []
+        for session_id in candidate_session_ids:
+            if session_id == query_session_id:
+                continue
+            pair = self._pair_features(query_session_id, session_id)
+            vector = [[pair.get(name, 0.0) for name in self._feature_names]]
+            score = float(self._model.predict_proba(vector)[0][1])
+            shared = tuple(
+                sorted(
+                    set(
+                        session_feature_vector(
+                            self.graph.edges_by_session(query_session_id),
+                            include_semantic_labels=self.include_semantic_labels,
+                        )
+                    ).intersection(
+                        session_feature_vector(
+                            self.graph.edges_by_session(session_id),
+                            include_semantic_labels=self.include_semantic_labels,
+                        )
+                    )
+                )[:10]
+            )
+            candidates.append(SessionLinkCandidate(session_id, score, shared))
+        ranked = tuple(sorted(candidates, key=lambda item: (-item.score, item.session_id)))
+        return SessionLinkReport(query_session_id=query_session_id, candidates=ranked)
+
+    def _pair_features(self, left: str, right: str) -> dict[str, float]:
+        left_edges = self.graph.edges_by_session(left)
+        right_edges = self.graph.edges_by_session(right)
+        left_features = session_feature_vector(
+            left_edges,
+            include_semantic_labels=self.include_semantic_labels,
+        )
+        right_features = session_feature_vector(
+            right_edges,
+            include_semantic_labels=self.include_semantic_labels,
+        )
+        left_rel = _prefix_features(left_features, "relation:")
+        right_rel = _prefix_features(right_features, "relation:")
+        left_sens = _prefix_features(left_features, "sensitivity:")
+        right_sens = _prefix_features(right_features, "sensitivity:")
+        return {
+            "cosine": cosine_similarity(left_features, right_features),
+            "wl_kernel": cosine_similarity(
+                _prefix_features(left_features, "wl1:"),
+                _prefix_features(right_features, "wl1:"),
+            ),
+            "graph_edit": graph_edit_similarity(left_edges, right_edges),
+            "relation_cosine": cosine_similarity(left_rel, right_rel),
+            "sensitivity_cosine": cosine_similarity(left_sens, right_sens),
+            "edge_count_ratio": _ratio(len(left_edges), len(right_edges)),
+            "shared_relation_jaccard": _jaccard(set(left_rel), set(right_rel)),
+            "shared_sensitive_jaccard": _jaccard(set(left_sens), set(right_sens)),
+        }
+
+
 def _prefix_features(features: Counter[str], prefix: str) -> Counter[str]:
     return Counter({key: value for key, value in features.items() if key.startswith(prefix)})
+
+
+def _session_user(edges: tuple[MemoryEdge, ...]) -> str | None:
+    users = [edge.source_user_id for edge in edges if edge.source_user_id]
+    if not users:
+        return None
+    return Counter(users).most_common(1)[0][0]
+
+
+def _ratio(left: int, right: int) -> float:
+    larger = max(left, right, 1)
+    return min(left, right) / larger
+
+
+def _jaccard(left: set[str], right: set[str]) -> float:
+    union = left | right
+    return len(left & right) / len(union) if union else 0.0
+
+
+class _ConstantProbabilityModel:
+    def __init__(self, probability: float) -> None:
+        self.probability = probability
+
+    def predict_proba(self, matrix):
+        return [[1.0 - self.probability, self.probability] for _ in matrix]
+
+
+class _NearestCentroidProbabilityModel:
+    def fit(self, matrix, labels):
+        positives = [row for row, label in zip(matrix, labels) if label == 1]
+        negatives = [row for row, label in zip(matrix, labels) if label == 0]
+        self.positive = _centroid(positives)
+        self.negative = _centroid(negatives)
+        return self
+
+    def predict_proba(self, matrix):
+        probabilities = []
+        for row in matrix:
+            positive_distance = _euclidean(row, self.positive)
+            negative_distance = _euclidean(row, self.negative)
+            total = positive_distance + negative_distance
+            probability = 0.5 if total == 0 else negative_distance / total
+            probabilities.append([1.0 - probability, probability])
+        return probabilities
+
+
+def _centroid(rows):
+    if not rows:
+        return []
+    return [sum(row[index] for row in rows) / len(rows) for index in range(len(rows[0]))]
+
+
+def _euclidean(left, right) -> float:
+    if not left or not right:
+        return 0.0
+    return sqrt(sum((a - b) ** 2 for a, b in zip(left, right)))
 
 
 def graph_edit_similarity(left: tuple[MemoryEdge, ...], right: tuple[MemoryEdge, ...]) -> float:

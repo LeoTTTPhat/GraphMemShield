@@ -69,13 +69,17 @@ Interpretation: this is a seeded proxy for write-time edge admission, not a diff
 | Docker-backed system experiment | implemented | `privacyguard_docker_experiment.*` |
 | Batch Docker experiment | implemented | `privacyguard_batch_results.*` |
 | Aggregate report | implemented | `aggregate_results.*` |
-| Unit tests | passing | 41 pytest cases passing in the local verification environment |
+| Unit tests | passing | 44 pytest cases passing in the local verification environment |
 | Release hygiene | implemented | `.gitignore`, `LICENSE`, `CITATION.cff`, `pyproject.toml`, CI workflow template |
 | Public-format ingestion | implemented | MultiWOZ 2.1 upstream run plus Enron maildir loader with tests |
-| Black-box response scoring | implemented | deterministic response-level scorer in `tifs_revision_results.*` |
+| Black-box response scoring | implemented | deterministic response-level scorer in `cikm_revision_results.*` |
+| Real memory framework integration | implemented | LangGraph StateGraph and Mem0/Qdrant workflows in `langgraph_memory_trace.*` and `mem0_memory_trace.*` |
+| Learned vulnerability audit | implemented | supervised graph-pair session linker in `cikm_revision_results.*`; high accuracy indicates benchmark linkability |
+| LLM adaptive attacker | implemented when configured | OpenAI query planner in `llm_adaptive_probe` rows |
 | Fixed-universe DP release/accounting | implemented baseline | randomized response over 160 candidate protected edges with single-release, full-graph scope, and basic composition accounting |
+| Frontier privacy baselines | implemented | local suppression, fixed-universe RR, posthoc redaction, and GraphMemGuard comparison |
 
-## Table 8: TIFS Revision Experiments
+## Table 8: CIKM Revision Experiments
 
 | Component | Metric | Value |
 |---|---:|---:|
@@ -93,6 +97,15 @@ Interpretation: this is a seeded proxy for write-time edge admission, not a diff
 | Black-box response bounded `b=5` | Leaked victim edges | 3 |
 | Bounded sharing `b=10` | Utility retention | 0.6141 |
 | Multi-seed bounded `b=10` | Utility mean / 95% CI | 0.6050 / [0.5939, 0.6160] |
+| OpenAI adaptive probe | Leaked edges / events | 9 / 21 |
+| Learned linker transfer mean | Top-1 / Top-3 / MRR | 0.0933 / 0.1900 / 0.1407 |
+| Frontier baseline: global | Leaked / response leaked / QA | 12 / 6 / 1.0000 |
+| Frontier baseline: GraphMemGuard `b=5` | Leaked / response leaked / QA | 3 / 3 / 0.0000 |
+| Frontier baseline: fixed-universe RR eps=1 | Leaked / response leaked / QA | 11 / 5 / 1.0000 |
+| LangGraph global | Leaked / response leaked / QA | 12 / 6 / 1.0000 |
+| LangGraph bounded `b=5` | Leaked / response leaked / QA | 3 / 3 / 1.0000 |
+| Mem0 global | Leaked / response leaked / QA | 10 / 6 / 1.0000 |
+| Mem0 bounded `b=5` | Leaked / response leaked / QA | 3 / 3 / 1.0000 |
 | Timestamp-hidden temporal inference | Pairwise accuracy range | 0.6057-0.7155 |
 | Fixed-universe randomized response | Candidate protected edges | 160 |
 

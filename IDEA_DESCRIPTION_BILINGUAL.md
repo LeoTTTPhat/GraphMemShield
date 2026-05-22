@@ -334,7 +334,7 @@ This work is better positioned as a **security/privacy systems paper** than as a
 
 Potential Q1 journal targets:
 
-- IEEE Transactions on Information Forensics and Security (TIFS)
+- ACM International Conference on Information and Knowledge Management (CIKM)
 - IEEE Transactions on Dependable and Secure Computing (TDSC)
 - ACM Transactions on Privacy and Security (TOPS)
 - Computers & Security

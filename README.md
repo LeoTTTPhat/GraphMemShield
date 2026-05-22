@@ -104,14 +104,16 @@ python examples/run_privacyguard_batch_experiment.py
 
 These scripts seed controlled de-identified benchmark records into MongoDB, fetch them through the cloud API, convert them into a GraphMemShield memory graph, and evaluate leakage.
 
-Run the larger TIFS revision benchmark:
+Run the larger CIKM revision benchmark:
 
 ```bash
 python examples/generate_enterprise_benchmark.py
-python examples/run_tifs_revision_experiments.py
+python examples/run_langgraph_memory_experiment.py
+python examples/run_mem0_memory_experiment.py
+python examples/run_cikm_revision_experiments.py
 ```
 
-This adds a 576-record enterprise/health/finance benchmark, a persistent SQLite property-graph roundtrip, black-box response leakage scoring, bounded-sharing curves, stronger session-link baselines, timestamp-hidden temporal inference, and fixed-universe randomized response.
+This adds a 576-record enterprise/health/finance benchmark, real LangGraph and Mem0 memory-framework workflows, a persistent SQLite property-graph roundtrip, black-box response leakage scoring, bounded-sharing curves, cross-domain session-link transfer diagnostics, OpenAI-backed adaptive probing when configured, timestamp-hidden temporal inference, fixed-universe randomized response, and frontier-style privacy baseline comparisons.
 
 Run the external MultiWOZ corpus experiment:
 
@@ -120,6 +122,16 @@ python examples/run_multiwoz_experiment.py
 ```
 
 By default this downloads MultiWOZ 2.1 into `/tmp`, caps the run at 1,000 dialogues, and writes only the derived sample/results into the repo.
+
+Run the deployed-style agent-memory / GraphRAG trace experiment:
+
+```bash
+python examples/run_deployed_graphrag_trace.py
+```
+
+By default this starts a live local HTTP retrieval service over a persistent SQLite graph built from the MultiWOZ-derived trace. To run an approved production GraphRAG trace with the same service boundary, set `GRAPHMEMSHIELD_PRODUCTION_GRAPHRAG_JSONL=/path/to/trace.jsonl` using the GraphMemShield dialogue JSONL schema. The required JSONL fields are `user_id`, `session_id`, `turn_id`, `timestamp`, `domain`, `text`, `entities`, and `relations`; each relation contains `source`, `relation`, `target`, and optional `sensitivity`. Runs with this environment variable are labeled `user_supplied_production_jsonl` and set `approved_internal_deployment_trace=True` in the output.
+
+For the paper snapshot, the public proxy run is archived as `output/public_multiwoz_http_trace.*`, and the approved internal OpenAI-RAG run is archived as `output/internal_tracekg_rag_openai_trace.*`. The internal run uses a de-identified 60-task, 300-event TraceKG RAG export converted through the same JSONL schema.
 
 Run the Enron maildir / Enron-style communication graph experiment:
 
@@ -141,7 +153,7 @@ Expected outputs:
 - `output/aggregate_results.csv`
 - `output/aggregate_results.md`
 
-Expected aggregate row count for this snapshot: `391`.
+Expected aggregate row count for this snapshot: `853`.
 
 ## Important Caveats
 
@@ -151,9 +163,13 @@ Expected aggregate row count for this snapshot: `391`.
 - `TemporalPathInfer` includes both timestamp exposure and a timestamp-hidden heuristic baseline.
 - `RandomizedEdgeAdmission` is a seeded one-sided suppression proxy, not a differentially private mechanism.
 - Fixed-universe randomized response is implemented separately for per-edge DP experiments over a public candidate edge universe.
+- The LangGraph experiment uses an actual `langgraph` workflow around write/retrieve memory nodes; install `graphmemshield[frameworks]` or `langgraph>=1.2.0`.
+- The Mem0 experiment uses the real `mem0ai` package with local Qdrant storage and OpenAI embeddings; it indexes a bounded edge sample to keep the reproducible run small.
+- The learned session-link audit uses supervised graph-pair features and deliberately excludes direct user-id features; high accuracy is evidence that the benchmark graph has linkable structural signatures.
 - MultiWOZ runs from the upstream public zip by default; Enron-format loaders are included for user-provided licensed maildir files.
+- The deployed-style GraphRAG trace uses a local HTTP service and SQLite backend; it is a deployment-surface test, not evidence that an external production service was probed unless `GRAPHMEMSHIELD_PRODUCTION_GRAPHRAG_JSONL` points to an approved production export.
 - Kuzu backend experiments run when `graphmemshield[backends]` is installed; live Neo4j latency/policy experiments remain future integration work.
-- OpenAI response generation runs when `graphmemshield[llm]` and `OPENAI_API_KEY` are configured; otherwise the experiment records a skipped LLM condition.
+- OpenAI response generation and adaptive probe planning run when `graphmemshield[llm]` and `OPENAI_API_KEY` are configured; otherwise the experiment records skipped LLM conditions.
 
 ## Documentation
 

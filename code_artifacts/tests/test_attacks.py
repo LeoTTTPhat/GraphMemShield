@@ -7,6 +7,7 @@ from graphmemshield import (
     CrossSessionProbe,
     GraphMemGuard,
     GraphMemGuardPolicy,
+    LearnedSessionGraphLink,
     SessionGraphLink,
     TemporalPathInfer,
     build_synthetic_multisession_graph,
@@ -43,6 +44,20 @@ def test_session_graph_link_supports_stronger_similarity_methods():
         )
         assert report.candidates
         assert 0.0 <= report.candidates[0].score <= 1.0
+
+
+def test_learned_session_graph_link_trains_and_ranks():
+    graph = build_synthetic_multisession_graph()
+    linker = LearnedSessionGraphLink(graph, include_semantic_labels=True).fit()
+
+    report = linker.rank(
+        query_session_id="alice-session-1",
+        candidate_session_ids=("alice-session-2", "bob-session-1"),
+    )
+
+    assert report.candidates
+    assert report.top_session_id == "alice-session-2"
+    assert 0.0 <= report.candidates[0].score <= 1.0
 
 
 def test_temporal_path_infer_orders_retrieved_edges_by_write_time():

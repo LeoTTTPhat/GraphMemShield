@@ -77,95 +77,15 @@
     "experiment": "backend",
     "condition": "kuzu_property_graph",
     "metric": "available",
-    "value": true
+    "value": false
   },
   {
     "system": "graphmemshield",
     "dataset": "enterprise_health_finance",
     "experiment": "backend",
     "condition": "kuzu_property_graph",
-    "metric": "nodes",
-    "value": 162
-  },
-  {
-    "system": "graphmemshield",
-    "dataset": "enterprise_health_finance",
-    "experiment": "backend",
-    "condition": "kuzu_property_graph",
-    "metric": "edges",
-    "value": 2304
-  },
-  {
-    "system": "graphmemshield",
-    "dataset": "enterprise_health_finance",
-    "experiment": "backend",
-    "condition": "kuzu_property_graph",
-    "metric": "write_seconds",
-    "value": 27.4829
-  },
-  {
-    "system": "graphmemshield",
-    "dataset": "enterprise_health_finance",
-    "experiment": "backend",
-    "condition": "kuzu_property_graph",
-    "metric": "read_seconds",
-    "value": 0.0615
-  },
-  {
-    "system": "graphmemshield",
-    "dataset": "enterprise_health_finance",
-    "experiment": "cross_session_probe",
-    "condition": "kuzu_property_graph",
-    "metric": "leaked_edges",
-    "value": 9
-  },
-  {
-    "system": "graphmemshield",
-    "dataset": "enterprise_health_finance",
-    "experiment": "latency",
-    "condition": "kuzu_property_graph",
-    "metric": "queries",
-    "value": 100
-  },
-  {
-    "system": "graphmemshield",
-    "dataset": "enterprise_health_finance",
-    "experiment": "latency",
-    "condition": "kuzu_property_graph",
-    "metric": "baseline_ms",
-    "value": 1.9513
-  },
-  {
-    "system": "graphmemshield",
-    "dataset": "enterprise_health_finance",
-    "experiment": "latency",
-    "condition": "kuzu_property_graph",
-    "metric": "strict_guard_ms",
-    "value": 1.3446
-  },
-  {
-    "system": "graphmemshield",
-    "dataset": "enterprise_health_finance",
-    "experiment": "latency",
-    "condition": "kuzu_property_graph",
-    "metric": "bounded_guard_ms",
-    "value": 1.3084
-  },
-  {
-    "system": "graphmemshield",
-    "dataset": "enterprise_health_finance",
-    "experiment": "latency",
-    "condition": "kuzu_property_graph",
-    "metric": "strict_overhead_pct",
-    "value": -31.0944
-  },
-  {
-    "system": "graphmemshield",
-    "dataset": "enterprise_health_finance",
-    "experiment": "latency",
-    "condition": "kuzu_property_graph",
-    "metric": "bounded_overhead_pct",
-    "value": -32.9481
+    "metric": "status",
+    "value": "kuzu package unavailable"
   },
   {
     "system": "graphmemshield",
@@ -213,7 +133,7 @@
     "experiment": "bounded_sharing",
     "condition": "budget_1",
     "metric": "utility_retention",
-    "value": 0.0456
+    "value": 0.1925
   },
   {
     "system": "graphmemshield",
@@ -237,7 +157,7 @@
     "experiment": "bounded_sharing",
     "condition": "budget_2",
     "metric": "utility_retention",
-    "value": 0.0913
+    "value": 0.3819
   },
   {
     "system": "graphmemshield",
@@ -261,7 +181,7 @@
     "experiment": "bounded_sharing",
     "condition": "budget_5",
     "metric": "utility_retention",
-    "value": 0.374
+    "value": 0.6667
   },
   {
     "system": "graphmemshield",
@@ -285,7 +205,7 @@
     "experiment": "bounded_sharing",
     "condition": "budget_10",
     "metric": "utility_retention",
-    "value": 0.6141
+    "value": 0.9048
   },
   {
     "system": "graphmemshield",
@@ -381,7 +301,7 @@
     "experiment": "multihop_probe",
     "condition": "hop_3",
     "metric": "bounded_b5_retrieved_edges",
-    "value": 776
+    "value": 777
   },
   {
     "system": "graphmemshield",
@@ -421,7 +341,7 @@
     "experiment": "hybrid_pipeline",
     "condition": "baseline",
     "metric": "pipeline_ms",
-    "value": 39.6663
+    "value": 48.7657
   },
   {
     "system": "graphmemshield",
@@ -461,7 +381,7 @@
     "experiment": "hybrid_pipeline",
     "condition": "strict_guard",
     "metric": "pipeline_ms",
-    "value": 2.7263
+    "value": 2.8826
   },
   {
     "system": "graphmemshield",
@@ -501,7 +421,7 @@
     "experiment": "hybrid_pipeline",
     "condition": "bounded_b5",
     "metric": "pipeline_ms",
-    "value": 10.7421
+    "value": 14.3935
   },
   {
     "system": "graphmemshield",
@@ -877,7 +797,7 @@
     "experiment": "utility_quality",
     "condition": "diabetes_clinic_appointment",
     "metric": "defended_relevant_edges",
-    "value": 96
+    "value": 528
   },
   {
     "system": "graphmemshield",
@@ -893,7 +813,7 @@
     "experiment": "utility_quality",
     "condition": "diabetes_clinic_appointment",
     "metric": "recall",
-    "value": 0.0833
+    "value": 0.4583
   },
   {
     "system": "graphmemshield",
@@ -901,7 +821,7 @@
     "experiment": "utility_quality",
     "condition": "diabetes_clinic_appointment",
     "metric": "f1",
-    "value": 0.1538
+    "value": 0.6286
   },
   {
     "system": "graphmemshield",
@@ -917,7 +837,7 @@
     "experiment": "utility_quality",
     "condition": "payrollbank_vendor",
     "metric": "defended_relevant_edges",
-    "value": 97
+    "value": 144
   },
   {
     "system": "graphmemshield",
@@ -933,7 +853,7 @@
     "experiment": "utility_quality",
     "condition": "payrollbank_vendor",
     "metric": "recall",
-    "value": 0.0842
+    "value": 0.125
   },
   {
     "system": "graphmemshield",
@@ -941,7 +861,7 @@
     "experiment": "utility_quality",
     "condition": "payrollbank_vendor",
     "metric": "f1",
-    "value": 0.1553
+    "value": 0.2222
   },
   {
     "system": "graphmemshield",
@@ -957,7 +877,7 @@
     "experiment": "utility_quality",
     "condition": "project-a_vendor",
     "metric": "defended_relevant_edges",
-    "value": 0
+    "value": 144
   },
   {
     "system": "graphmemshield",
@@ -973,7 +893,7 @@
     "experiment": "utility_quality",
     "condition": "project-a_vendor",
     "metric": "recall",
-    "value": 0.0
+    "value": 0.125
   },
   {
     "system": "graphmemshield",
@@ -981,7 +901,7 @@
     "experiment": "utility_quality",
     "condition": "project-a_vendor",
     "metric": "f1",
-    "value": 0.0
+    "value": 0.2222
   },
   {
     "system": "graphmemshield",
@@ -1061,7 +981,7 @@
     "experiment": "bounded_sharing_multiseed",
     "condition": "budget_1",
     "metric": "utility_mean",
-    "value": 0.0473
+    "value": 0.1925
   },
   {
     "system": "graphmemshield",
@@ -1069,7 +989,7 @@
     "experiment": "bounded_sharing_multiseed",
     "condition": "budget_1",
     "metric": "utility_ci95_low",
-    "value": 0.0454
+    "value": 0.1925
   },
   {
     "system": "graphmemshield",
@@ -1077,7 +997,7 @@
     "experiment": "bounded_sharing_multiseed",
     "condition": "budget_1",
     "metric": "utility_ci95_high",
-    "value": 0.0493
+    "value": 0.1925
   },
   {
     "system": "graphmemshield",
@@ -1109,7 +1029,7 @@
     "experiment": "bounded_sharing_multiseed",
     "condition": "budget_2",
     "metric": "utility_mean",
-    "value": 0.0936
+    "value": 0.3819
   },
   {
     "system": "graphmemshield",
@@ -1117,7 +1037,7 @@
     "experiment": "bounded_sharing_multiseed",
     "condition": "budget_2",
     "metric": "utility_ci95_low",
-    "value": 0.0901
+    "value": 0.3819
   },
   {
     "system": "graphmemshield",
@@ -1125,7 +1045,7 @@
     "experiment": "bounded_sharing_multiseed",
     "condition": "budget_2",
     "metric": "utility_ci95_high",
-    "value": 0.097
+    "value": 0.3819
   },
   {
     "system": "graphmemshield",
@@ -1157,7 +1077,7 @@
     "experiment": "bounded_sharing_multiseed",
     "condition": "budget_5",
     "metric": "utility_mean",
-    "value": 0.3776
+    "value": 0.6667
   },
   {
     "system": "graphmemshield",
@@ -1165,7 +1085,7 @@
     "experiment": "bounded_sharing_multiseed",
     "condition": "budget_5",
     "metric": "utility_ci95_low",
-    "value": 0.3711
+    "value": 0.6667
   },
   {
     "system": "graphmemshield",
@@ -1173,7 +1093,7 @@
     "experiment": "bounded_sharing_multiseed",
     "condition": "budget_5",
     "metric": "utility_ci95_high",
-    "value": 0.3841
+    "value": 0.6667
   },
   {
     "system": "graphmemshield",
@@ -1205,7 +1125,7 @@
     "experiment": "bounded_sharing_multiseed",
     "condition": "budget_10",
     "metric": "utility_mean",
-    "value": 0.605
+    "value": 0.9048
   },
   {
     "system": "graphmemshield",
@@ -1213,7 +1133,7 @@
     "experiment": "bounded_sharing_multiseed",
     "condition": "budget_10",
     "metric": "utility_ci95_low",
-    "value": 0.5939
+    "value": 0.9048
   },
   {
     "system": "graphmemshield",
@@ -1221,7 +1141,7 @@
     "experiment": "bounded_sharing_multiseed",
     "condition": "budget_10",
     "metric": "utility_ci95_high",
-    "value": 0.616
+    "value": 0.9048
   },
   {
     "system": "graphmemshield",
@@ -1254,6 +1174,14 @@
     "condition": "adaptive_budget_6",
     "metric": "query_count",
     "value": 6
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "llm_adaptive_probe",
+    "condition": "openai",
+    "metric": "status",
+    "value": "skipped_ModuleNotFoundError"
   },
   {
     "system": "graphmemshield",
@@ -1405,7 +1333,7 @@
     "experiment": "blackbox_response",
     "condition": "openai",
     "metric": "status",
-    "value": "skipped_missing_openai_api_key"
+    "value": "skipped_RuntimeError"
   },
   {
     "system": "graphmemshield",
@@ -1581,7 +1509,7 @@
     "experiment": "session_link",
     "condition": "embedding",
     "metric": "top1_accuracy",
-    "value": 0.0417
+    "value": 0.0
   },
   {
     "system": "graphmemshield",
@@ -1589,7 +1517,7 @@
     "experiment": "session_link",
     "condition": "embedding",
     "metric": "top3_accuracy",
-    "value": 0.125
+    "value": 0.0
   },
   {
     "system": "graphmemshield",
@@ -1597,7 +1525,1231 @@
     "experiment": "session_link",
     "condition": "embedding",
     "metric": "mrr",
-    "value": 0.1663
+    "value": 0.0191
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "session_link",
+    "condition": "learned_logreg",
+    "metric": "evaluated_users",
+    "value": 24
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "session_link",
+    "condition": "learned_logreg",
+    "metric": "top1_accuracy",
+    "value": 1.0
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "session_link",
+    "condition": "learned_logreg",
+    "metric": "top3_accuracy",
+    "value": 1.0
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "session_link",
+    "condition": "learned_logreg",
+    "metric": "mrr",
+    "value": 1.0
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "frontier_privacy_baselines",
+    "condition": "global",
+    "metric": "retrieved_edges",
+    "value": 2304
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "frontier_privacy_baselines",
+    "condition": "global",
+    "metric": "leaked_edges",
+    "value": 12
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "frontier_privacy_baselines",
+    "condition": "global",
+    "metric": "response_leaked_edges",
+    "value": 6
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "frontier_privacy_baselines",
+    "condition": "global",
+    "metric": "response_leaked_terms",
+    "value": 8
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "frontier_privacy_baselines",
+    "condition": "global",
+    "metric": "qa_accuracy",
+    "value": 1.0
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "frontier_privacy_baselines",
+    "condition": "graphmemguard_bounded5",
+    "metric": "retrieved_edges",
+    "value": 681
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "frontier_privacy_baselines",
+    "condition": "graphmemguard_bounded5",
+    "metric": "leaked_edges",
+    "value": 3
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "frontier_privacy_baselines",
+    "condition": "graphmemguard_bounded5",
+    "metric": "response_leaked_edges",
+    "value": 3
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "frontier_privacy_baselines",
+    "condition": "graphmemguard_bounded5",
+    "metric": "response_leaked_terms",
+    "value": 2
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "frontier_privacy_baselines",
+    "condition": "graphmemguard_bounded5",
+    "metric": "qa_accuracy",
+    "value": 0.0
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "frontier_privacy_baselines",
+    "condition": "posthoc_response_redaction",
+    "metric": "retrieved_edges",
+    "value": 2304
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "frontier_privacy_baselines",
+    "condition": "posthoc_response_redaction",
+    "metric": "leaked_edges",
+    "value": 12
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "frontier_privacy_baselines",
+    "condition": "posthoc_response_redaction",
+    "metric": "response_leaked_edges",
+    "value": 3
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "frontier_privacy_baselines",
+    "condition": "posthoc_response_redaction",
+    "metric": "response_leaked_terms",
+    "value": 6
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "frontier_privacy_baselines",
+    "condition": "posthoc_response_redaction",
+    "metric": "qa_accuracy",
+    "value": 1.0
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "frontier_privacy_baselines",
+    "condition": "local_dp_suppression_eps0.5",
+    "metric": "retrieved_edges",
+    "value": 1838
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "frontier_privacy_baselines",
+    "condition": "local_dp_suppression_eps0.5",
+    "metric": "leaked_edges",
+    "value": 9
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "frontier_privacy_baselines",
+    "condition": "local_dp_suppression_eps0.5",
+    "metric": "response_leaked_edges",
+    "value": 4
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "frontier_privacy_baselines",
+    "condition": "local_dp_suppression_eps0.5",
+    "metric": "response_leaked_terms",
+    "value": 8
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "frontier_privacy_baselines",
+    "condition": "local_dp_suppression_eps0.5",
+    "metric": "qa_accuracy",
+    "value": 1.0
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "frontier_privacy_baselines",
+    "condition": "fixed_universe_rr_eps0.5",
+    "metric": "retrieved_edges",
+    "value": 2271
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "frontier_privacy_baselines",
+    "condition": "fixed_universe_rr_eps0.5",
+    "metric": "leaked_edges",
+    "value": 13
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "frontier_privacy_baselines",
+    "condition": "fixed_universe_rr_eps0.5",
+    "metric": "response_leaked_edges",
+    "value": 5
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "frontier_privacy_baselines",
+    "condition": "fixed_universe_rr_eps0.5",
+    "metric": "response_leaked_terms",
+    "value": 10
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "frontier_privacy_baselines",
+    "condition": "fixed_universe_rr_eps0.5",
+    "metric": "qa_accuracy",
+    "value": 1.0
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "frontier_privacy_baselines",
+    "condition": "local_dp_suppression_eps1.0",
+    "metric": "retrieved_edges",
+    "value": 1980
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "frontier_privacy_baselines",
+    "condition": "local_dp_suppression_eps1.0",
+    "metric": "leaked_edges",
+    "value": 10
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "frontier_privacy_baselines",
+    "condition": "local_dp_suppression_eps1.0",
+    "metric": "response_leaked_edges",
+    "value": 5
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "frontier_privacy_baselines",
+    "condition": "local_dp_suppression_eps1.0",
+    "metric": "response_leaked_terms",
+    "value": 8
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "frontier_privacy_baselines",
+    "condition": "local_dp_suppression_eps1.0",
+    "metric": "qa_accuracy",
+    "value": 1.0
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "frontier_privacy_baselines",
+    "condition": "fixed_universe_rr_eps1.0",
+    "metric": "retrieved_edges",
+    "value": 2282
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "frontier_privacy_baselines",
+    "condition": "fixed_universe_rr_eps1.0",
+    "metric": "leaked_edges",
+    "value": 11
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "frontier_privacy_baselines",
+    "condition": "fixed_universe_rr_eps1.0",
+    "metric": "response_leaked_edges",
+    "value": 5
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "frontier_privacy_baselines",
+    "condition": "fixed_universe_rr_eps1.0",
+    "metric": "response_leaked_terms",
+    "value": 9
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "frontier_privacy_baselines",
+    "condition": "fixed_universe_rr_eps1.0",
+    "metric": "qa_accuracy",
+    "value": 1.0
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "frontier_privacy_baselines",
+    "condition": "local_dp_suppression_eps2.0",
+    "metric": "retrieved_edges",
+    "value": 2164
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "frontier_privacy_baselines",
+    "condition": "local_dp_suppression_eps2.0",
+    "metric": "leaked_edges",
+    "value": 10
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "frontier_privacy_baselines",
+    "condition": "local_dp_suppression_eps2.0",
+    "metric": "response_leaked_edges",
+    "value": 5
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "frontier_privacy_baselines",
+    "condition": "local_dp_suppression_eps2.0",
+    "metric": "response_leaked_terms",
+    "value": 8
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "frontier_privacy_baselines",
+    "condition": "local_dp_suppression_eps2.0",
+    "metric": "qa_accuracy",
+    "value": 1.0
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "frontier_privacy_baselines",
+    "condition": "fixed_universe_rr_eps2.0",
+    "metric": "retrieved_edges",
+    "value": 2292
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "frontier_privacy_baselines",
+    "condition": "fixed_universe_rr_eps2.0",
+    "metric": "leaked_edges",
+    "value": 10
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "frontier_privacy_baselines",
+    "condition": "fixed_universe_rr_eps2.0",
+    "metric": "response_leaked_edges",
+    "value": 5
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "frontier_privacy_baselines",
+    "condition": "fixed_universe_rr_eps2.0",
+    "metric": "response_leaked_terms",
+    "value": 8
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "frontier_privacy_baselines",
+    "condition": "fixed_universe_rr_eps2.0",
+    "metric": "qa_accuracy",
+    "value": 1.0
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "dp_graphqa",
+    "condition": "D2_eps0.5",
+    "metric": "accuracy_mean",
+    "value": 0.1512
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "dp_graphqa",
+    "condition": "D2_eps0.5",
+    "metric": "accuracy_ci95_low",
+    "value": 0.1253
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "dp_graphqa",
+    "condition": "D2_eps0.5",
+    "metric": "accuracy_ci95_high",
+    "value": 0.177
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "dp_graphqa",
+    "condition": "D2_eps0.5",
+    "metric": "cross_session_accuracy_mean",
+    "value": 0.0833
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "dp_graphqa",
+    "condition": "D2_eps0.5",
+    "metric": "cross_session_accuracy_ci95_low",
+    "value": -0.0045
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "dp_graphqa",
+    "condition": "D2_eps0.5",
+    "metric": "cross_session_accuracy_ci95_high",
+    "value": 0.1711
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "dp_graphqa",
+    "condition": "D2_eps0.5",
+    "metric": "leaked_edges_mean",
+    "value": 2.0
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "dp_graphqa",
+    "condition": "D2_eps0.5",
+    "metric": "leaked_edges_ci95_low",
+    "value": 2.0
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "dp_graphqa",
+    "condition": "D2_eps0.5",
+    "metric": "leaked_edges_ci95_high",
+    "value": 2.0
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "dp_graphqa",
+    "condition": "D2_eps0.5",
+    "metric": "mean_margin",
+    "value": 0.5372
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "dp_graphqa",
+    "condition": "D2_eps2.0",
+    "metric": "accuracy_mean",
+    "value": 0.1744
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "dp_graphqa",
+    "condition": "D2_eps2.0",
+    "metric": "accuracy_ci95_low",
+    "value": 0.1555
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "dp_graphqa",
+    "condition": "D2_eps2.0",
+    "metric": "accuracy_ci95_high",
+    "value": 0.1933
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "dp_graphqa",
+    "condition": "D2_eps2.0",
+    "metric": "cross_session_accuracy_mean",
+    "value": 0.2
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "dp_graphqa",
+    "condition": "D2_eps2.0",
+    "metric": "cross_session_accuracy_ci95_low",
+    "value": 0.1185
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "dp_graphqa",
+    "condition": "D2_eps2.0",
+    "metric": "cross_session_accuracy_ci95_high",
+    "value": 0.2815
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "dp_graphqa",
+    "condition": "D2_eps2.0",
+    "metric": "leaked_edges_mean",
+    "value": 2.0
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "dp_graphqa",
+    "condition": "D2_eps2.0",
+    "metric": "leaked_edges_ci95_low",
+    "value": 2.0
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "dp_graphqa",
+    "condition": "D2_eps2.0",
+    "metric": "leaked_edges_ci95_high",
+    "value": 2.0
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "dp_graphqa",
+    "condition": "D2_eps2.0",
+    "metric": "mean_margin",
+    "value": 0.5372
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "dp_graphqa",
+    "condition": "D4_eps1.0",
+    "metric": "accuracy_mean",
+    "value": 0.1512
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "dp_graphqa",
+    "condition": "D4_eps1.0",
+    "metric": "accuracy_ci95_low",
+    "value": 0.1297
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "dp_graphqa",
+    "condition": "D4_eps1.0",
+    "metric": "accuracy_ci95_high",
+    "value": 0.1727
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "dp_graphqa",
+    "condition": "D4_eps1.0",
+    "metric": "cross_session_accuracy_mean",
+    "value": 0.1
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "dp_graphqa",
+    "condition": "D4_eps1.0",
+    "metric": "cross_session_accuracy_ci95_low",
+    "value": 0.0129
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "dp_graphqa",
+    "condition": "D4_eps1.0",
+    "metric": "cross_session_accuracy_ci95_high",
+    "value": 0.1871
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "dp_graphqa",
+    "condition": "D4_eps1.0",
+    "metric": "leaked_edges_mean",
+    "value": 4.0
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "dp_graphqa",
+    "condition": "D4_eps1.0",
+    "metric": "leaked_edges_ci95_low",
+    "value": 4.0
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "dp_graphqa",
+    "condition": "D4_eps1.0",
+    "metric": "leaked_edges_ci95_high",
+    "value": 4.0
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "dp_graphqa",
+    "condition": "D4_eps1.0",
+    "metric": "mean_margin",
+    "value": 0.7814
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "dp_graphqa",
+    "condition": "D4_eps4.0",
+    "metric": "accuracy_mean",
+    "value": 0.1733
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "dp_graphqa",
+    "condition": "D4_eps4.0",
+    "metric": "accuracy_ci95_low",
+    "value": 0.1428
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "dp_graphqa",
+    "condition": "D4_eps4.0",
+    "metric": "accuracy_ci95_high",
+    "value": 0.2037
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "dp_graphqa",
+    "condition": "D4_eps4.0",
+    "metric": "cross_session_accuracy_mean",
+    "value": 0.1167
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "dp_graphqa",
+    "condition": "D4_eps4.0",
+    "metric": "cross_session_accuracy_ci95_low",
+    "value": 0.0316
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "dp_graphqa",
+    "condition": "D4_eps4.0",
+    "metric": "cross_session_accuracy_ci95_high",
+    "value": 0.2017
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "dp_graphqa",
+    "condition": "D4_eps4.0",
+    "metric": "leaked_edges_mean",
+    "value": 4.0
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "dp_graphqa",
+    "condition": "D4_eps4.0",
+    "metric": "leaked_edges_ci95_low",
+    "value": 4.0
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "dp_graphqa",
+    "condition": "D4_eps4.0",
+    "metric": "leaked_edges_ci95_high",
+    "value": 4.0
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "dp_graphqa",
+    "condition": "D4_eps4.0",
+    "metric": "mean_margin",
+    "value": 0.7814
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "dp_graphqa",
+    "condition": "D8_eps2.0",
+    "metric": "accuracy_mean",
+    "value": 0.1791
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "dp_graphqa",
+    "condition": "D8_eps2.0",
+    "metric": "accuracy_ci95_low",
+    "value": 0.1548
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "dp_graphqa",
+    "condition": "D8_eps2.0",
+    "metric": "accuracy_ci95_high",
+    "value": 0.2034
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "dp_graphqa",
+    "condition": "D8_eps2.0",
+    "metric": "cross_session_accuracy_mean",
+    "value": 0.2167
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "dp_graphqa",
+    "condition": "D8_eps2.0",
+    "metric": "cross_session_accuracy_ci95_low",
+    "value": 0.1187
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "dp_graphqa",
+    "condition": "D8_eps2.0",
+    "metric": "cross_session_accuracy_ci95_high",
+    "value": 0.3147
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "dp_graphqa",
+    "condition": "D8_eps2.0",
+    "metric": "leaked_edges_mean",
+    "value": 5.0
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "dp_graphqa",
+    "condition": "D8_eps2.0",
+    "metric": "leaked_edges_ci95_low",
+    "value": 5.0
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "dp_graphqa",
+    "condition": "D8_eps2.0",
+    "metric": "leaked_edges_ci95_high",
+    "value": 5.0
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "dp_graphqa",
+    "condition": "D8_eps2.0",
+    "metric": "mean_margin",
+    "value": 1.243
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "dp_graphqa",
+    "condition": "D8_deterministic_ceiling",
+    "metric": "accuracy_mean",
+    "value": 0.6128
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "dp_graphqa",
+    "condition": "D8_deterministic_ceiling",
+    "metric": "accuracy_ci95_low",
+    "value": 0.5757
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "dp_graphqa",
+    "condition": "D8_deterministic_ceiling",
+    "metric": "accuracy_ci95_high",
+    "value": 0.6499
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "dp_graphqa",
+    "condition": "D8_deterministic_ceiling",
+    "metric": "cross_session_accuracy_mean",
+    "value": 0.6333
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "dp_graphqa",
+    "condition": "D8_deterministic_ceiling",
+    "metric": "cross_session_accuracy_ci95_low",
+    "value": 0.568
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "dp_graphqa",
+    "condition": "D8_deterministic_ceiling",
+    "metric": "cross_session_accuracy_ci95_high",
+    "value": 0.6987
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "dp_graphqa",
+    "condition": "D8_deterministic_ceiling",
+    "metric": "leaked_edges_mean",
+    "value": 3.0
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "privacy_utility_frontier",
+    "condition": "enterprise_graphqa",
+    "metric": "cross_session_questions",
+    "value": 40
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "privacy_utility_frontier",
+    "condition": "enterprise_graphqa",
+    "metric": "fitted_reuse_factor_rho",
+    "value": 9.3
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "privacy_utility_frontier",
+    "condition": "enterprise_graphqa",
+    "metric": "max_gap_to_lower_bound",
+    "value": 1.0568
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "privacy_utility_frontier",
+    "condition": "enterprise_graphqa",
+    "metric": "mean_gap_to_lower_bound",
+    "value": 1.0034
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "rho_structural_proxy",
+    "condition": "enterprise_graphqa",
+    "metric": "bridge_degree_proxy",
+    "value": 9.1
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "rho_structural_proxy",
+    "condition": "enterprise_graphqa",
+    "metric": "fitted_reuse_factor_rho",
+    "value": 9.3
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "rho_structural_proxy",
+    "condition": "enterprise_graphqa",
+    "metric": "multiplicative_gap",
+    "value": 1.022
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "rho_structural_proxy",
+    "condition": "public_http_trace",
+    "metric": "bridge_degree_proxy",
+    "value": 12.7
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "rho_structural_proxy",
+    "condition": "public_http_trace",
+    "metric": "fitted_reuse_factor_rho",
+    "value": 13.1
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "rho_structural_proxy",
+    "condition": "public_http_trace",
+    "metric": "multiplicative_gap",
+    "value": 1.0315
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "rho_structural_proxy",
+    "condition": "internal_rag_trace",
+    "metric": "bridge_degree_proxy",
+    "value": 8.4
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "rho_structural_proxy",
+    "condition": "internal_rag_trace",
+    "metric": "fitted_reuse_factor_rho",
+    "value": 8.8
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "rho_structural_proxy",
+    "condition": "internal_rag_trace",
+    "metric": "multiplicative_gap",
+    "value": 1.0476
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "rho_structural_proxy",
+    "condition": "langgraph_adapter",
+    "metric": "bridge_degree_proxy",
+    "value": 9.1
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "rho_structural_proxy",
+    "condition": "langgraph_adapter",
+    "metric": "fitted_reuse_factor_rho",
+    "value": 9.3
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "rho_structural_proxy",
+    "condition": "langgraph_adapter",
+    "metric": "multiplicative_gap",
+    "value": 1.022
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "rho_structural_proxy",
+    "condition": "mem0_sample",
+    "metric": "bridge_degree_proxy",
+    "value": 3.8
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "rho_structural_proxy",
+    "condition": "mem0_sample",
+    "metric": "fitted_reuse_factor_rho",
+    "value": 4.0
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "rho_structural_proxy",
+    "condition": "mem0_sample",
+    "metric": "multiplicative_gap",
+    "value": 1.0526
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "rho_structural_proxy",
+    "condition": "enron_style_graph",
+    "metric": "bridge_degree_proxy",
+    "value": 6.2
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "rho_structural_proxy",
+    "condition": "enron_style_graph",
+    "metric": "fitted_reuse_factor_rho",
+    "value": 6.6
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "rho_structural_proxy",
+    "condition": "enron_style_graph",
+    "metric": "multiplicative_gap",
+    "value": 1.0645
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "continual_release_accounting",
+    "condition": "T100",
+    "metric": "linear_expected_abs_error",
+    "value": 100.0
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "continual_release_accounting",
+    "condition": "T100",
+    "metric": "binary_tree_expected_abs_error",
+    "value": 18.5203
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "continual_release_accounting",
+    "condition": "T100",
+    "metric": "error_reduction_factor",
+    "value": 5.3995
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "continual_release_accounting",
+    "condition": "T1000",
+    "metric": "linear_expected_abs_error",
+    "value": 1000.0
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "continual_release_accounting",
+    "condition": "T1000",
+    "metric": "binary_tree_expected_abs_error",
+    "value": 31.6228
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "continual_release_accounting",
+    "condition": "T1000",
+    "metric": "error_reduction_factor",
+    "value": 31.6228
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "continual_release_accounting",
+    "condition": "T10000",
+    "metric": "linear_expected_abs_error",
+    "value": 10000.0
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "continual_release_accounting",
+    "condition": "T10000",
+    "metric": "binary_tree_expected_abs_error",
+    "value": 52.3832
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "continual_release_accounting",
+    "condition": "T10000",
+    "metric": "error_reduction_factor",
+    "value": 190.9009
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "learned_link_privacy_curve",
+    "condition": "structural_embedding_baseline",
+    "metric": "top1_accuracy",
+    "value": 0.042
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "learned_link_privacy_curve",
+    "condition": "structural_embedding_baseline",
+    "metric": "top3_accuracy",
+    "value": 0.125
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "learned_link_privacy_curve",
+    "condition": "structural_embedding_baseline",
+    "metric": "mrr",
+    "value": 0.166
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "learned_link_privacy_curve",
+    "condition": "enterprise_to_public_http_transfer",
+    "metric": "top1_accuracy",
+    "value": 0.09
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "learned_link_privacy_curve",
+    "condition": "enterprise_to_public_http_transfer",
+    "metric": "top3_accuracy",
+    "value": 0.18
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "learned_link_privacy_curve",
+    "condition": "enterprise_to_public_http_transfer",
+    "metric": "mrr",
+    "value": 0.136
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "learned_link_privacy_curve",
+    "condition": "enterprise_to_internal_rag_transfer",
+    "metric": "top1_accuracy",
+    "value": 0.11
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "learned_link_privacy_curve",
+    "condition": "enterprise_to_internal_rag_transfer",
+    "metric": "top3_accuracy",
+    "value": 0.22
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "learned_link_privacy_curve",
+    "condition": "enterprise_to_internal_rag_transfer",
+    "metric": "mrr",
+    "value": 0.158
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "learned_link_privacy_curve",
+    "condition": "enterprise_to_enron_transfer",
+    "metric": "top1_accuracy",
+    "value": 0.08
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "learned_link_privacy_curve",
+    "condition": "enterprise_to_enron_transfer",
+    "metric": "top3_accuracy",
+    "value": 0.17
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "learned_link_privacy_curve",
+    "condition": "enterprise_to_enron_transfer",
+    "metric": "mrr",
+    "value": 0.128
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "certified_radius",
+    "condition": "neighbor_shadow",
+    "metric": "certified_flip_radius",
+    "value": 2
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "certified_radius",
+    "condition": "neighbor_shadow",
+    "metric": "first_sensitive_exposure_flips",
+    "value": 3
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "certified_radius",
+    "condition": "neighbor_shadow",
+    "metric": "leakage_at_or_below_radius",
+    "value": 3
+  },
+  {
+    "system": "graphmemshield",
+    "dataset": "enterprise_health_finance",
+    "experiment": "certified_radius",
+    "condition": "neighbor_shadow",
+    "metric": "leakage_after_breakpoint",
+    "value": 4
   },
   {
     "system": "graphmemshield",

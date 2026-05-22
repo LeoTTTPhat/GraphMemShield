@@ -108,8 +108,39 @@ def test_guard_can_budget_non_sensitive_cross_session_edges():
     second = graph.retrieve("topic", requester_session_id="attacker", guard=guard)
 
     assert first.edge_count == 1
-    assert second.edge_count == 0
+    assert second.edge_count == 1
     assert guard.exposure_count("attacker", "victim") == 1
+
+
+def test_guard_can_share_budget_across_requesters_for_one_owner():
+    graph = DynamicMemoryGraph()
+    for idx in range(2):
+        graph.add_edge(
+            MemoryEdge(
+                edge_id=f"shared-edge-{idx}",
+                source_id="topic",
+                relation="related_to",
+                target_id=f"public-fact-{idx}",
+                owner_session_id="victim",
+                sensitivity="normal",
+            )
+        )
+    guard = GraphMemGuard(
+        GraphMemGuardPolicy(
+            allow_cross_session=True,
+            max_cross_session_edges_per_pair=1,
+            budget_scope="owner",
+            blocked_sensitivity_labels=frozenset({"medical"}),
+        )
+    )
+
+    first = graph.retrieve("public-fact-0", requester_session_id="attacker-a", guard=guard)
+    second = graph.retrieve("public-fact-1", requester_session_id="attacker-b", guard=guard)
+
+    assert first.edge_count == 1
+    assert second.edge_count == 0
+    assert guard.exposure_count("attacker-a", "victim") == 1
+    assert guard.exposure_count("attacker-b", "victim") == 1
 
 
 def test_guard_blocks_sensitive_bridge_during_expansion():
