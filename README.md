@@ -1,8 +1,17 @@
 # GraphMemShield
 
-GraphMemShield is a research prototype for auditing cross-session privacy leakage in dynamic knowledge-graph memory systems. It provides a small graph-memory simulator, attack baselines, defense baselines, reproducible benchmark fixtures, and report generators.
+Graph-backed assistants increasingly write user utterances into a provenance-tagged knowledge-graph memory and later retrieve $k$-hop neighborhoods to ground responses. Because the retrieval surface is multi-user and append-only, an edge written by one session can easily enter the context of another. This boundary is neither model memorization nor traditional document-RAG leakage; it is a dynamic retrieval-control problem.
 
-The project is intended as a source artifact and synthetic/de-identified benchmark scaffold. It is not a production security product.
+**GraphMemShield** is a benchmark and audit suite for cross-session leakage in dynamic KG memories. It packages a JSONL trace schema, gray- and black-box leakage probes, a response-leakage scorer, and four policy baselines: global retrieval, owner-only isolation, label filtering, and bounded provenance-aware sharing. The project is intended as a source artifact and synthetic/de-identified benchmark scaffold to help enforce graph-memory privacy *before* unsafe cross-session edges enter the model context.
+
+## Key Results
+
+Based on our empirical and theoretical analysis across eight workloads (including LangGraph, Mem0, MultiWOZ HTTP, and enterprise datasets):
+
+- **Pervasive Leakage in Unguarded Settings**: Across all audited retrieval settings, unguarded retrieval admits victim-owned edges. The full backend-retrieval-response pipeline leaks $11.8\pm 0.6$ victim edges and $7.9\pm 0.7$ sensitive terms on the enterprise bank workload.
+- **Tight Bounded Exposure**: A retrieval-time budget guard successfully bounds exposure. At a configured budget of $b=5$, the realized exposure drops to $3.0\pm 0$ admitted victim edges while maintaining a cross-session graph-QA accuracy of $0.71$, tightly tracking the predicted utility frontier.
+- **Structural Limits of Utility**: The privacy/utility tradeoff is structural, pinned by a reuse factor $\rho$ estimable from graph features. Any policy must expose a proportional number of victim edges to maintain cross-session QA accuracy.
+- **DP and the Small-Margin Regime**: Post-retrieval answer-level $\varepsilon$-DP cannot match the deterministic budget guard's utility in this domain. Due to the small empirical margins of graph-memory workloads ($0.54-1.24$), our DP mechanism collapses to $0.15-0.18$ accuracy at usable $\varepsilon$. The operational rule is therefore to bound exposure *before* edges enter the context.
 
 ## Features
 
