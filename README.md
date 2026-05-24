@@ -30,7 +30,7 @@ Based on our empirical and theoretical analysis across eight workloads (includin
 Clone the repository:
 
 ```bash
-git clone https://github.com/LeoTTTPhat/GraphMemShield.git
+git clone https://anonymous.4open.science/r/GraphMemShield-C81B
 cd GraphMemShield
 ```
 
