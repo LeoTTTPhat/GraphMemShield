@@ -173,12 +173,14 @@ Expected aggregate row count for this snapshot: `575`.
 
 ## Documentation
 
-- `EXPERIMENT_MANIFEST.md`: implemented experiments and reproduction commands.
-- `PAPER_READY_TABLES.md`: compact result tables.
-- `LIMITATIONS_AND_NEXT_STEPS.md`: artifact limitations and next steps.
-- `REPRODUCIBILITY.md`: full reproduction guide.
-- `RELEASE_CHECKLIST.md`: source artifact release checklist.
+The following detailed documentation files are available in the `code_artifacts/` directory:
+
+- `code_artifacts/EXPERIMENT_MANIFEST.md`: implemented experiments and reproduction commands.
+- `code_artifacts/PAPER_READY_TABLES.md`: compact result tables.
+- `code_artifacts/REPRODUCIBILITY.md`: full reproduction guide.
+- `code_artifacts/RELEASE_CHECKLIST.md`: source artifact release checklist.
+- `code_artifacts/CODE_ARTIFACTS_MANIFEST.md`: manifest of the code artifact.
 
 ## License
 
-MIT. See `LICENSE`.
+This project is licensed under the MIT License.
