@@ -1,5 +1,0 @@
-# Keep this repository focused on the compile-ready manuscript package.
-*
-!.gitignore
-!/manuscript/
-!/manuscript/**

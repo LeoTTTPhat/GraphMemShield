@@ -1,14 +1,14 @@
-__pycache__/
-*.py[cod]
-*.pyo
-.pytest_cache/
-.coverage
-htmlcov/
-build/
-dist/
-*.egg-info/
-.venv/
-venv/
-.DS_Store
-output/tmp/
-*.log
+# Ignore everything in the root directory
+/*
+
+# Except for the following explicitly allowed items
+!/code_artifacts/
+!/data/
+!/examples/
+!/output/
+!/requirements.txt
+!/setup.py
+!/pyproject.toml
+
+# Always include the .gitignore file itself
+!/.gitignore
